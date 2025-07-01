@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import logo from "../images/LogoHPink.svg";
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -11,21 +12,29 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+  @media (max-width: 450px) {
+    justify-content: center;
+  }
 `;
 
 const Logo = styled.div`
-  width: 250px;
+  width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   cursor: pointer;
+  margin-left: 20px;
+  @media (max-width: 450px) {
+    margin-left: 0;
+  }
 `;
 
-const LogoText = styled.div`
-  font-size: 20px;
-  font-weight: bold;
-  color: #ff2d95;
+const LogoImage = styled.img`
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
 `;
 
 const Nav = styled.nav`
@@ -33,6 +42,9 @@ const Nav = styled.nav`
   width: 200px;
   align-items: center;
   justify-content: space-around;
+  @media (max-width: 450px) {
+    display: none;
+  }
 `;
 
 const NavItem = styled.button`
@@ -59,8 +71,7 @@ const Header = ({ currentSection, sectionRefs }) => {
   return (
     <HeaderContainer>
       <Logo onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        <LogoText>MoneyMakingSNS</LogoText>
-        <LogoText>돈이 되는 마케팅</LogoText>
+        <LogoImage src={logo} alt="MoneyMakingSNS" />
       </Logo>
       <Nav>
         <NavItem
