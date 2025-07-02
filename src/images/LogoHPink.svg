@@ -5,11 +5,11 @@
 	</defs>
 	<style>
 		tspan { white-space:pre } 
-		.t0 { font-size: 400px;fill: #ff2d95;font-weight: 400;font-family: "NotoSansKR-Regular", "Noto Sans KR" } 
+		.t0 { font-size: 500px;fill: #ff2d95;font-weight: 400;font-family: "NotoSansKR-Regular", "Noto Sans KR" } 
 	</style>
 	<use id="MONEY MAKING SNS" href="#img1" x="101" y="39"/>
-	<text id="." style="transform: matrix(1,0,0,1,2090,39)" >
-		<tspan x="0" y="318.4" class="t0">.
+	<text id="." style="transform: matrix(1,0,0,1,2088,-39)" >
+		<tspan x="0" y="398" class="t0">.
 </tspan>
 	</text>
 </svg>
