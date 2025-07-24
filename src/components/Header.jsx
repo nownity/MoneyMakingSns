@@ -18,6 +18,8 @@ const HeaderContainer = styled.header`
 `;
 
 const Logo = styled.div`
+  position: absolute;
+  left: 10px;
   width: 300px;
   display: flex;
   align-items: center;
@@ -25,6 +27,10 @@ const Logo = styled.div`
   flex-direction: column;
   cursor: pointer;
   margin-left: 20px;
+  @media (max-width: 900px) {
+    position: static;
+    left: auto;
+  }
   @media (max-width: 450px) {
     margin-left: 0;
   }
@@ -38,10 +44,18 @@ const LogoImage = styled.img`
 `;
 
 const Nav = styled.nav`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   width: 200px;
   align-items: center;
   justify-content: space-around;
+  @media (max-width: 900px) {
+    position: static;
+    left: auto;
+    transform: none;
+  }
   @media (max-width: 450px) {
     display: none;
   }
@@ -51,9 +65,9 @@ const NavItem = styled.button`
   background: none;
   border: none;
   font-size: 1rem;
-  font-weight: ${({ active }) => (active ? "700" : "400")};
-  color: ${({ active }) => (active ? "#FF73B9" : "	#858585")};
-  border-bottom: ${({ active }) => (active ? `2px solid #FF73B9` : "none")};
+  font-weight: ${({ $active }) => ($active ? "700" : "400")};
+  color: ${({ $active }) => ($active ? "#FF73B9" : "	#858585")};
+  border-bottom: ${({ $active }) => ($active ? `2px solid #FF73B9` : "none")};
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
@@ -76,19 +90,19 @@ const Header = ({ currentSection, sectionRefs }) => {
       <Nav>
         <NavItem
           onClick={() => scrollToSection("about")}
-          active={currentSection === "about"}
+          $active={currentSection === "about"}
         >
           소개
         </NavItem>
         <NavItem
           onClick={() => scrollToSection("sample")}
-          active={currentSection === "sample"}
+          $active={currentSection === "sample"}
         >
           샘플
         </NavItem>
         <NavItem
           onClick={() => scrollToSection("info")}
-          active={currentSection === "info"}
+          $active={currentSection === "info"}
         >
           서비스
         </NavItem>
