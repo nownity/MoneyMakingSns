@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import HeroSection from "../components/HeroSection";
-import AboutSection from "../components/AboutSection";
-import SampleSection from "../components/SampleSection";
-import InfoSection from "../components/InfoSection";
+import HeroSection from "../pages/HeroSection";
+import AboutSection from "../pages/AboutSection";
+import SampleSection from "../pages/SampleSection";
+import InfoSection from "../pages/InfoSection";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
