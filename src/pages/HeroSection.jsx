@@ -1,23 +1,82 @@
 import styled from "styled-components";
+import HeroImage from "../images/HeroBody.jpg";
 
 const Section = styled.section`
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fafafa;
+  background: url(${HeroImage}) no-repeat center center/cover;
+  position: relative;
+  text-align: center;
+  color: white;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
 `;
 
 const Title = styled.h1`
   font-size: 2.5rem;
-  color: #ff2d95;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  z-index: 2;
+  line-height: 1.4;
+  span {
+    display: block;
+  }
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
-const HeroSection = () => {
+const SubTitle = styled.p`
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  z-index: 2;
+  opacity: 0.9;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const Button = styled.button`
+  padding: 10px 25px;
+  font-size: 1rem;
+  border-radius: 50px;
+  border: 1.5px solid white;
+  background: transparent;
+  color: #fafafa;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: #fafafa;
+    color: #ff2d95;
+    border-color: #fafafa;
+  }
+`;
+
+const HeroSection = ({ lang }) => {
   return (
     <Section>
-      <Title>MAIN PAGE</Title>
+      <Title>
+        <span>{lang === "ko" ? "MMS와 함께하는" : "With MMS"}</span>
+        <span>
+          {lang === "ko"
+            ? "글로벌 한국 로컬 라이프"
+            : "Global Korean Local Life"}
+        </span>
+      </Title>
+      <SubTitle>"Enjoy Korea Like a Local, Connect Like a Pro"</SubTitle>
+      <Button>{lang === "ko" ? "알아보기" : "Learn More"}</Button>
     </Section>
   );
 };

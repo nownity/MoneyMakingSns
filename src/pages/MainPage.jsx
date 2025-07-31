@@ -65,16 +65,16 @@ const MainPage = () => {
       />
       <MainWrapper>
         <section id="hero" ref={sectionRefs.hero}>
-          <HeroSection />
+          <HeroSection lang={lang} />
         </section>
         <section id="about" ref={sectionRefs.about}>
-          <AboutSection />
+          <AboutSection lang={lang} />
         </section>
         <section id="sample" ref={sectionRefs.sample}>
-          <SampleSection />
+          <SampleSection lang={lang} />
         </section>
         <section id="info" ref={sectionRefs.info}>
-          <InfoSection />
+          <InfoSection lang={lang} />
         </section>
         <Footer />
       </MainWrapper>
