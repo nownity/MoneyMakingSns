@@ -12,12 +12,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.scrollBar};
+    background-color: #919191;
     border-radius: 0; 
   }
 
   ::-webkit-scrollbar-track {
-    background-color: ${({ theme }) => theme.scrollBg};
+    background-color: #b1b1b1;
     border-radius: 0;
   }
   ::-webkit-scrollbar-thumb:hover {

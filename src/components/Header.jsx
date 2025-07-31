@@ -77,7 +77,20 @@ const NavItem = styled.button`
   }
 `;
 
-const Header = ({ currentSection, sectionRefs }) => {
+const LangButton = styled.button`
+  margin-left: auto;
+  margin-right: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  &:hover {
+    color: #ff73b9;
+  }
+`;
+
+const Header = ({ currentSection, sectionRefs, lang, setLang }) => {
   const scrollToSection = (id) => {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -88,6 +101,12 @@ const Header = ({ currentSection, sectionRefs }) => {
         <LogoImage src={logo} alt="MoneyMakingSNS" />
       </Logo>
       <Nav>
+        <NavItem
+          onClick={() => scrollToSection("hero")}
+          $active={currentSection === "hero"}
+        >
+          홈
+        </NavItem>
         <NavItem
           onClick={() => scrollToSection("about")}
           $active={currentSection === "about"}
@@ -107,6 +126,9 @@ const Header = ({ currentSection, sectionRefs }) => {
           서비스
         </NavItem>
       </Nav>
+      <LangButton onClick={() => setLang(lang === "ko" ? "en" : "ko")}>
+        {lang === "ko" ? "EN" : "KO"}
+      </LangButton>
     </HeaderContainer>
   );
 };

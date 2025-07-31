@@ -11,16 +11,16 @@ const Container = styled.main`
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #0d0d0d;
+  background-color: #fafafa;
 `;
 const MainWrapper = styled.main`
   display: flex;
   flex-direction: column;
-  margin-top: 70px;
 `;
 
 const MainPage = () => {
   const [currentSection, setCurrentSection] = useState("hero");
+  const [lang, setLang] = useState("ko");
 
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
@@ -57,7 +57,12 @@ const MainPage = () => {
 
   return (
     <Container>
-      <Header currentSection={currentSection} sectionRefs={sectionRefs} />
+      <Header
+        currentSection={currentSection}
+        sectionRefs={sectionRefs}
+        lang={lang}
+        setLang={setLang}
+      />
       <MainWrapper>
         <section id="hero" ref={sectionRefs.hero}>
           <HeroSection />

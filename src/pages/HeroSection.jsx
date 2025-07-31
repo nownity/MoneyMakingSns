@@ -6,7 +6,7 @@ const Section = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0d0d0d;
+  background-color: #fafafa;
 `;
 
 const Title = styled.h1`
