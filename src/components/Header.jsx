@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import logo from "../images/LogoHPink.svg";
+import mmsLogo from "../images/MMSLogoC.svg";
+import { useEffect, useState } from "react";
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -32,7 +34,7 @@ const Logo = styled.div`
     left: auto;
   }
   @media (max-width: 450px) {
-    margin-left: 0;
+    align-items: flex-start;
   }
 `;
 
@@ -41,6 +43,12 @@ const LogoImage = styled.img`
   height: auto;
   object-fit: contain;
   cursor: pointer;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
+  @media (max-width: 450px) {
+    width: 40%;
+  }
 `;
 
 const Nav = styled.nav`
@@ -82,15 +90,25 @@ const LangButton = styled.button`
   margin-right: 20px;
   background: none;
   border: none;
-  color: #fff;
+  color: #ff73b9;
   cursor: pointer;
   font-weight: bold;
   &:hover {
-    color: #ff73b9;
+    color: #858585;
   }
 `;
 
 const Header = ({ currentSection, sectionRefs, lang, setLang }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 450);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const scrollToSection = (id) => {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -98,7 +116,7 @@ const Header = ({ currentSection, sectionRefs, lang, setLang }) => {
   return (
     <HeaderContainer>
       <Logo onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        <LogoImage src={logo} alt="MoneyMakingSNS" />
+        <LogoImage src={isMobile ? mmsLogo : logo} alt="MoneyMakingSNS" />
       </Logo>
       <Nav>
         <NavItem
