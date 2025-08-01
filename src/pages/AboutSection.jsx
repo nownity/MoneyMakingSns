@@ -3,13 +3,16 @@ import mockup from "../images/mockup.png";
 
 const Section = styled.section`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background-color: #f5f6f8;
   padding: 0 50px;
   position: relative;
+  @media (max-width: 768px) {
+    height: 600px;
+  }
 `;
 
 const Content = styled.div`
@@ -24,12 +27,19 @@ const Content = styled.div`
     position: absolute;
     padding-left: 0;
   }
+  @media (max-width: 768px) {
+    margin-top: 100px;
+  }
 `;
 
 const SmallTitle = styled.p`
   font-size: 0.9rem;
   color: #888;
   margin-bottom: 10px;
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+  }
 `;
 
 const Heading = styled.h2`
@@ -37,6 +47,9 @@ const Heading = styled.h2`
   font-weight: bold;
   margin-bottom: 10px;
   color: #222;
+  @media (max-width: 768px) {
+    font-size: 2.1rem;
+  }
 `;
 
 const SubHeading = styled.p`
@@ -44,12 +57,18 @@ const SubHeading = styled.p`
   color: #555;
   margin-bottom: 20px;
   font-style: italic;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const Description = styled.p`
   font-size: 1.5rem;
   color: #444;
   line-height: 1.6;
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const Shape = styled.div`
@@ -62,7 +81,6 @@ const Shape = styled.div`
   border-radius: 500px 500px 0 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   z-index: 1;
-  transition: all 0.4s ease;
   padding-top: 100px;
   overflow: hidden;
 
@@ -70,6 +88,7 @@ const Shape = styled.div`
     right: 50%;
     transform: translateX(50%);
     width: 90%;
+    height: 550px;
   }
 `;
 
