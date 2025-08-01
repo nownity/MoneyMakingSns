@@ -64,18 +64,18 @@ const Button = styled.button`
   border: 1.5px solid white;
   background: transparent;
   color: #fafafa;
+  opacity: 0.9;
   cursor: pointer;
   z-index: 2;
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    background: #fafafa;
     color: #ff2d95;
-    border-color: #fafafa;
+    border-color: #ff2d95;
   }
 `;
 
-const HeroSection = ({ lang }) => {
+const HeroSection = ({ currentSection, sectionRefs, lang }) => {
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
@@ -86,6 +86,10 @@ const HeroSection = ({ lang }) => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (id) => {
+    sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <Section $offset={offset}>
@@ -98,7 +102,12 @@ const HeroSection = ({ lang }) => {
         </span>
       </Title>
       <SubTitle>"Enjoy Korea Like a Local, Connect Like a Pro"</SubTitle>
-      <Button>{lang === "ko" ? "알아보기" : "Learn More"}</Button>
+      <Button
+        onClick={() => scrollToSection("about")}
+        $active={currentSection === "about"}
+      >
+        {lang === "ko" ? "알아보기" : "Learn More"}
+      </Button>
     </Section>
   );
 };
