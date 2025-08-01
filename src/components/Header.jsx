@@ -38,16 +38,21 @@ const Logo = styled.div`
   }
 `;
 
-const LogoImage = styled.img`
+const LogoImage = styled.div`
   width: 100%;
-  height: auto;
+  height: 70px;
   object-fit: contain;
   cursor: pointer;
-  @media (max-width: 768px) {
+  background-image: url(${({ $isMobile }) => ($isMobile ? mmsLogo : logo)});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  @media (max-width: 950px) {
     width: 90%;
   }
   @media (max-width: 450px) {
     width: 40%;
+    height: 90px;
   }
 `;
 
@@ -128,7 +133,7 @@ const Header = ({ currentSection, sectionRefs, lang, setLang }) => {
   return (
     <HeaderContainer>
       <Logo onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        <LogoImage src={isMobile ? mmsLogo : logo} alt="MoneyMakingSNS" />
+        <LogoImage $isMobile={isMobile} />
       </Logo>
       <Nav>
         <NavItem
