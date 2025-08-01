@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeroImage from "../images/HeroBody.jpg";
 
@@ -12,7 +13,16 @@ const Section = styled.section`
   position: relative;
   text-align: center;
   color: white;
-  background-attachment: fixed;
+
+  /* PC에서는 고정 */
+  @media (min-width: 1025px) {
+    background-attachment: fixed;
+  }
+
+  /* 모바일에서는 JS offset 적용 */
+  @media (max-width: 1024px) {
+    background-position: center ${({ $offset }) => $offset}px;
+  }
 
   &::before {
     content: "";
@@ -66,8 +76,19 @@ const Button = styled.button`
 `;
 
 const HeroSection = ({ lang }) => {
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // 스크롤 속도를 0.5로 줄여서 고정된 듯한 느낌
+      setOffset(window.scrollY * 0.5);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <Section>
+    <Section $offset={offset}>
       <Title>
         <span>{lang === "ko" ? "MMS와 함께하는" : "With MMS"}</span>
         <span>
