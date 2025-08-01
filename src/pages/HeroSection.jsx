@@ -12,6 +12,7 @@ const Section = styled.section`
   position: relative;
   text-align: center;
   color: white;
+  background-attachment: fixed;
 
   &::before {
     content: "";
