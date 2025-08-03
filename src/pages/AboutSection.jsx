@@ -47,6 +47,9 @@ const Heading = styled.h2`
   font-weight: bold;
   margin-bottom: 10px;
   color: #222;
+  span {
+    color: #ff2d95;
+  }
   @media (max-width: 768px) {
     font-size: 2.1rem;
   }
@@ -108,7 +111,9 @@ const AboutSection = ({ lang }) => {
     <Section>
       <Content>
         <SmallTitle>about</SmallTitle>
-        <Heading>{lang === "ko" ? "About us" : "About us"}</Heading>
+        <Heading>
+          About <span>us</span>
+        </Heading>
         <SubHeading>"Global Connection, Korean Experience"</SubHeading>
         <Description>
           {lang === "ko"

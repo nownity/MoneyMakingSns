@@ -28,7 +28,8 @@ const CardGrid = styled.div`
   width: 100%;
   max-width: 1600px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
+    max-width: 800px;
     grid-template-columns: 1fr;
   }
 `;
@@ -71,7 +72,7 @@ const CardText = styled.div`
 
 const ImagePlaceholder = styled.div`
   width: 300px;
-  height: 300px;
+  height: 250px;
   background-color: #eee;
   display: flex;
   align-items: center;
