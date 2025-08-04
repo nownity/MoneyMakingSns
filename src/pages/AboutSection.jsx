@@ -117,11 +117,11 @@ const AboutSection = ({ lang }) => {
         <SubHeading>"Global Connection, Korean Experience"</SubHeading>
         <Description>
           {lang === "ko"
-            ? `MoneyMakingSns는 한국 로컬 라이프를 전 세계와 공유하며,
+            ? `LanguageExchangeKorea는 한국 로컬 라이프를 전 세계와 공유하며,
             SNS를 통해 즐기고, 배우고, 수익을 창출하는 글로벌 커뮤니티입니다.
             단순한 여행이 아닌, 진짜 한국을 경험하고
             전 세계 친구들과 연결되는 새로운 라이프스타일을 제공합니다.`
-            : `MoneyMakingSns is a global community sharing the Korean local lifestyle
+            : `LanguageExchangeKorea is a global community sharing the Korean local lifestyle
             with the world, enjoying, learning, and creating income through SNS.
             It's not just travel – it's experiencing the real Korea
             and offering a new lifestyle connecting friends from around the globe.`}

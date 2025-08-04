@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import logo from "../images/LogoHPink.svg";
 import mmsLogo from "../images/MMSLogoC.svg";
+import LEKLogo from "../images/LogoPinkLEKs.png";
 import { useEffect, useState } from "react";
 
 const HeaderContainer = styled.header`
@@ -40,10 +41,12 @@ const Logo = styled.div`
 
 const LogoImage = styled.div`
   width: 100%;
-  height: 70px;
+  height: 60px;
   object-fit: contain;
   cursor: pointer;
-  background-image: url(${({ $isMobile }) => ($isMobile ? mmsLogo : logo)});
+  /* background-image: url(${({ $isMobile }) =>
+    $isMobile ? mmsLogo : logo}); */
+  background-image: url(${LEKLogo});
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

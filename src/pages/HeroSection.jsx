@@ -42,8 +42,11 @@ const Title = styled.h1`
   span {
     display: block;
   }
+  col {
+    color: #ff2d95;
+  }
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 `;
 
@@ -94,7 +97,7 @@ const HeroSection = ({ currentSection, sectionRefs, lang }) => {
   return (
     <Section $offset={offset}>
       <Title>
-        <span>{lang === "ko" ? "MMS와 함께하는" : "With MMS"}</span>
+        <span>LanguageExchangeKorea</span>
         <span>
           {lang === "ko"
             ? "글로벌 한국 로컬 라이프"
