@@ -264,7 +264,7 @@ const InfoSection = ({ lang }) => {
       </Heading>
       <Subtitle>
         {lang === "ko"
-          ? "협력 업체 - 티켓 구매 시 협력사 제품 / 서비스 할인 및 혜택 제공"
+          ? "협력 업체 - 티켓 구매 시 협력사 제품·서비스 10% 할인 및 혜택 제공"
           : "Global Korean Local Life"}
       </Subtitle>
       <PartnersSection>
