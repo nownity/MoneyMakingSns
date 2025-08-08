@@ -187,7 +187,6 @@ const Pagination = styled.nav`
   flex-wrap: wrap;
 `;
 
-/* transient prop($active) 사용: DOM으로 전달되지 않음 */
 const PageBtn = styled.button`
   min-width: 36px;
   height: 36px;
@@ -265,7 +264,7 @@ const InfoSection = ({ lang }) => {
       <Subtitle>
         {lang === "ko"
           ? "협력 업체 - 티켓 구매 시 협력사 제품·서비스 10% 할인 및 혜택 제공"
-          : "Global Korean Local Life"}
+          : "Partner Discounts – 10% off and special perks with your ticket."}
       </Subtitle>
       <PartnersSection>
         <ControlsRow>
