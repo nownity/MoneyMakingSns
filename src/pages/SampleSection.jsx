@@ -95,7 +95,7 @@ const SampleSection = () => {
   return (
     <Section>
       <Heading>
-        Sam<span>ple</span>
+        SAM<span>PLE</span>
       </Heading>
       <CardGrid>
         <Card>
