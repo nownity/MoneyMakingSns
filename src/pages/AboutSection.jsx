@@ -117,14 +117,12 @@ const AboutSection = ({ lang }) => {
         <SubHeading>"Global Connection, Korean Experience"</SubHeading>
         <Description>
           {lang === "ko"
-            ? `LanguageExchangeKorea는 한국 로컬 라이프를 전 세계와 공유하며,
-            SNS를 통해 즐기고, 배우고, 수익을 창출하는 글로벌 커뮤니티입니다.
-            단순한 여행이 아닌, 진짜 한국을 경험하고
-            전 세계 친구들과 연결되는 새로운 라이프스타일을 제공합니다.`
-            : `LanguageExchangeKorea is a global community sharing the Korean local lifestyle
-            with the world, enjoying, learning, and creating income through SNS.
-            It's not just travel – it's experiencing the real Korea
-            and offering a new lifestyle connecting friends from around the globe.`}
+            ? `LanguageExchangeKorea는 외국인, 한국인과 소상공인이 상생하는 문화를 만듭니다.
+            우리는 언어 · 문화 · 지역 커뮤니티를 연결하는 플랫폼 기반의 사회혁신 기업입니다.
+            외국인 유학생과 한국인, 소상공인을 연결하는 커뮤니티를 통해 실용 언어 학습, 문화 교류, 로컬 브랜딩이라는 세가지 가치를 동시에 실현하고 있습니다.`
+            : `LanguageExchangeKorea fosters a culture of mutual growth among foreigners, Koreans, and local small businesses.
+            We are a social innovation company based on a platform that connects language, culture, and local communities.
+            Through a community that links international students, Koreans, and small business owners, we simultaneously realize three core values: practical language learning, cultural exchange, and local branding.`}
         </Description>
       </Content>
       <Shape>
