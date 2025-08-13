@@ -75,7 +75,11 @@ const MainPage = () => {
         <section id="about" ref={sectionRefs.about}>
           <AboutSection lang={lang} />
         </section>
-        <SampleSection lang={lang} />
+        <SampleSection
+          lang={lang}
+          currentSection={currentSection}
+          sectionRefs={sectionRefs}
+        />
         <section id="sample" ref={sectionRefs.sample}>
           <ContentsSection lang={lang} />
         </section>

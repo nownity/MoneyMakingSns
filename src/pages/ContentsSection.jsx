@@ -13,7 +13,7 @@ const Container = styled.div`
   padding: 150px 20px 160px;
 
   @media (max-width: 768px) {
-    padding: 64px 16px 72px;
+    padding: 64px 30px 72px;
   }
 `;
 
@@ -53,6 +53,7 @@ const CardGrid = styled.div`
 
   @media (max-width: 760px) {
     grid-template-columns: 1fr;
+    gap: 25px;
   }
 `;
 

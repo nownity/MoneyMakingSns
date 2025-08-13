@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import sample1 from "../images/Sample1.jpg";
+import wechat from "../images/wechat.jpg";
 
 /* ===== 색상 토큰 ===== */
 const NAVY = "#0b1e3f";
@@ -25,7 +27,7 @@ const Section = styled.section`
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  min-height: ${({ $invert }) => ($invert ? "80vh" : "92vh")};
+  min-height: ${({ $invert }) => ($invert ? "85vh" : "92vh")};
   display: grid;
   align-content: center;
   gap: 28px;
@@ -33,7 +35,7 @@ const Container = styled.div`
 
   @media (max-width: 768px) {
     min-height: 92vh;
-    padding: 72px 30px;
+    padding: 72px 34px;
   }
 `;
 
@@ -64,7 +66,7 @@ const Sub = styled.h3`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 `;
 
@@ -76,6 +78,45 @@ const P = styled.p`
   @media (max-width: 768px) {
     font-size: 0.9rem;
     margin-bottom: 10px;
+  }
+`;
+
+const ColLeft = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr auto 1fr;
+  height: 100%;
+  align-items: start;
+  @media (max-width: 980px) {
+    grid-template-rows: auto auto auto;
+    height: auto;
+  }
+`;
+
+const ButtonCenter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Button = styled.button`
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 2px solid black;
+  background: transparent;
+  color: #000000;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: #ff2d95;
+    border-color: #ff2d95;
+  }
+
+  @media (max-width: 980px) {
+    margin-top: 30px;
+    font-size: 0.9rem;
   }
 `;
 
@@ -113,8 +154,8 @@ const TwoCol = styled.div`
 
 /* ===== 단색 아이콘/넘버 ===== */
 const Circle = styled.div`
-  width: 68px;
-  height: 68px;
+  width: 65px;
+  height: 65px;
   border-radius: 999px;
   background: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.1)" : GRAY_BG)};
   display: grid;
@@ -122,6 +163,10 @@ const Circle = styled.div`
   color: ${({ $invert }) => ($invert ? "#fff" : TEXT_MUTED)};
   font-weight: 900;
   box-shadow: ${({ $invert }) => ($invert ? "none" : CARD_SHADOW)};
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
 `;
 
 const NumberDot = styled(Circle)`
@@ -150,17 +195,26 @@ const ImageBox = styled.div`
   width: 100%;
   min-height: 300px;
   border-radius: 16px;
-  background: ${({ $invert }) =>
-    $invert ? "rgba(255,255,255,0.06)" : GRAY_BG};
+  background: ${({ $invert, $src }) =>
+    $src
+      ? `url(${$src}) center/cover no-repeat`
+      : $invert
+      ? "rgba(255,255,255,0.06)"
+      : GRAY_BG};
   display: grid;
   place-items: center;
   font-weight: 800;
   color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.7)" : TEXT_MUTED)};
   box-shadow: ${({ $invert }) => ($invert ? "none" : CARD_SHADOW)};
+  overflow: hidden; /* 모서리 깔끔하게 */
 `;
 
 /* ===== 페이지 구성 ===== */
-const SampleSection = ({ lang = "ko" }) => {
+const SampleSection = ({ currentSection, sectionRefs, lang }) => {
+  const scrollToSection = (id) => {
+    sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <Page>
       {/* 1. 왜 필요한가요 (네이비) */}
@@ -216,12 +270,20 @@ const SampleSection = ({ lang = "ko" }) => {
               </ImageBox>
             </div>
 
-            <SoftBox $invert>
+            <SoftBox
+              $invert
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center", // 세로 중앙정렬
+                height: "100%", // 높이 기준 필요
+              }}
+            >
               <div
                 style={{
                   display: "grid",
                   gridTemplateColumns: "72px 1fr",
-                  gap: 16,
+                  gap: 10,
                 }}
               >
                 <Circle $invert>ENG</Circle>
@@ -262,7 +324,7 @@ const SampleSection = ({ lang = "ko" }) => {
                 style={{
                   display: "grid",
                   gridTemplateColumns: "72px 1fr",
-                  gap: 16,
+                  gap: 10,
                 }}
               >
                 <Circle $invert>SMB</Circle>
@@ -445,11 +507,7 @@ const SampleSection = ({ lang = "ko" }) => {
               </SoftBox>
             </div>
 
-            <ImageBox $invert>
-              {lang === "ko"
-                ? "현장 사진 / 결제 단말 클로즈업"
-                : "Event photo / POS close-up"}
-            </ImageBox>
+            <ImageBox $invert $src={wechat} />
           </Grid2>
         </Container>
       </Section>
@@ -474,33 +532,58 @@ const SampleSection = ({ lang = "ko" }) => {
               : "MOU completed with Konkuk University Korean Language Institute, plus 30 other university language institutes in Seoul and Busan in progress."}
           </P>
           <Grid2 style={{ marginTop: 24 }}>
-            <div>
-              <Sub>
-                {lang === "ko"
-                  ? "부산 내 한국어 교육센터 및 소상공인 협약 진행"
-                  : "MOUs with Busan K-language centers & SMBs"}
-              </Sub>
-              <P>
-                {lang === "ko" ? (
-                  <>
-                    광안리 상권 중심 업종(음식점·펜션·바 등) 미팅 완료.{" "}
-                    <b>커뮤니티 티켓 구매 시 10% 할인</b> 협의 완료.
-                  </>
-                ) : (
-                  <>
-                    Meetings done across Gwangalli district (F&B, pensions,
-                    bars). <b>10% discount</b> on community ticket purchase
-                    agreed.
-                  </>
-                )}
-              </P>
-            </div>
+            <ColLeft>
+              {/* 1행: 텍스트 */}
+              <div>
+                <Sub>
+                  {lang === "ko"
+                    ? "부산 내 한국어 교육센터 및 소상공인 협약 진행"
+                    : "MOUs with Busan K-language centers & SMBs"}
+                </Sub>
+                <P>
+                  {lang === "ko" ? (
+                    <>
+                      광안리 상권 중심 업종(음식점·펜션·바 등) 미팅 완료.{" "}
+                      <b>커뮤니티 티켓 구매 시 10% 할인</b> 협의 완료.
+                    </>
+                  ) : (
+                    <>
+                      Meetings done across Gwangalli district (F&B, pensions,
+                      bars). <b>10% discount</b> on community ticket purchase
+                      agreed.
+                    </>
+                  )}
+                </P>
+              </div>
+
+              {/* 2행: 위쪽 여백(1fr) */}
+              <div />
+
+              {/* 3행: 버튼 중앙 */}
+              <ButtonCenter>
+                <Button
+                  onClick={() => scrollToSection("info")}
+                  $active={currentSection === "info"}
+                >
+                  {lang === "ko" ? "매장 찾아보기" : "Learn More"}
+                </Button>
+              </ButtonCenter>
+
+              {/* 4행: 아래쪽 여백(1fr) */}
+              <div />
+            </ColLeft>
+
+            {/* 오른쪽 이미지 박스는 그대로 */}
             <SoftBox>
-              <ImageBox style={{ minHeight: 280, boxShadow: "none" }}>
-                {lang === "ko"
-                  ? "구글 지도/상권 맵 캡처"
-                  : "Google Maps / district map capture"}
-              </ImageBox>
+              <ImageBox
+                $src={sample1}
+                style={{ minHeight: 280, boxShadow: "none" }}
+                aria-label={
+                  lang === "ko"
+                    ? "구글 지도/상권 맵 캡처"
+                    : "Google Maps / district map capture"
+                }
+              />
             </SoftBox>
           </Grid2>
         </Container>
