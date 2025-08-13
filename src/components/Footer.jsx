@@ -82,14 +82,13 @@ const Footer = () => {
   return (
     <FooterWrapper>
       <FooterContainer>
-        {/* 회사 정보 */}
         <FooterColumn>
-          <FooterLogo>LanguageExchangeKorea</FooterLogo>
-          <p>서울특별시 강남구 어딘가 123, 5층</p>
+          <FooterLogo>랭귀지익스체인지코리아</FooterLogo>
+          <p>서울특별시 송파구 동남로 189, 26동 4층 406호</p>
           <p>대표: 배윤신</p>
-          <p>사업자등록번호: 123-45-67890</p>
-          <p>Tel: 02-123-4567</p>
-          <p>Email: info@lekorea.com</p>
+          <p>사업자등록번호: 895-02-03035</p>
+          <p>Tel: 1668-3729</p>
+          {/* <p>Email: info@lekorea.com</p> */}
         </FooterColumn>
 
         {/* 메뉴 링크 */}
@@ -100,7 +99,6 @@ const Footer = () => {
           <FooterLink href="/events">서비스 검색</FooterLink>
         </FooterColumn>
 
-        {/* SNS */}
         <FooterColumn>
           <h4>Follow Us</h4>
           <SocialIcons>
@@ -118,7 +116,7 @@ const Footer = () => {
       </FooterContainer>
 
       <CopyRight>
-        © 2025 Language Exchange Korea. All rights reserved.
+        © 2025 LanguageExchangeKorea. All rights reserved.
         <br />
         <span style={{ fontSize: "12px", color: "#999" }}>
           Made by{" "}
