@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-/* ===== 색상 토큰 (BLUE 제거) ===== */
+/* ===== 색상 토큰 ===== */
 const NAVY = "#0b1e3f";
 const PINK = "#ff2d95";
 const WHITE = "#ffffff";
@@ -16,7 +16,6 @@ const Page = styled.section`
   background: ${NAVY};
 `;
 
-/* $invert=true 이면 네이비 배경 + 흰 글자, false면 화이트 배경 + 다크 글자 */
 const Section = styled.section`
   width: 100%;
   background: ${({ $invert }) => ($invert ? NAVY : WHITE)};
@@ -26,10 +25,9 @@ const Section = styled.section`
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  /* 섹션 높이 동일하게 */
   min-height: ${({ $invert }) => ($invert ? "80vh" : "92vh")};
   display: grid;
-  align-content: center; /* 수직 가운데 */
+  align-content: center;
   gap: 28px;
   padding: 96px 20px;
 
@@ -51,7 +49,7 @@ const H1 = styled.h2`
   }
 
   @media (max-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -64,6 +62,10 @@ const Sub = styled.h3`
   span {
     color: ${PINK};
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.05rem;
+  }
 `;
 
 const P = styled.p`
@@ -71,6 +73,10 @@ const P = styled.p`
   color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.85)" : TEXT_MUTED)};
   line-height: 1.75;
   margin: 0;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
 `;
 
 const Grid2 = styled.div`
@@ -93,6 +99,18 @@ const Grid3 = styled.div`
   }
 `;
 
+/* ----- NEW: 6번 섹션용 반응형 2컬럼 래퍼 ----- */
+const TwoCol = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 12px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; /* 모바일에서 위아래 배치 */
+  }
+`;
+
 /* ===== 단색 아이콘/넘버 ===== */
 const Circle = styled.div`
   width: 68px;
@@ -107,11 +125,15 @@ const Circle = styled.div`
 `;
 
 const NumberDot = styled(Circle)`
-  width: 72px;
-  height: 72px;
+  width: 70px;
+  height: 70px;
   color: #fff;
   background: ${PINK};
   box-shadow: 0 10px 32px rgba(255, 45, 149, 0.25);
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 /* ===== 카드/박스 ===== */
@@ -138,28 +160,60 @@ const ImageBox = styled.div`
 `;
 
 /* ===== 페이지 구성 ===== */
-const SampleSection = () => {
+const SampleSection = ({ lang = "ko" }) => {
   return (
     <Page>
       {/* 1. 왜 필요한가요 (네이비) */}
       <Section $invert>
         <Container $invert>
           <H1>
-            이 커뮤니티, <span>왜 필요한가요?</span>
+            {lang === "ko" ? (
+              <>
+                Language Exchange Korea, <span>왜 필요한가요?</span>
+              </>
+            ) : (
+              <>
+                Why do we need <span>Language Exchange Korea?</span>
+              </>
+            )}
           </H1>
+
           <Grid2>
             <div>
               <P $invert>
-                이미 외국인과 한국인 소통 커뮤니티도 있고, 언어교환 플랫폼도
-                존재합니다. 하지만{" "}
-                <b>실생활에 쓰일 언어 능력에 도움이 되지 않고</b> 지속적인 소통
-                기회가 부족합니다.
+                {lang === "ko" ? (
+                  <>
+                    이미 외국인과 한국인 소통 커뮤니티도 있고, 언어교환 플랫폼도
+                    존재합니다. 하지만{" "}
+                    <b>실생활에 쓰일 언어 능력에 도움이 되지 않고</b> 지속적인
+                    소통 기회가 부족합니다.
+                  </>
+                ) : (
+                  <>
+                    There are already communities and language-exchange
+                    platforms, but they often{" "}
+                    <b>don’t build real-life language skills</b> and lack
+                    sustained chances to connect.
+                  </>
+                )}
               </P>
               <P $invert>
-                외국인 유학생 및 여행객이 증가하지만{" "}
-                <b>소상공인은 내수경기 불황으로 매출 감소</b>를 겪고 있습니다.
+                {lang === "ko" ? (
+                  <>
+                    외국인 유학생 및 여행객이 증가하지만{" "}
+                    <b>소상공인은 내수경기 불황으로 매출 감소</b>를 겪고
+                    있습니다.
+                  </>
+                ) : (
+                  <>
+                    While international students and visitors are increasing,
+                    <b> local small businesses face declining sales</b>.
+                  </>
+                )}
               </P>
-              <ImageBox $invert>커버 히어로 이미지 자리</ImageBox>
+              <ImageBox $invert>
+                {lang === "ko" ? "커버 히어로 이미지 자리" : "Cover hero image"}
+              </ImageBox>
             </div>
 
             <SoftBox $invert>
@@ -173,12 +227,31 @@ const SampleSection = () => {
                 <Circle $invert>ENG</Circle>
                 <div>
                   <Sub>
-                    성인 영어 교육 및 <span>외국인의 한국 적응 한계</span>
+                    {lang === "ko" ? (
+                      <>
+                        성인 영어 교육 및 <span>외국인의 한국 적응 한계</span>
+                      </>
+                    ) : (
+                      <>
+                        Adult English education &{" "}
+                        <span>limits in settling in Korea</span>
+                      </>
+                    )}
                   </Sub>
                   <P $invert>
-                    한국식 영어교육은 글로벌 시장에서 바로 도움 되기 어렵습니다.
-                    방한 외국인은 늘지만 생활 적응과 친구 사귈 기회는
-                    부족합니다.
+                    {lang === "ko" ? (
+                      <>
+                        한국식 영어교육은 글로벌 시장에서 바로 도움 되기
+                        어렵습니다. 방한 외국인은 늘지만 생활 적응과 친구 사귈
+                        기회는 부족합니다.
+                      </>
+                    ) : (
+                      <>
+                        Traditional English education often fails to help in
+                        real global contexts. More foreigners visit, yet they
+                        lack chances to adapt and make friends.
+                      </>
+                    )}
                   </P>
                 </div>
               </div>
@@ -195,11 +268,29 @@ const SampleSection = () => {
                 <Circle $invert>SMB</Circle>
                 <div>
                   <Sub>
-                    소상공인의 <span>지속적인 매출 하락</span>
+                    {lang === "ko" ? (
+                      <>
+                        소상공인의 <span>지속적인 매출 하락</span>
+                      </>
+                    ) : (
+                      <>
+                        SMBs facing <span>continued revenue decline</span>
+                      </>
+                    )}
                   </Sub>
                   <P $invert>
-                    외국인 수요와 지역 상권이 제대로 연결되지 못합니다.{" "}
-                    <b>로컬 브랜딩/세일즈</b>가 필요합니다.
+                    {lang === "ko" ? (
+                      <>
+                        외국인 수요와 지역 상권이 제대로 연결되지 못합니다.{" "}
+                        <b>로컬 브랜딩/세일즈</b>가 필요합니다.
+                      </>
+                    ) : (
+                      <>
+                        Foreign demand and local districts aren’t well
+                        connected. Stronger <b>local branding & sales</b> are
+                        needed.
+                      </>
+                    )}
                   </P>
                 </div>
               </div>
@@ -212,72 +303,153 @@ const SampleSection = () => {
       <Section>
         <Container>
           <H1>
-            우리는 <span>이렇게 해결합니다.</span>
+            {lang === "ko" ? (
+              <>
+                우리는 <span>이렇게 해결합니다.</span>
+              </>
+            ) : (
+              <>
+                Here’s how <span>we solve it.</span>
+              </>
+            )}
           </H1>
           <P>
-            외국인 유학생, 한국인, 소상공인이 함께 성장하는 언어교환 커뮤니티를
-            개발해
-            <b> 선순환 구조</b>를 구축합니다.
+            {lang === "ko" ? (
+              <>
+                외국인 유학생, 한국인, 소상공인이 함께 성장하는 언어교환
+                커뮤니티를 개발해 <b>선순환 구조</b>를 구축합니다.
+              </>
+            ) : (
+              <>
+                We build a language-exchange community where international
+                students, locals, and SMBs grow together—creating a{" "}
+                <b>positive flywheel</b>.
+              </>
+            )}
           </P>
 
           <Grid3>
             <SoftBox>
               <NumberDot>01</NumberDot>
               <div style={{ height: 10 }} />
-              <Sub>실질적 언어능력 향상</Sub>
+              <Sub>
+                {lang === "ko"
+                  ? "실질적 언어능력 향상"
+                  : "Practical language gains"}
+              </Sub>
               <P>
-                한국인–외국인 간 언어 교환으로 <b>실생활 외국어</b> 학습 효과를
-                극대화합니다.
+                {lang === "ko" ? (
+                  <>
+                    한국인–외국인 간 언어 교환으로 <b>실생활 외국어</b> 학습
+                    효과를 극대화합니다.
+                  </>
+                ) : (
+                  <>
+                    Native-to-learner exchanges maximize{" "}
+                    <b>real-life language</b> skills.
+                  </>
+                )}
               </P>
             </SoftBox>
 
             <SoftBox>
               <NumberDot>02</NumberDot>
               <div style={{ height: 10 }} />
-              <Sub>한국 적응 보조 & 일자리 연계</Sub>
+              <Sub>
+                {lang === "ko"
+                  ? "한국 적응 보조 & 일자리 연계"
+                  : "Settlement support & job links"}
+              </Sub>
               <P>
-                문화 교류 통해 외국인의 한국 적응도를 높이고, 검증된 인재 채용
-                기회를 제공합니다.
+                {lang === "ko" ? (
+                  <>
+                    문화 교류 통해 외국인의 한국 적응도를 높이고, 검증된 인재
+                    채용 기회를 제공합니다.
+                  </>
+                ) : (
+                  <>
+                    Cultural exchange boosts settlement, and we connect{" "}
+                    <b>screened talent</b> to jobs.
+                  </>
+                )}
               </P>
             </SoftBox>
 
             <SoftBox>
               <NumberDot>03</NumberDot>
               <div style={{ height: 10 }} />
-              <Sub>글로벌 마케팅 & 로컬 브랜딩</Sub>
+              <Sub>
+                {lang === "ko"
+                  ? "글로벌 마케팅 & 로컬 브랜딩"
+                  : "Global marketing & local branding"}
+              </Sub>
               <P>
-                커뮤니티 공간·콘텐츠·세일즈로 <b>매출 증대</b>를 연결합니다.
+                {lang === "ko" ? (
+                  <>
+                    커뮤니티 공간·콘텐츠·세일즈로 <b>매출 증대</b>를 연결합니다.
+                  </>
+                ) : (
+                  <>
+                    Spaces, content, and sales programs drive{" "}
+                    <b>revenue growth</b>.
+                  </>
+                )}
               </P>
             </SoftBox>
           </Grid3>
         </Container>
       </Section>
 
-      {/* 3. 추진 실적(협찬/결제) (네이비) */}
+      {/* 3. 추진 실적 (네이비) */}
       <Section $invert>
         <Container $invert>
           <H1>
-            <span>추진 실적</span>
+            {lang === "ko" ? <span>추진 실적</span> : <span>Track Record</span>}
           </H1>
           <Grid2>
             <div>
               <SoftBox $invert>
-                <Sub>WeChat Pay 한국 파트너사 등록 완료</Sub>
+                <Sub>
+                  {lang === "ko"
+                    ? "We Chat Pay 한국 파트너사 등록 완료"
+                    : "Registered WeChat Pay partner in Korea"}
+                </Sub>
                 <P $invert>
-                  부산 커뮤니티 제휴처에 위챗페이 도입 → 외국인에게{" "}
-                  <b>편리한 결제 환경</b> 제공.
+                  {lang === "ko" ? (
+                    <>
+                      부산 커뮤니티 제휴처에 위챗페이 도입 → 외국인에게{" "}
+                      <b>편리한 결제 환경</b> 제공.
+                    </>
+                  ) : (
+                    <>
+                      Deployed WeChat Pay with Busan partners →{" "}
+                      <b>frictionless payments</b> for foreigners.
+                    </>
+                  )}
                 </P>
               </SoftBox>
 
               <div style={{ height: 16 }} />
 
               <SoftBox $invert>
-                <Sub>행사 진행 협찬사 네트워크 확보</Sub>
-                <P $invert>주류/행사 물품 협찬 파트너 지속 확장 중입니다.</P>
+                <Sub>
+                  {lang === "ko"
+                    ? "행사 진행 협찬사 네트워크 확보"
+                    : "Growing sponsor network for events"}
+                </Sub>
+                <P $invert>
+                  {lang === "ko"
+                    ? "주류/행사 물품 협찬 파트너 지속 확장 중입니다."
+                    : "Continuously expanding beverage and event-goods sponsors."}
+                </P>
               </SoftBox>
             </div>
 
-            <ImageBox $invert>현장 사진 / 결제 단말 클로즈업</ImageBox>
+            <ImageBox $invert>
+              {lang === "ko"
+                ? "현장 사진 / 결제 단말 클로즈업"
+                : "Event photo / POS close-up"}
+            </ImageBox>
           </Grid2>
         </Container>
       </Section>
@@ -286,41 +458,48 @@ const SampleSection = () => {
       <Section>
         <Container>
           <H1>
-            서울·부산 내 대학 및 어학당 <span>MOU</span>
+            {lang === "ko" ? (
+              <>
+                서울·부산 내 대학 및 어학당 <span>MOU</span>
+              </>
+            ) : (
+              <>
+                University & Language Institute <span>MOUs</span> in Seoul/Busan
+              </>
+            )}
           </H1>
           <P>
-            세종·고려·한양·국민·성균관·이화·인하 등 다수 어학당과 협력 추진 중.
+            {lang === "ko"
+              ? "건국대학교 한국어학당 협약 완료 외 서울, 부산 각 대학 어학당 30개 협약 진행중"
+              : "MOU completed with Konkuk University Korean Language Institute, plus 30 other university language institutes in Seoul and Busan in progress."}
           </P>
-
-          {/* <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(6,1fr)",
-              gap: 12,
-              marginTop: 16,
-            }}
-          >
-            {Array.from({ length: 12 }).map((_, i) => (
-              <SoftBox
-                key={i}
-                style={{ height: 66, display: "grid", placeItems: "center" }}
-              >
-                학교 로고
-              </SoftBox>
-            ))}
-          </div> */}
-
           <Grid2 style={{ marginTop: 24 }}>
             <div>
-              <Sub>부산 내 한국어 교육센터 및 소상공인 협약 진행</Sub>
+              <Sub>
+                {lang === "ko"
+                  ? "부산 내 한국어 교육센터 및 소상공인 협약 진행"
+                  : "MOUs with Busan K-language centers & SMBs"}
+              </Sub>
               <P>
-                광안리 상권 중심 업종(음식점·펜션·바 등) 미팅 완료.{" "}
-                <b>커뮤니티 티켓 구매 시 10% 할인</b> 협의 완료.
+                {lang === "ko" ? (
+                  <>
+                    광안리 상권 중심 업종(음식점·펜션·바 등) 미팅 완료.{" "}
+                    <b>커뮤니티 티켓 구매 시 10% 할인</b> 협의 완료.
+                  </>
+                ) : (
+                  <>
+                    Meetings done across Gwangalli district (F&B, pensions,
+                    bars). <b>10% discount</b> on community ticket purchase
+                    agreed.
+                  </>
+                )}
               </P>
             </div>
             <SoftBox>
               <ImageBox style={{ minHeight: 280, boxShadow: "none" }}>
-                구글 지도/상권 맵 캡처
+                {lang === "ko"
+                  ? "구글 지도/상권 맵 캡처"
+                  : "Google Maps / district map capture"}
               </ImageBox>
             </SoftBox>
           </Grid2>
@@ -331,35 +510,73 @@ const SampleSection = () => {
       <Section $invert>
         <Container $invert>
           <H1>
-            협업 시 <span>기대효과</span>
+            {lang === "ko" ? (
+              <>
+                협업 시 <span>기대효과</span>
+              </>
+            ) : (
+              <>
+                Expected <span>Benefits</span> of Collaboration
+              </>
+            )}
           </H1>
           <Grid3>
             <SoftBox $invert>
               <NumberDot>01</NumberDot>
               <div style={{ height: 10 }} />
-              <Sub>해외 마케팅 대행</Sub>
+              <Sub>
+                {lang === "ko" ? "해외 마케팅 대행" : "Overseas marketing"}
+              </Sub>
               <P $invert>
-                체험 기반으로 제품을 직접 노출, 해외 진출 없이도{" "}
-                <b>글로벌 반응</b> 확보.
+                {lang === "ko" ? (
+                  <>
+                    체험 기반으로 제품을 직접 노출, 해외 진출 없이도{" "}
+                    <b>글로벌 반응</b> 확보.
+                  </>
+                ) : (
+                  <>
+                    Experience-based exposure delivers <b>global traction</b>{" "}
+                    without overseas expansion.
+                  </>
+                )}
               </P>
             </SoftBox>
 
             <SoftBox $invert>
               <NumberDot>02</NumberDot>
               <div style={{ height: 10 }} />
-              <Sub>외국인 인재 채용 기회</Sub>
+              <Sub>
+                {lang === "ko"
+                  ? "외국인 인재 채용 기회"
+                  : "Hiring foreign talent"}
+              </Sub>
               <P $invert>
-                커뮤니티를 통해 검증된 인재를 연결, 효율적·안정적 채용.
+                {lang === "ko"
+                  ? "커뮤니티를 통해 검증된 인재를 연결, 효율적·안정적 채용."
+                  : "Connect with vetted talent for efficient, reliable hiring."}
               </P>
             </SoftBox>
 
             <SoftBox $invert>
               <NumberDot>03</NumberDot>
               <div style={{ height: 10 }} />
-              <Sub>정보/할인 혜택 제공</Sub>
+              <Sub>
+                {lang === "ko"
+                  ? "정보/할인 혜택 제공"
+                  : "Info & discount perks"}
+              </Sub>
               <P $invert>
-                티켓 구매 시 협업사 할인 제공으로 상권 매출 증대와{" "}
-                <b>핵심 고객</b> 확보.
+                {lang === "ko" ? (
+                  <>
+                    티켓 구매 시 협업사 할인 제공으로 상권 매출 증대와{" "}
+                    <b>핵심 고객</b> 확보.
+                  </>
+                ) : (
+                  <>
+                    Ticket-linked partner discounts boost sales and secure{" "}
+                    <b>core customers</b>.
+                  </>
+                )}
               </P>
             </SoftBox>
           </Grid3>
@@ -370,53 +587,142 @@ const SampleSection = () => {
       <Section>
         <Container>
           <H1>
-            수요기업 참여·선정 시 <span>한정 혜택!</span>
+            {lang === "ko" ? (
+              <>
+                수요기업 참여·선정 시 <span>한정 혜택!</span>
+              </>
+            ) : (
+              <>
+                Exclusive <span>Benefits</span> for Selected Participants!
+              </>
+            )}
           </H1>
+
           <P>
-            선정 기업에만 제공되는 <b>한정 마케팅 2배 적용 이벤트</b>.
+            {lang === "ko" ? (
+              <>
+                선정 기업에만 제공되는 <b>한정 마케팅 2배 적용 이벤트</b>.
+              </>
+            ) : (
+              <>
+                A special offer: <b>2× marketing package</b> for selected
+                companies only.
+              </>
+            )}
           </P>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 24,
-              marginTop: 12,
-            }}
-          >
+          {/* 변경 포인트: 인라인 div → TwoCol 로 교체, 모바일에서 1열로 쌓임 */}
+          <TwoCol>
             <SoftBox>
-              <Sub>기존 마케팅 상품</Sub>
+              <Sub>
+                {lang === "ko" ? "기존 마케팅 상품" : "Standard package"}
+              </Sub>
               <ul style={{ margin: "10px 0 0 18px" }}>
                 <li>
-                  후기 영상 콘텐츠 <b style={{ color: PINK }}>3건</b> 기획/배포
+                  {lang === "ko" ? (
+                    <>
+                      후기 영상 콘텐츠 <b style={{ color: PINK }}>3건</b>{" "}
+                      기획/배포
+                    </>
+                  ) : (
+                    <>
+                      <b style={{ color: PINK }}>3</b> review videos
+                      (plan/distribute)
+                    </>
+                  )}
                 </li>
                 <li>
-                  별점 및 리뷰 <b style={{ color: PINK }}>3건</b> 작성
+                  {lang === "ko" ? (
+                    <>
+                      별점 및 리뷰 <b style={{ color: PINK }}>3건</b> 작성
+                    </>
+                  ) : (
+                    <>
+                      <b style={{ color: PINK }}>3</b> ratings & reviews
+                    </>
+                  )}
                 </li>
-                <li>외국인 매출 성장 1년 패키지 / 커뮤니티 초대권 연 6회</li>
-                <li>SNS 바이럴 월 2건 / 구글 리뷰 다국어 연 2건</li>
-                <li>매출 발생 보장(미발생 시 전액 환불)</li>
+                <li>
+                  {lang === "ko"
+                    ? "외국인 매출 성장 1년 패키지 / 커뮤니티 초대권 연 6회"
+                    : "1-year foreign-sales growth kit / 6 annual community invites"}
+                </li>
+                <li>
+                  {lang === "ko"
+                    ? "SNS 바이럴 월 2건 / 구글 리뷰 다국어 연 2건"
+                    : "2 monthly SNS virals / 2 annual multilingual Google reviews"}
+                </li>
+                <li>
+                  {lang === "ko"
+                    ? "매출 발생 보장(미발생 시 전액 환불)"
+                    : "Revenue guarantee (full refund if none)"}
+                </li>
               </ul>
             </SoftBox>
 
             <SoftBox>
-              <Sub>참여/선정 시 적용 상품</Sub>
+              <Sub>
+                {lang === "ko"
+                  ? "참여/선정 시 적용 상품"
+                  : "If selected: upgraded package"}
+              </Sub>
               <ul style={{ margin: "10px 0 0 18px" }}>
                 <li>
-                  후기 영상 콘텐츠 <b style={{ color: PINK }}>6건</b> 기획/배포
+                  {lang === "ko" ? (
+                    <>
+                      후기 영상 콘텐츠 <b style={{ color: PINK }}>6건</b>{" "}
+                      기획/배포
+                    </>
+                  ) : (
+                    <>
+                      <b style={{ color: PINK }}>6</b> review videos
+                      (plan/distribute)
+                    </>
+                  )}
                 </li>
                 <li>
-                  별점 및 리뷰 <b style={{ color: PINK }}>6건</b> 작성
+                  {lang === "ko" ? (
+                    <>
+                      별점 및 리뷰 <b style={{ color: PINK }}>6건</b> 작성
+                    </>
+                  ) : (
+                    <>
+                      <b style={{ color: PINK }}>6</b> ratings & reviews
+                    </>
+                  )}
                 </li>
                 <li>
-                  커뮤니티 초대권 <b style={{ color: PINK }}>연 12회</b>
+                  {lang === "ko" ? (
+                    <>
+                      커뮤니티 초대권 <b style={{ color: PINK }}>연 12회</b>
+                    </>
+                  ) : (
+                    <>
+                      <b style={{ color: PINK }}>12</b> annual community invites
+                    </>
+                  )}
                 </li>
                 <li>
-                  SNS 바이럴 <b style={{ color: PINK }}>월 4건</b> / 구글 리뷰
-                  다국어 <b style={{ color: PINK }}>연 4건</b>
+                  {lang === "ko" ? (
+                    <>
+                      SNS 바이럴 <b style={{ color: PINK }}>월 4건</b> / 구글
+                      리뷰 다국어 <b style={{ color: PINK }}>연 4건</b>
+                    </>
+                  ) : (
+                    <>
+                      <b style={{ color: PINK }}>4</b> monthly SNS virals /{" "}
+                      <b style={{ color: PINK }}>4</b> annual multilingual
+                      Google reviews
+                    </>
+                  )}
                 </li>
-                <li>매출 발생 보장(미발생 시 전액 환불)</li>
+                <li>
+                  {lang === "ko"
+                    ? "매출 발생 보장(미발생 시 전액 환불)"
+                    : "Revenue guarantee (full refund if none)"}
+                </li>
               </ul>
+
               <div
                 style={{
                   textAlign: "center",
@@ -425,10 +731,10 @@ const SampleSection = () => {
                   marginTop: 10,
                 }}
               >
-                ← 2배 적용
+                {lang === "ko" ? "← 2배 적용" : "← 2× upgrade"}
               </div>
             </SoftBox>
-          </div>
+          </TwoCol>
         </Container>
       </Section>
     </Page>

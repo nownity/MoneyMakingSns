@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-/* ===== 섹션 배경/포인트 컬러를 prop으로 받습니다. =====
-   <SampleSection bg="#fafafa" accent="#ff2d95" />
-   미지정 시 bg는 라이트 그라데이션, accent는 핫핑크로 동작합니다.
-*/
+/* ===== 섹션 배경/포인트 컬러 ===== */
 const Section = styled.section`
   width: 100%;
   background: #0b1e3f;
@@ -13,7 +10,7 @@ const Section = styled.section`
 const Container = styled.div`
   max-width: 1100px;
   margin: 0 auto;
-  padding: 80px 20px 96px;
+  padding: 150px 20px 160px;
 
   @media (max-width: 768px) {
     padding: 64px 16px 72px;
@@ -34,13 +31,19 @@ const Heading = styled.h2`
   @media (max-width: 768px) {
     font-size: 2rem;
   }
+  @media (max-width: 550px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Subtitle = styled.p`
   margin: 0 0 28px;
-  color: #c0c0c0;
+  color: #d4af37;
   font-size: 1.02rem;
   line-height: 1.6;
+  @media (max-width: 550px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const CardGrid = styled.div`
@@ -55,7 +58,6 @@ const CardGrid = styled.div`
 
 const Card = styled.article`
   background: #ffffff;
-  border: 1px solid #eef1f6;
   border-radius: 16px;
   padding: 22px;
   box-shadow: 0 10px 28px rgba(10, 20, 50, 0.08);
@@ -145,28 +147,36 @@ const CTA = styled.a`
   }
 
   @media (max-width: 560px) {
-    grid-column: 1 / -1; /* 모바일에서 아래로 */
+    grid-column: 1 / -1;
     width: 100%;
   }
 `;
 
 /* ===== 실제 섹션 ===== */
-const ContentsSection = ({ bg, accent }) => {
+const ContentsSection = ({ bg, accent, lang }) => {
   return (
     <Section $bg={bg}>
       <Container>
         <Heading $accent={accent}>
-          Language Exchange <span>Social Party</span>
+          {lang === "ko" ? (
+            <>
+              Language Exchange <span>Social Party</span>
+            </>
+          ) : (
+            <>
+              Language Exchange <span>Social Party</span>
+            </>
+          )}
         </Heading>
         <Subtitle>
-          외국인·한국인 언어교환 소셜파티 참가 신청. 아래 신청서를 선택하세요.
+          {lang === "ko"
+            ? "외국인·한국인 언어교환 소셜파티 참가 신청. 아래 신청서를 선택하세요."
+            : "Apply to join our Language Exchange Social Party. Choose a form below."}
         </Subtitle>
 
         <CardGrid>
-          {/* 카드 1: 일반 참가신청 */}
           <Card>
             <IconWrap aria-hidden>
-              {/* 티켓/폼 아이콘 */}
               <svg viewBox="0 0 24 24" fill="none">
                 <path
                   d="M3 7a2 2 0 0 1 2-2h8l4 4v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"
@@ -178,8 +188,14 @@ const ContentsSection = ({ bg, accent }) => {
             </IconWrap>
 
             <CardText>
-              <Title>참가 신청서</Title>
-              <Desc>Language Exchange Korea 소셜 파티 일반 신청</Desc>
+              <Title>
+                {lang === "ko" ? "참가 신청" : "General Application"}
+              </Title>
+              <Desc>
+                {lang === "ko"
+                  ? "Language Exchange Korea 소셜 파티 일반 신청"
+                  : "General registration for Language Exchange Korea Social Party"}
+              </Desc>
             </CardText>
 
             <CTA
@@ -188,14 +204,12 @@ const ContentsSection = ({ bg, accent }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              신청하기
+              {lang === "ko" ? "신청하기" : "Apply"}
             </CTA>
           </Card>
 
-          {/* 카드 2: 프로모션/제휴 신청 */}
           <Card>
             <IconWrap aria-hidden>
-              {/* 프로모션/메가폰 아이콘 */}
               <svg viewBox="0 0 24 24" fill="none">
                 <path
                   d="M3 12h4l8-5v10l-8-5H3z"
@@ -211,8 +225,14 @@ const ContentsSection = ({ bg, accent }) => {
             </IconWrap>
 
             <CardText>
-              <Title>프로모션·제휴 신청</Title>
-              <Desc>브랜드 협찬/제휴, 프로모션용 신청 폼</Desc>
+              <Title>
+                {lang === "ko" ? "프로모션 신청" : "Promotion Application"}
+              </Title>
+              <Desc>
+                {lang === "ko"
+                  ? "브랜드 프로모션용 파티 신청"
+                  : "Application for brand promotion party"}
+              </Desc>
             </CardText>
 
             <CTA
@@ -221,7 +241,7 @@ const ContentsSection = ({ bg, accent }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              신청하기
+              {lang === "ko" ? "신청하기" : "Apply"}
             </CTA>
           </Card>
         </CardGrid>
