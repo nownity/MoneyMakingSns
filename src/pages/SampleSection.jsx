@@ -292,7 +292,7 @@ const SampleSection = () => {
             세종·고려·한양·국민·성균관·이화·인하 등 다수 어학당과 협력 추진 중.
           </P>
 
-          <div
+          {/* <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(6,1fr)",
@@ -308,7 +308,7 @@ const SampleSection = () => {
                 학교 로고
               </SoftBox>
             ))}
-          </div>
+          </div> */}
 
           <Grid2 style={{ marginTop: 24 }}>
             <div>
