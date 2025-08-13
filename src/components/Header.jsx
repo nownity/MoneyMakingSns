@@ -143,13 +143,13 @@ const Header = ({ currentSection, sectionRefs, lang, setLang }) => {
           onClick={() => scrollToSection("hero")}
           $active={currentSection === "hero"}
         >
-          {lang === "ko" ? "홈" : "HOME"}
+          {lang === "ko" ? "홈" : "Home"}
         </NavItem>
         <NavItem
           onClick={() => scrollToSection("about")}
           $active={currentSection === "about"}
         >
-          {lang === "ko" ? "소개" : "ABOUT"}
+          {lang === "ko" ? "소개" : "About"}
         </NavItem>
         <NavItem
           onClick={() => scrollToSection("sample")}

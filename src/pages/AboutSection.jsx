@@ -19,7 +19,7 @@ const Content = styled.div`
   max-width: 800px;
   z-index: 2; /* 글씨가 항상 위 */
   position: relative;
-  padding-left: 100px;
+  padding-left: 200px;
   @media (max-width: 956px) {
     width: 78%;
     right: 50%;

@@ -6,6 +6,7 @@ import SampleSection from "../pages/SampleSection";
 import InfoSection from "../pages/InfoSection";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import ContentsSection from "./ContentsSection";
 
 const Container = styled.main`
   display: flex;
@@ -74,8 +75,9 @@ const MainPage = () => {
         <section id="about" ref={sectionRefs.about}>
           <AboutSection lang={lang} />
         </section>
+        <SampleSection lang={lang} />
         <section id="sample" ref={sectionRefs.sample}>
-          <SampleSection lang={lang} />
+          <ContentsSection lang={lang} />
         </section>
         <section id="info" ref={sectionRefs.info}>
           <InfoSection lang={lang} />
