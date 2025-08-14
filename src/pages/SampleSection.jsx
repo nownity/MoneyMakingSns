@@ -27,9 +27,9 @@ const Section = styled.section`
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  min-height: ${({ $invert }) => ($invert ? "85vh" : "92vh")};
+  min-height: ${({ $invert }) => ($invert ? "75vh" : "92vh")};
   display: grid;
-  align-content: center;
+  align-content: ${({ $top }) => ($top ? "start" : "center")};
   gap: 28px;
   padding: 96px 20px;
 
@@ -78,7 +78,6 @@ const P = styled.p`
   font-size: 1.06rem;
   color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.85)" : TEXT_MUTED)};
   line-height: 1.75;
-  margin-bottom: 10px;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -215,6 +214,79 @@ const ImageBox = styled.div`
   overflow: hidden; /* 모서리 깔끔하게 */
 `;
 
+const HeroSplit = styled.div`
+  display: grid;
+  grid-template-columns: 1fr; /* 좌 텍스트/이미지 | 우 인사이트 */
+  gap: 36px;
+  align-items: center;
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr; /* 모바일 1열 */
+    gap: 24px;
+  }
+`;
+
+const RightCol = styled.div`
+  display: grid;
+  gap: 14px;
+`;
+
+const InsightTrack = styled.div`
+  position: relative;
+  padding-left: 18px;
+  display: grid;
+  gap: 14px;
+`;
+
+const TrackLine = styled.span`
+  position: absolute;
+  left: 6px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(${PINK}, rgba(255, 255, 255, 0.4));
+  opacity: 0.65;
+`;
+
+const TrackItem = styled.div`
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 8px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 16px;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    background: ${PINK};
+    box-shadow: 0 6px 18px rgba(255, 45, 149, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+`;
+
+/* ENG / SMB 라벨 */
+const Tag = styled.span`
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: ${PINK};
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  width: fit-content;
+`;
+const LeadWrap = styled.div`
+  display: grid;
+  gap: 12px;
+`;
 /* ===== 페이지 구성 ===== */
 const SampleSection = ({ currentSection, sectionRefs, lang }) => {
   const scrollToSection = (id) => {
@@ -223,9 +295,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
 
   return (
     <Page>
-      {/* 1. 왜 필요한가요 (네이비) */}
+      {/* 1. 왜 필요한가요 (네이비) - 타이틀 아래 문단, 그 아래 2컬럼(좌 이미지 / 우 인사이트) */}
       <Section $invert>
-        <Container $invert>
+        <Container $invert $top>
           <H1>
             {lang === "ko" ? (
               <>
@@ -238,66 +310,47 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </>
             )}
           </H1>
+          <LeadWrap>
+            <P $invert>
+              {lang === "ko" ? (
+                <>
+                  이미 외국인과 한국인 소통 커뮤니티도 있고, 언어교환
+                  <br className="mobile-br" />
+                  플랫폼도 존재합니다. 하지만{" "}
+                  <b>실생활에 쓰일 언어 능력에 도움이 되지 않고</b> 지속적인
+                  소통 기회가 부족합니다.
+                </>
+              ) : (
+                <>
+                  There are already communities and language-exchange platforms,
+                  but they often <b>don’t build real-life language skills</b>{" "}
+                  and lack sustained chances to connect.
+                </>
+              )}
+            </P>
 
-          <Grid2>
-            <div>
-              <P $invert>
-                {lang === "ko" ? (
-                  <>
-                    이미 외국인과 한국인 소통 커뮤니티도 있고,{" "}
-                    <br className="mobile-br" /> 언어교환 플랫폼도 존재합니다.{" "}
-                    <br className="mobile-br" /> 하지만
-                    <b>실생활에 쓰일 언어 능력에 도움이 되지 않고</b>{" "}
-                    <br className="mobile-br" /> 지속적인 소통 기회가
-                    부족합니다.
-                  </>
-                ) : (
-                  <>
-                    There are already communities and language-exchange
-                    platforms, but they often{" "}
-                    <b>don’t build real-life language skills</b> and lack
-                    sustained chances to connect.
-                  </>
-                )}
-              </P>
-              <P $invert>
-                {lang === "ko" ? (
-                  <>
-                    외국인 유학생 및 여행객이 증가하지만
-                    <br className="mobile-br" />
-                    <b>소상공인은 내수경기 불황으로 매출 감소</b>를 겪고
-                    있습니다.
-                  </>
-                ) : (
-                  <>
-                    While international students and visitors are increasing,
-                    <b> local small businesses face declining sales</b>.
-                  </>
-                )}
-              </P>
-              <ImageBox $invert>
-                {lang === "ko" ? "커버 히어로 이미지 자리" : "Cover hero image"}
-              </ImageBox>
-            </div>
+            <P $invert>
+              {lang === "ko" ? (
+                <>
+                  외국인 유학생 및 여행객이 증가하지만{" "}
+                  <b>소상공인은 내수경기 불황으로 매출 감소</b>를 겪고 있습니다.
+                </>
+              ) : (
+                <>
+                  While international students and visitors are increasing,{" "}
+                  <b>local small businesses face declining sales</b>.
+                </>
+              )}
+            </P>
+          </LeadWrap>
 
-            <SoftBox
-              $invert
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                height: "100%",
-              }}
-            >
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "50px 1fr",
-                  gap: 10,
-                }}
-              >
-                <Circle $invert>ENG</Circle>
-                <div>
+          <HeroSplit>
+            <RightCol>
+              <InsightTrack>
+                <TrackLine aria-hidden />
+
+                <TrackItem>
+                  <Tag>1 .</Tag>
                   <Sub>
                     {lang === "ko" ? (
                       <>
@@ -315,35 +368,24 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   <P $invert>
                     {lang === "ko" ? (
                       <>
-                        한국식 영어교육은 글로벌 시장에서 바로 도움 되기
-                        어렵습니다.
-                        <br className="mobile-br" />
-                        방한 외국인은 늘지만 생활 적응과
-                        <br className="mobile-br" />
-                        친구 사귈 기회는 부족합니다.
+                        한국식 영어교육은 글로벌 시장에서 바로
+                        <br className="mobile-br" /> 도움 되기 어렵습니다. 방한
+                        외국인은 늘지만
+                        <br className="mobile-br" /> 생활 적응과 친구 사귈
+                        기회는 부족합니다.
                       </>
                     ) : (
                       <>
-                        Traditional English education often fails to help in
-                        real global contexts. More foreigners visit, yet they
-                        lack chances to adapt and make friends.
+                        Traditional English education often fails in real global
+                        contexts. More foreigners visit, yet they lack chances
+                        to adapt and make friends.
                       </>
                     )}
                   </P>
-                </div>
-              </div>
+                </TrackItem>
 
-              <div style={{ height: 18 }} />
-
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "50px 1fr",
-                  gap: 10,
-                }}
-              >
-                <Circle $invert>SMB</Circle>
-                <div>
+                <TrackItem>
+                  <Tag>2 .</Tag>
                   <Sub>
                     {lang === "ko" ? (
                       <>
@@ -358,9 +400,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   <P $invert>
                     {lang === "ko" ? (
                       <>
-                        외국인 수요와 지역 상권이 <br className="mobile-br" />
-                        제대로 연결되지 못합니다. <br className="mobile-br" />
-                        <b>로컬 브랜딩/세일즈</b>가 필요합니다.
+                        외국인 수요와 지역 상권이 제대로 연결되지
+                        <br className="mobile-br" /> 못합니다.
+                        <b> 로컬 브랜딩/세일즈</b>가 필요합니다.
                       </>
                     ) : (
                       <>
@@ -370,10 +412,10 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                       </>
                     )}
                   </P>
-                </div>
-              </div>
-            </SoftBox>
-          </Grid2>
+                </TrackItem>
+              </InsightTrack>
+            </RightCol>
+          </HeroSplit>
         </Container>
       </Section>
 
