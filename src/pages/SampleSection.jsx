@@ -54,15 +54,8 @@ const H1 = styled.h2`
     color: ${TEXT_DARK};
   }
 
-  .mobile-br {
-    display: none;
-  }
-
   @media (max-width: 768px) {
     font-size: 1.5rem;
-    .mobile-br {
-      display: inline;
-    }
   }
 `;
 
@@ -75,15 +68,9 @@ const Sub = styled.h3`
   span {
     color: ${PINK};
   }
-  .mobile-br {
-    display: none;
-  }
 
   @media (max-width: 768px) {
     font-size: 1rem;
-    .mobile-br {
-      display: inline;
-    }
   }
 `;
 
@@ -92,14 +79,9 @@ const P = styled.p`
   color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.85)" : TEXT_MUTED)};
   line-height: 1.75;
   margin-bottom: 10px;
-  .mobile-br {
-    display: none;
-  }
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
-    .mobile-br {
-      display: inline;
-    }
   }
 `;
 
@@ -186,8 +168,10 @@ const Circle = styled.div`
   font-weight: 900;
   box-shadow: ${({ $invert }) => ($invert ? "none" : CARD_SHADOW)};
   @media (max-width: 768px) {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
+    font-weight: 600;
+    font-size: 14px;
   }
 `;
 
@@ -308,7 +292,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "72px 1fr",
+                  gridTemplateColumns: "50px 1fr",
                   gap: 10,
                 }}
               >
@@ -331,10 +315,10 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   <P $invert>
                     {lang === "ko" ? (
                       <>
-                        한국식 영어교육은 글로벌 시장에서{" "}
+                        한국식 영어교육은 글로벌 시장에서 바로 도움 되기
+                        어렵습니다.
                         <br className="mobile-br" />
-                        바로 도움 되기 어렵습니다. <br className="mobile-br" />
-                        방한 외국인은 늘지만 생활 적응과{" "}
+                        방한 외국인은 늘지만 생활 적응과
                         <br className="mobile-br" />
                         친구 사귈 기회는 부족합니다.
                       </>
@@ -354,7 +338,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "72px 1fr",
+                  gridTemplateColumns: "50px 1fr",
                   gap: 10,
                 }}
               >
@@ -410,9 +394,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
           <P>
             {lang === "ko" ? (
               <>
-                외국인 유학생, 한국인, 소상공인이 함께 성장하는 언어교환
+                외국인 유학생, 한국인, 소상공인이 함께 성장하는 언어
                 <br className="mobile-br" />
-                커뮤니티를 개발해 <b>선순환 구조</b>를 구축합니다.
+                교환 커뮤니티를 개발해 <b>선순환 구조</b>를 구축합니다.
               </>
             ) : (
               <>
@@ -757,12 +741,12 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                 <li>
                   {lang === "ko" ? (
                     <>
-                      후기 영상 콘텐츠 <b style={{ color: PINK }}>3건</b>{" "}
+                      후기 영상 콘텐츠 <b style={{ color: TEXT_DARK }}>3건</b>{" "}
                       기획/배포
                     </>
                   ) : (
                     <>
-                      <b style={{ color: PINK }}>3</b> review videos
+                      <b style={{ color: TEXT_DARK }}>3</b> review videos
                       (plan/distribute)
                     </>
                   )}
@@ -770,11 +754,11 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                 <li>
                   {lang === "ko" ? (
                     <>
-                      별점 및 리뷰 <b style={{ color: PINK }}>3건</b> 작성
+                      별점 및 리뷰 <b style={{ color: TEXT_DARK }}>3건</b> 작성
                     </>
                   ) : (
                     <>
-                      <b style={{ color: PINK }}>3</b> ratings & reviews
+                      <b style={{ color: TEXT_DARK }}>3</b> ratings & reviews
                     </>
                   )}
                 </li>
@@ -783,7 +767,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                     <>
                       외국인 매출 성장 1년 패키지 / 커뮤니티{" "}
                       <br className="mobile-br" />
-                      초대권 연 6회
+                      초대권 <b style={{ color: TEXT_DARK }}>연 6회</b>
                     </>
                   ) : (
                     <>
@@ -793,9 +777,19 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   )}
                 </li>
                 <li>
-                  {lang === "ko"
-                    ? "SNS 바이럴 월 2건 / 구글 리뷰 다국어 연 2건"
-                    : "2 monthly SNS virals / 2 annual multilingual Google reviews"}
+                  {lang === "ko" ? (
+                    <>
+                      SNS 바이럴 <b style={{ color: TEXT_DARK }}>월 2건</b> /
+                      구글 리뷰
+                      <br className="mobile-br" />
+                      다국어 <b style={{ color: TEXT_DARK }}>연 2건</b>
+                    </>
+                  ) : (
+                    <>
+                      2 monthly SNS virals / 2 annual multilingual Google
+                      reviews
+                    </>
+                  )}
                 </li>
                 <li>
                   {lang === "ko"

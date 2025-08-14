@@ -161,7 +161,9 @@ const ContentsSection = ({ bg, accent, lang }) => {
         <Heading $accent={accent}>
           {lang === "ko" ? (
             <>
-              Language Exchange <span>Social Party</span>
+              Language Exchange
+              <br className="mobile-br" />
+              <span>Social Party</span>
             </>
           ) : (
             <>
