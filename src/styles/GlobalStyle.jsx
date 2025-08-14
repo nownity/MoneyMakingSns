@@ -23,6 +23,12 @@ const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar-thumb:hover {
   background-color: #222;
 }
+  .mobile-br {
+    display: none;
+    @media (max-width: 768px) {
+      display: inline;
+    }
+  }
 `;
 
 export default GlobalStyle;

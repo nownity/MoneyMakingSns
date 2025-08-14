@@ -50,8 +50,19 @@ const H1 = styled.h2`
     color: ${PINK};
   }
 
+  .spanB {
+    color: ${TEXT_DARK};
+  }
+
+  .mobile-br {
+    display: none;
+  }
+
   @media (max-width: 768px) {
     font-size: 1.5rem;
+    .mobile-br {
+      display: inline;
+    }
   }
 `;
 
@@ -64,9 +75,15 @@ const Sub = styled.h3`
   span {
     color: ${PINK};
   }
+  .mobile-br {
+    display: none;
+  }
 
   @media (max-width: 768px) {
     font-size: 1rem;
+    .mobile-br {
+      display: inline;
+    }
   }
 `;
 
@@ -74,10 +91,15 @@ const P = styled.p`
   font-size: 1.06rem;
   color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.85)" : TEXT_MUTED)};
   line-height: 1.75;
-  margin: 0;
+  margin-bottom: 10px;
+  .mobile-br {
+    display: none;
+  }
   @media (max-width: 768px) {
     font-size: 0.9rem;
-    margin-bottom: 10px;
+    .mobile-br {
+      display: inline;
+    }
   }
 `;
 
@@ -223,7 +245,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
           <H1>
             {lang === "ko" ? (
               <>
-                Language Exchange Korea, <span>왜 필요한가요?</span>
+                Language Exchange Korea,
+                <br className="mobile-br" /> <span>왜 필요한가요?</span>
               </>
             ) : (
               <>
@@ -237,10 +260,12 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <P $invert>
                 {lang === "ko" ? (
                   <>
-                    이미 외국인과 한국인 소통 커뮤니티도 있고, 언어교환 플랫폼도
-                    존재합니다. 하지만{" "}
-                    <b>실생활에 쓰일 언어 능력에 도움이 되지 않고</b> 지속적인
-                    소통 기회가 부족합니다.
+                    이미 외국인과 한국인 소통 커뮤니티도 있고,{" "}
+                    <br className="mobile-br" /> 언어교환 플랫폼도 존재합니다.{" "}
+                    <br className="mobile-br" /> 하지만
+                    <b>실생활에 쓰일 언어 능력에 도움이 되지 않고</b>{" "}
+                    <br className="mobile-br" /> 지속적인 소통 기회가
+                    부족합니다.
                   </>
                 ) : (
                   <>
@@ -254,7 +279,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <P $invert>
                 {lang === "ko" ? (
                   <>
-                    외국인 유학생 및 여행객이 증가하지만{" "}
+                    외국인 유학생 및 여행객이 증가하지만
+                    <br className="mobile-br" />
                     <b>소상공인은 내수경기 불황으로 매출 감소</b>를 겪고
                     있습니다.
                   </>
@@ -275,8 +301,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center", // 세로 중앙정렬
-                height: "100%", // 높이 기준 필요
+                justifyContent: "center",
+                height: "100%",
               }}
             >
               <div
@@ -291,21 +317,26 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   <Sub>
                     {lang === "ko" ? (
                       <>
-                        성인 영어 교육 및 <span>외국인의 한국 적응 한계</span>
+                        성인 영어 교육 및
+                        <br className="mobile-br" />
+                        <span>외국인의 한국 적응 한계</span>
                       </>
                     ) : (
                       <>
-                        Adult English education &{" "}
-                        <span>limits in settling in Korea</span>
+                        Adult English education &
+                        <span> limits in settling in Korea</span>
                       </>
                     )}
                   </Sub>
                   <P $invert>
                     {lang === "ko" ? (
                       <>
-                        한국식 영어교육은 글로벌 시장에서 바로 도움 되기
-                        어렵습니다. 방한 외국인은 늘지만 생활 적응과 친구 사귈
-                        기회는 부족합니다.
+                        한국식 영어교육은 글로벌 시장에서{" "}
+                        <br className="mobile-br" />
+                        바로 도움 되기 어렵습니다. <br className="mobile-br" />
+                        방한 외국인은 늘지만 생활 적응과{" "}
+                        <br className="mobile-br" />
+                        친구 사귈 기회는 부족합니다.
                       </>
                     ) : (
                       <>
@@ -343,7 +374,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   <P $invert>
                     {lang === "ko" ? (
                       <>
-                        외국인 수요와 지역 상권이 제대로 연결되지 못합니다.{" "}
+                        외국인 수요와 지역 상권이 <br className="mobile-br" />
+                        제대로 연결되지 못합니다. <br className="mobile-br" />
                         <b>로컬 브랜딩/세일즈</b>가 필요합니다.
                       </>
                     ) : (
@@ -379,6 +411,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
             {lang === "ko" ? (
               <>
                 외국인 유학생, 한국인, 소상공인이 함께 성장하는 언어교환
+                <br className="mobile-br" />
                 커뮤니티를 개발해 <b>선순환 구조</b>를 구축합니다.
               </>
             ) : (
@@ -402,8 +435,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <P>
                 {lang === "ko" ? (
                   <>
-                    한국인–외국인 간 언어 교환으로 <b>실생활 외국어</b> 학습
-                    효과를 극대화합니다.
+                    한국인–외국인 간 언어 교환으로 <b>실생활 외국어</b>
+                    <br className="mobile-br" />
+                    학습 효과를 극대화합니다.
                   </>
                 ) : (
                   <>
@@ -425,8 +459,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <P>
                 {lang === "ko" ? (
                   <>
-                    문화 교류 통해 외국인의 한국 적응도를 높이고, 검증된 인재
-                    채용 기회를 제공합니다.
+                    문화 교류 통해 외국인의 한국 적응도를 높이고,
+                    <br className="mobile-br" />
+                    검증된 인재 채용 기회를 제공합니다.
                   </>
                 ) : (
                   <>
@@ -448,7 +483,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <P>
                 {lang === "ko" ? (
                   <>
-                    커뮤니티 공간·콘텐츠·세일즈로 <b>매출 증대</b>를 연결합니다.
+                    커뮤니티 공간·콘텐츠·세일즈로 <b>매출 증대</b>를
+                    <br className="mobile-br" />
+                    연결합니다.
                   </>
                 ) : (
                   <>
@@ -479,13 +516,15 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                 <P $invert>
                   {lang === "ko" ? (
                     <>
-                      부산 커뮤니티 제휴처에 위챗페이 도입 → 외국인에게{" "}
-                      <b>편리한 결제 환경</b> 제공.
+                      부산 커뮤니티 제휴처에 위챗페이 도입
+                      <br className="mobile-br" /> → 외국인에게{" "}
+                      <b>편리한 결제 환경</b> 제공
                     </>
                   ) : (
                     <>
-                      Deployed WeChat Pay with Busan partners →{" "}
-                      <b>frictionless payments</b> for foreigners.
+                      Deployed WeChat Pay with Busan partners
+                      <br className="mobile-br" /> →{" "}
+                      <b>frictionless payments</b> for foreigners
                     </>
                   )}
                 </P>
@@ -501,8 +540,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                 </Sub>
                 <P $invert>
                   {lang === "ko"
-                    ? "주류/행사 물품 협찬 파트너 지속 확장 중입니다."
-                    : "Continuously expanding beverage and event-goods sponsors."}
+                    ? "→ 주류/행사 물품 협찬 파트너 지속 확장 중"
+                    : "→ Continuously expanding beverage and event-goods sponsors"}
                 </P>
               </SoftBox>
             </div>
@@ -527,9 +566,19 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
             )}
           </H1>
           <P>
-            {lang === "ko"
-              ? "건국대학교 한국어학당 협약 완료 외 서울, 부산 각 대학 어학당 30개 협약 진행중"
-              : "MOU completed with Konkuk University Korean Language Institute, plus 30 other university language institutes in Seoul and Busan in progress."}
+            {lang === "ko" ? (
+              <>
+                건국대학교 한국어학당 협약 완료
+                <br className="mobile-br" />외 서울, 부산 각 대학 어학당 30개
+                협약 진행중
+              </>
+            ) : (
+              <>
+                MOU completed with Konkuk University Korean Language Institute,
+                plus 30 other university language institutes in Seoul and Busan
+                in progress.
+              </>
+            )}
           </P>
           <Grid2 style={{ marginTop: 24 }}>
             <ColLeft>
@@ -543,8 +592,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                 <P>
                   {lang === "ko" ? (
                     <>
-                      광안리 상권 중심 업종(음식점·펜션·바 등) 미팅 완료.{" "}
-                      <b>커뮤니티 티켓 구매 시 10% 할인</b> 협의 완료.
+                      광안리 상권 중심 업종(음식점·펜션·바 등) 미팅 완료
+                      <br className="mobile-br" />
+                      <b>→ 커뮤니티 티켓 구매 시 10% 할인</b> 협의 완료
                     </>
                   ) : (
                     <>
@@ -556,10 +606,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                 </P>
               </div>
 
-              {/* 2행: 위쪽 여백(1fr) */}
               <div />
 
-              {/* 3행: 버튼 중앙 */}
               <ButtonCenter>
                 <Button
                   onClick={() => scrollToSection("info")}
@@ -569,11 +617,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                 </Button>
               </ButtonCenter>
 
-              {/* 4행: 아래쪽 여백(1fr) */}
               <div />
             </ColLeft>
-
-            {/* 오른쪽 이미지 박스는 그대로 */}
             <SoftBox>
               <ImageBox
                 $src={sample1}
@@ -613,8 +658,10 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <P $invert>
                 {lang === "ko" ? (
                   <>
-                    체험 기반으로 제품을 직접 노출, 해외 진출 없이도{" "}
-                    <b>글로벌 반응</b> 확보.
+                    체험 기반으로 제품을 직접 노출,
+                    <br className="mobile-br" />
+                    해외 진출 없이도
+                    <b>글로벌 반응</b> 확보
                   </>
                 ) : (
                   <>
@@ -634,9 +681,14 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   : "Hiring foreign talent"}
               </Sub>
               <P $invert>
-                {lang === "ko"
-                  ? "커뮤니티를 통해 검증된 인재를 연결, 효율적·안정적 채용."
-                  : "Connect with vetted talent for efficient, reliable hiring."}
+                {lang === "ko" ? (
+                  <>
+                    커뮤니티를 통해 검증된 인재를 연결,
+                    <br className="mobile-br" /> 효율적 · 안정적 채용
+                  </>
+                ) : (
+                  <>Connect with vetted talent for efficient, reliable hiring</>
+                )}
               </P>
             </SoftBox>
 
@@ -651,8 +703,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <P $invert>
                 {lang === "ko" ? (
                   <>
-                    티켓 구매 시 협업사 할인 제공으로 상권 매출 증대와{" "}
-                    <b>핵심 고객</b> 확보.
+                    티켓 구매 시 협업사 할인 제공으로
+                    <br className="mobile-br" />
+                    상권 매출 증대와 <b>핵심 고객</b> 확보.
                   </>
                 ) : (
                   <>
@@ -726,9 +779,18 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   )}
                 </li>
                 <li>
-                  {lang === "ko"
-                    ? "외국인 매출 성장 1년 패키지 / 커뮤니티 초대권 연 6회"
-                    : "1-year foreign-sales growth kit / 6 annual community invites"}
+                  {lang === "ko" ? (
+                    <>
+                      외국인 매출 성장 1년 패키지 / 커뮤니티{" "}
+                      <br className="mobile-br" />
+                      초대권 연 6회
+                    </>
+                  ) : (
+                    <>
+                      1-year foreign-sales growth kit / 6 annual community
+                      invites
+                    </>
+                  )}
                 </li>
                 <li>
                   {lang === "ko"
@@ -789,7 +851,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   {lang === "ko" ? (
                     <>
                       SNS 바이럴 <b style={{ color: PINK }}>월 4건</b> / 구글
-                      리뷰 다국어 <b style={{ color: PINK }}>연 4건</b>
+                      리뷰
+                      <br className="mobile-br" />
+                      다국어 <b style={{ color: PINK }}>연 4건</b>
                     </>
                   ) : (
                     <>
