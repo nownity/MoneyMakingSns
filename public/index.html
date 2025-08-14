@@ -2,43 +2,139 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Canonical (도메인은 소문자 통일) -->
+    <link rel="canonical" href="https://languageexchangekorea.com/" />
+
     <!-- 기본 정보 -->
-    <meta name="theme-color" content="#ffffff" />
+    <title>Language Exchange Korea - 외국인과 한국어·영어 교환 모임</title>
     <meta
       name="description"
-      content="글로벌 한국 로컬 라이프 - LanguageExchangeKorea"
+      content="Language Exchange Korea — 외국인과 한국인이 한국어·영어를 교환하며 함께 성장하는 커뮤니티. 서울·부산 오프라인 및 온라인 모임, 한국 로컬 라이프 정보 제공."
     />
+    <!-- keywords는 구글 영향 적어서 유지/삭제 무관. 유지 시 핵심 키워드만 -->
     <meta
       name="keywords"
-      content="글로벌 한국 로컬 라이프 - LanguageExchangeKorea"
+      content="language exchange korea, 랭귀지 익스체인지 코리아, 언어교환, 한국어 영어 교환, 서울 언어교환, 부산 언어교환"
     />
     <meta name="author" content="NOWMAKES" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff" />
 
-    <!-- SNS 공유용 (OG 태그) -->
-    <meta property="og:title" content="LanguageExchangeKorea" />
+    <!-- 소유권 검증 (콘솔에서 값 발급받아 교체) -->
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="REPLACE_WITH_YOUR_TOKEN" />
+    <!-- Naver Search Advisor -->
+    <meta name="naver-site-verification" content="REPLACE_WITH_YOUR_TOKEN" />
+
+    <!-- Open Graph (SNS 공유) — 절대경로 사용 -->
+    <meta property="og:site_name" content="Language Exchange Korea" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Language Exchange Korea | 외국인과 한국어·영어 교환 모임"
+    />
     <meta
       property="og:description"
-      content="글로벌 한국 로컬 라이프를 200% 즐기는 방법"
+      content="외국인과 함께하는 언어 교환 모임과 한국 로컬 라이프 가이드. 서울·부산 오프라인 및 온라인 프로그램."
     />
-    <meta property="og:image" content="%PUBLIC_URL%/LogoLEK.png" />
-    <meta property="og:url" content="https://LanguageExchangeKorea.com" />
-    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://languageexchangekorea.com/" />
+    <meta
+      property="og:image"
+      content="https://languageexchangekorea.com/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="ko_KR" />
 
-    <!-- 모바일 아이콘 -->
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/LogoLEK.png" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Language Exchange Korea | 외국인과 한국어·영어 교환 모임"
+    />
+    <meta
+      name="twitter:description"
+      content="언어 교환으로 더 빠르게 성장하세요. 한국 로컬 라이프 정보와 오프라인/온라인 모임 제공."
+    />
+    <meta
+      name="twitter:image"
+      content="https://languageexchangekorea.com/og-image.jpg"
+    />
 
-    <!-- PWA 기능 유지 or 제거 가능 -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- Favicons & Touch Icons (절대경로 권장) -->
+    <link rel="icon" href="https://languageexchangekorea.com/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://languageexchangekorea.com/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://languageexchangekorea.com/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://languageexchangekorea.com/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="https://languageexchangekorea.com/manifest.json"
+    />
 
-    <title>LanguageExchangeKorea</title>
+    <!-- 구조화 데이터 (JSON-LD) : Organization + WebSite -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "Language Exchange Korea",
+            "url": "https://languageexchangekorea.com/",
+            "logo": "https://languageexchangekorea.com/og-image.jpg",
+            "sameAs": [
+              "https://www.instagram.com/REPLACE",
+              "https://www.youtube.com/@REPLACE"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "name": "Language Exchange Korea",
+            "url": "https://languageexchangekorea.com/",
+            "inLanguage": "ko-KR",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://languageexchangekorea.com/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
+
   <body>
     <noscript
       >자바스크립트를 활성화해주세요. 이 사이트는 React로 작동합니다.</noscript
     >
     <div id="root"></div>
+
+    <!-- GA4 (옵션): 측정 ID로 교체 후 사용
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
   </body>
 </html>
