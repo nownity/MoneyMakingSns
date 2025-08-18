@@ -3,14 +3,17 @@ import sample1 from "../images/Sample1.jpg";
 import wechat from "../images/wechat.jpg";
 import seoulMap from "../images/seoul-outline-final.png";
 import busanMap from "../images/busan-outline-final.png";
+import { FaArrowDown, FaArrowRight } from "react-icons/fa";
+import { HiArrowPath } from "react-icons/hi2";
 
 /* ===== 색상 토큰 ===== */
 const NAVY = "#0b1e3f";
 const PINK = "#ff2d95";
-const WHITE = "#ffffff";
 const GRAY_BG = "#f6f7fb";
-const TEXT_DARK = "#0f172a";
-const TEXT_MUTED = "#475569";
+const BLACK = "#0c0c0c";
+const TEXT_WHITE = "#0f172a";
+const TEXT_DARK = "#727272";
+const TEXT_MUTED = "#f6f7fb";
 const CARD_SHADOW = "0 8px 26px rgba(10, 20, 50, 0.08)";
 
 /* ===== 공통 레이아웃 ===== */
@@ -21,8 +24,8 @@ const Page = styled.section`
 
 const Section = styled.section`
   width: 100%;
-  background: ${({ $invert }) => ($invert ? NAVY : WHITE)};
-  color: ${({ $invert }) => ($invert ? "#fff" : TEXT_DARK)};
+  background: ${({ $invert }) => ($invert ? BLACK : BLACK)};
+  color: ${({ $invert }) => ($invert ? "#fff" : TEXT_WHITE)};
 `;
 
 const Container = styled.div`
@@ -79,9 +82,10 @@ const P = styled.p`
   font-size: 1.06rem;
   color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.85)" : TEXT_MUTED)};
   line-height: 1.75;
+  white-space: pre-line;
 
   @media (max-width: 768px) {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -106,9 +110,9 @@ const Button = styled.button`
   padding: 10px 25px;
   font-size: 1.1rem;
   border-radius: 8px;
-  border: 2px solid black;
+  border: 2px solid white;
   background: transparent;
-  color: #000000;
+  color: #ffffff;
   cursor: pointer;
   z-index: 2;
   transition: all 0.3s ease-in-out;
@@ -197,6 +201,36 @@ const SoftBox = styled.div`
   box-shadow: ${({ $invert }) => ($invert ? "none" : CARD_SHADOW)};
 `;
 
+/* 중략: 기존 import 및 상수 정의 생략 */
+
+const UpgradeWrap = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+`;
+
+const UpgradeArrow = styled.div`
+  text-align: center;
+  font-size: 1rem;
+  color: ${PINK};
+  font-weight: bold;
+
+  @media (min-width: 769px) {
+    font-size: 1.5rem;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+    transform: translateY(-50%);
+  }
+`;
+
 const ImageBox = styled.div`
   width: 100%;
   min-height: 300px;
@@ -231,46 +265,6 @@ const RightCol = styled.div`
   gap: 14px;
 `;
 
-const InsightTrack = styled.div`
-  position: relative;
-  padding-left: 18px;
-  display: grid;
-  gap: 14px;
-`;
-
-const TrackLine = styled.span`
-  position: absolute;
-  left: 6px;
-  top: 4px;
-  bottom: 4px;
-  width: 2px;
-  background: linear-gradient(${PINK}, rgba(255, 255, 255, 0.4));
-  opacity: 0.65;
-`;
-
-const TrackItem = styled.div`
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 14px;
-  padding: 14px 16px;
-  display: grid;
-  gap: 8px;
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: -10px;
-    top: 16px;
-    width: 10px;
-    height: 10px;
-    transform: rotate(45deg);
-    background: ${PINK};
-    box-shadow: 0 6px 18px rgba(255, 45, 149, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-  }
-`;
-
 /* ENG / SMB 라벨 */
 const Tag = styled.span`
   display: inline-flex;
@@ -284,11 +278,28 @@ const Tag = styled.span`
   letter-spacing: 0.02em;
   width: fit-content;
 `;
+
 const LeadWrap = styled.div`
   display: grid;
   gap: 12px;
 `;
-/* ===== 페이지 구성 ===== */
+
+const ExchangeIcon = styled(HiArrowPath)`
+  font-size: 40px;
+  color: ${PINK};
+  opacity: 0.85;
+  margin: 16px auto;
+
+  @media (min-width: 769px) {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+    transform: translateY(-50%) rotate(90deg); /* 가로 방향 */
+    margin: 0;
+  }
+`;
+
 const SampleSection = ({ currentSection, sectionRefs, lang }) => {
   const scrollToSection = (id) => {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
@@ -296,14 +307,14 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
 
   return (
     <Page>
-      {/* 1. 왜 필요한가요 (네이비) - 타이틀 아래 문단, 그 아래 2컬럼(좌 이미지 / 우 인사이트) */}
+      {/* 1. 왜 필요한가요 (가독성 강화된 디자인) */}
       <Section $invert>
         <Container $invert $top>
-          <H1>
+          <H1 style={{ textAlign: "center" }}>
             {lang === "ko" ? (
               <>
-                Language Exchange Korea,
-                <br className="mobile-br" /> <span>왜 필요한가요?</span>
+                Language Exchange Korea
+                <br /> <span>왜 필요한가요?</span>
               </>
             ) : (
               <>
@@ -311,118 +322,96 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </>
             )}
           </H1>
-          <LeadWrap>
+
+          <LeadWrap
+            style={{ textAlign: "center", maxWidth: 820, margin: "0 auto" }}
+          >
             <P $invert>
               {lang === "ko" ? (
                 <>
-                  이미 외국인과 한국인 소통 커뮤니티도 있고, 언어교환
-                  <br className="mobile-br" />
-                  플랫폼도 존재합니다. 하지만{" "}
-                  <b>실생활에 쓰일 언어 능력에 도움이 되지 않고</b> 지속적인
-                  소통 기회가 부족합니다.
+                  기존 커뮤니티나 언어교환 플랫폼은 많지만,
+                  <br className="mobile-br" /> 실생활 언어 능력과 꾸준한
+                  소통에는 한계가 있습니다.
                 </>
               ) : (
                 <>
-                  There are already communities and language-exchange platforms,
-                  but they often <b>don’t build real-life language skills</b>{" "}
-                  and lack sustained chances to connect.
+                  There are many communities and exchange platforms,
+                  <br className="mobile-br" /> but they fall short in real-life
+                  language use and lasting interaction.
                 </>
               )}
             </P>
-
             <P $invert>
               {lang === "ko" ? (
                 <>
-                  외국인 유학생 및 여행객이 증가하지만{" "}
-                  <b>소상공인은 내수경기 불황으로 매출 감소</b>를 겪고 있습니다.
+                  외국인은 늘고 있지만,소상공인은 내수 부진으로
+                  <br className="mobile-br" /> 매출에 어려움을 겪고 있습니다.
                 </>
               ) : (
                 <>
-                  While international students and visitors are increasing,{" "}
-                  <b>local small businesses face declining sales</b>.
+                  Foreigners are increasing, but local businesses struggle due
+                  to weak domestic demand.
                 </>
               )}
             </P>
           </LeadWrap>
 
-          <HeroSplit>
+          <HeroSplit style={{ marginTop: 40 }}>
             <RightCol>
-              <InsightTrack>
-                <TrackLine aria-hidden />
-
-                <TrackItem>
-                  <Tag>1 .</Tag>
-                  <Sub>
-                    {lang === "ko" ? (
-                      <>
-                        성인 영어 교육 및
-                        <br className="mobile-br" />
-                        <span>외국인의 한국 적응 한계</span>
-                      </>
-                    ) : (
-                      <>
-                        Adult English education &
-                        <span> limits in settling in Korea</span>
-                      </>
-                    )}
+              <div style={{ display: "grid", gap: 32 }}>
+                <SoftBox $invert>
+                  <Tag>1.</Tag>
+                  <Sub style={{ marginTop: 12, marginBottom: 8 }}>
+                    {lang === "ko"
+                      ? "성인 영어교육과 외국인의 정착 어려움"
+                      : "Adult English education & adaptation challenges"}
                   </Sub>
                   <P $invert>
                     {lang === "ko" ? (
                       <>
-                        한국식 영어교육은 글로벌 시장에서 바로
-                        <br className="mobile-br" /> 도움 되기 어렵습니다. 방한
-                        외국인은 늘지만
-                        <br className="mobile-br" /> 생활 적응과 친구 사귈
-                        기회는 부족합니다.
+                        외국인은 친구 만들기와 정착이 어렵고, 기존 영어
+                        <br className="mobile-br" />
+                        교육은 실용성이 낮습니다.
                       </>
                     ) : (
                       <>
-                        Traditional English education often fails in real global
-                        contexts. More foreigners visit, yet they lack chances
-                        to adapt and make friends.
+                        Foreigners struggle to settle and make friends; English
+                        education lacks practicality.
                       </>
                     )}
                   </P>
-                </TrackItem>
+                </SoftBox>
 
-                <TrackItem>
-                  <Tag>2 .</Tag>
-                  <Sub>
-                    {lang === "ko" ? (
-                      <>
-                        소상공인의 <span>지속적인 매출 하락</span>
-                      </>
-                    ) : (
-                      <>
-                        SMBs facing <span>continued revenue decline</span>
-                      </>
-                    )}
+                <SoftBox $invert>
+                  <Tag>2.</Tag>
+                  <Sub style={{ marginTop: 12, marginBottom: 8 }}>
+                    {lang === "ko"
+                      ? "외국인 수요와 지역 상권 단절"
+                      : "Disconnected foreign demand & local markets"}
                   </Sub>
                   <P $invert>
                     {lang === "ko" ? (
                       <>
-                        외국인 수요와 지역 상권이 제대로 연결되지
-                        <br className="mobile-br" /> 못합니다.
-                        <b> 로컬 브랜딩/세일즈</b>가 필요합니다.
+                        외국인 수요가 상권에 닿지 않아, 로컬 브랜딩이
+                        <br className="mobile-br" />
+                        필요합니다.
                       </>
                     ) : (
                       <>
-                        Foreign demand and local districts aren’t well
-                        connected. Stronger <b>local branding & sales</b> are
+                        Foreign demand isn’t reaching stores—local branding is
                         needed.
                       </>
                     )}
                   </P>
-                </TrackItem>
-              </InsightTrack>
+                </SoftBox>
+              </div>
             </RightCol>
           </HeroSplit>
         </Container>
       </Section>
 
-      {/* 2. 우리는 이렇게 해결합니다 (화이트) */}
-      <Section>
-        <Container>
+      <Section $invert>
+        <Container $invert>
           <H1>
             {lang === "ko" ? (
               <>
@@ -434,32 +423,25 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </>
             )}
           </H1>
-          <P>
-            {lang === "ko" ? (
-              <>
-                외국인 유학생, 한국인, 소상공인이 함께 성장하는 언어
-                <br className="mobile-br" />
-                교환 커뮤니티를 개발해 <b>선순환 구조</b>를 구축합니다.
-              </>
-            ) : (
-              <>
-                We build a language-exchange community where international
-                students, locals, and SMBs grow together—creating a{" "}
-                <b>positive flywheel</b>.
-              </>
-            )}
-          </P>
 
-          <Grid3>
-            <SoftBox>
-              <NumberDot>01</NumberDot>
-              <div style={{ height: 10 }} />
-              <Sub>
+          <div
+            style={{
+              display: "grid",
+              gap: "75px",
+              textAlign: "center",
+              marginTop: "40px",
+            }}
+          >
+            {/* 항목 01 */}
+            <div>
+              <NumberDot style={{ margin: "0 auto" }}>01</NumberDot>
+              <div style={{ height: 12 }} />
+              <Sub style={{ textAlign: "center" }}>
                 {lang === "ko"
                   ? "실질적 언어능력 향상"
                   : "Practical language gains"}
               </Sub>
-              <P>
+              <P style={{ textAlign: "center" }} $invert>
                 {lang === "ko" ? (
                   <>
                     한국인–외국인 간 언어 교환으로 <b>실생활 외국어</b>
@@ -473,17 +455,18 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   </>
                 )}
               </P>
-            </SoftBox>
+            </div>
 
-            <SoftBox>
-              <NumberDot>02</NumberDot>
-              <div style={{ height: 10 }} />
-              <Sub>
+            {/* 항목 02 */}
+            <div>
+              <NumberDot style={{ margin: "0 auto" }}>02</NumberDot>
+              <div style={{ height: 12 }} />
+              <Sub style={{ textAlign: "center" }}>
                 {lang === "ko"
                   ? "한국 적응 보조 & 일자리 연계"
                   : "Settlement support & job links"}
               </Sub>
-              <P>
+              <P style={{ textAlign: "center" }} $invert>
                 {lang === "ko" ? (
                   <>
                     문화 교류 통해 외국인의 한국 적응도를 높이고,
@@ -497,17 +480,18 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   </>
                 )}
               </P>
-            </SoftBox>
+            </div>
 
-            <SoftBox>
-              <NumberDot>03</NumberDot>
-              <div style={{ height: 10 }} />
-              <Sub>
+            {/* 항목 03 */}
+            <div>
+              <NumberDot style={{ margin: "0 auto" }}>03</NumberDot>
+              <div style={{ height: 12 }} />
+              <Sub style={{ textAlign: "center" }}>
                 {lang === "ko"
                   ? "글로벌 마케팅 & 로컬 브랜딩"
                   : "Global marketing & local branding"}
               </Sub>
-              <P>
+              <P style={{ textAlign: "center" }}>
                 {lang === "ko" ? (
                   <>
                     커뮤니티 공간·콘텐츠·세일즈로 <b>매출 증대</b>를
@@ -521,15 +505,15 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   </>
                 )}
               </P>
-            </SoftBox>
-          </Grid3>
+            </div>
+          </div>
         </Container>
       </Section>
 
       {/* 3. 추진 실적 (네이비) */}
       <Section $invert>
         <Container $invert>
-          <H1>
+          <H1 $invert>
             {lang === "ko" ? <span>추진 실적</span> : <span>Track Record</span>}
           </H1>
           <Grid2>
@@ -540,7 +524,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                     ? "We Chat Pay 한국 파트너사 등록 완료"
                     : "Registered WeChat Pay partner in Korea"}
                 </Sub>
-                <P $invert>
+                <P>
                   {lang === "ko" ? (
                     <>
                       부산 커뮤니티 제휴처에 위챗페이 도입
@@ -565,7 +549,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                     ? "행사 진행 협찬사 네트워크 확보"
                     : "Growing sponsor network for events"}
                 </Sub>
-                <P $invert>
+                <P>
                   {lang === "ko"
                     ? "→ 주류/행사 물품 협찬 파트너 지속 확장 중"
                     : "→ Continuously expanding beverage and event-goods sponsors"}
@@ -579,9 +563,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
       </Section>
 
       {/* 4. 대학/어학당 MOU & 상권 (화이트) */}
-      <Section>
-        <Container>
-          <H1>
+      <Section $invert>
+        <Container $invert>
+          <H1 $invert>
             {lang === "ko" ? (
               <>
                 서울·부산 내 대학 및 어학당 <span>MOU</span>
@@ -592,7 +576,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </>
             )}
           </H1>
-          <P>
+          <P $invert>
             {lang === "ko" ? (
               <>
                 건국대학교 한국어학당 협약 완료
@@ -609,14 +593,13 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
           </P>
           <Grid2 style={{ marginTop: 24 }}>
             <ColLeft>
-              {/* 1행: 텍스트 */}
               <div>
-                <Sub>
+                <Sub $invert>
                   {lang === "ko"
                     ? "부산 내 한국어 교육센터 및 소상공인 협약 진행"
                     : "MOUs with Busan K-language centers & SMBs"}
                 </Sub>
-                <P>
+                <P $invert>
                   {lang === "ko" ? (
                     <>
                       광안리 상권 중심 업종(음식점·펜션·바 등) 미팅 완료
@@ -646,7 +629,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
 
               <div />
             </ColLeft>
-            <SoftBox>
+            <SoftBox $invert>
               <ImageBox
                 $src={sample1}
                 style={{ minHeight: 280, boxShadow: "none" }}
@@ -664,7 +647,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
       {/* 5. 협업 시 기대효과 (네이비) */}
       <Section $invert>
         <Container $invert>
-          <H1>
+          <H1 $invert>
             {lang === "ko" ? (
               <>
                 협업 시 <span>기대효과</span>
@@ -682,7 +665,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <Sub>
                 {lang === "ko" ? "해외 마케팅 대행" : "Overseas marketing"}
               </Sub>
-              <P $invert>
+              <P>
                 {lang === "ko" ? (
                   <>
                     체험 기반으로 제품을 직접 노출,
@@ -707,7 +690,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   ? "외국인 인재 채용 기회"
                   : "Hiring foreign talent"}
               </Sub>
-              <P $invert>
+              <P>
                 {lang === "ko" ? (
                   <>
                     커뮤니티를 통해 검증된 인재를 연결,
@@ -727,7 +710,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   ? "정보/할인 혜택 제공"
                   : "Info & discount perks"}
               </Sub>
-              <P $invert>
+              <P>
                 {lang === "ko" ? (
                   <>
                     티켓 구매 시 협업사 할인 제공으로
@@ -746,10 +729,10 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
         </Container>
       </Section>
       {/* 5.5. 커뮤니티 연결 & 할인 정보 섹션 (화이트) */}
-      <Section>
-        <Container>
-          <H1>
-            <span>다양한 정보 및 할인 혜택</span> 제공
+      <Section $invert>
+        <Container $invert>
+          <H1 $invert>
+            다양한 정보 및 할인 혜택<span> 제공</span>
           </H1>
 
           <P>
@@ -759,7 +742,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
           </P>
 
           <TwoCol style={{ marginTop: 36 }}>
-            <SoftBox>
+            <SoftBox $invert>
               <ImageBox
                 $src={seoulMap}
                 style={{ minHeight: 280 }}
@@ -773,7 +756,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </P>
             </SoftBox>
 
-            <SoftBox>
+            <ExchangeIcon />
+
+            <SoftBox $invert>
               <ImageBox
                 $src={busanMap}
                 style={{ minHeight: 280 }}
@@ -788,16 +773,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
             </SoftBox>
           </TwoCol>
 
-          <div style={{ textAlign: "center", marginTop: 20 }}>
-            <span style={{ fontSize: "2rem", lineHeight: 1 }}>⟷</span>
-            <P style={{ marginTop: 8 }}>
-              서울 ↔ 부산 간 커뮤니티 연결 및 정보 순환
-            </P>
-          </div>
-
           <P
             style={{
-              marginTop: 28,
+              marginTop: 10,
               textAlign: "center",
               color: PINK,
               fontWeight: 700,
@@ -809,9 +787,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
       </Section>
 
       {/* 6. 수요기업 한정 혜택 (화이트) */}
-      <Section>
-        <Container>
-          <H1>
+      <Section $invert>
+        <Container $invert>
+          <H1 $invert>
             {lang === "ko" ? (
               <>
                 수요기업 참여·선정 시 <span>한정 혜택!</span>
@@ -836,13 +814,12 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
             )}
           </P>
 
-          {/* 변경 포인트: 인라인 div → TwoCol 로 교체, 모바일에서 1열로 쌓임 */}
-          <TwoCol>
-            <SoftBox>
+          <UpgradeWrap>
+            <SoftBox $invert>
               <Sub>
                 {lang === "ko" ? "기존 마케팅 상품" : "Standard package"}
               </Sub>
-              <ul style={{ margin: "10px 0 0 18px" }}>
+              <ul style={{ margin: "10px 0 0 18px", fontSize: "0.8rem" }}>
                 <li>
                   {lang === "ko" ? (
                     <>
@@ -870,13 +847,13 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                 <li>
                   {lang === "ko" ? (
                     <>
-                      외국인 매출 성장 1년 패키지 / 커뮤니티{" "}
-                      <br className="mobile-br" />
-                      초대권 <b style={{ color: TEXT_DARK }}>연 6회</b>
+                      외국인 매출 성장 1년 패키지 / 커뮤니티 초대권{" "}
+                      <b style={{ color: TEXT_DARK }}>연 6회</b>
                     </>
                   ) : (
                     <>
-                      1-year foreign-sales growth kit / 6 annual community
+                      1-year foreign-sales growth kit /{" "}
+                      <b style={{ color: TEXT_DARK }}>6</b> annual community
                       invites
                     </>
                   )}
@@ -885,14 +862,14 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   {lang === "ko" ? (
                     <>
                       SNS 바이럴 <b style={{ color: TEXT_DARK }}>월 2건</b> /
-                      구글 리뷰
-                      <br className="mobile-br" />
-                      다국어 <b style={{ color: TEXT_DARK }}>연 2건</b>
+                      구글 리뷰 다국어{" "}
+                      <b style={{ color: TEXT_DARK }}>연 2건</b>
                     </>
                   ) : (
                     <>
-                      2 monthly SNS virals / 2 annual multilingual Google
-                      reviews
+                      <b style={{ color: TEXT_DARK }}>2</b> monthly SNS virals /{" "}
+                      <b style={{ color: TEXT_DARK }}>2</b> annual multilingual
+                      Google reviews
                     </>
                   )}
                 </li>
@@ -904,13 +881,17 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </ul>
             </SoftBox>
 
-            <SoftBox>
+            <UpgradeArrow>
+              {/* 반응형 화살표 아이콘 */}
+              {window.innerWidth > 768 ? <FaArrowRight /> : <FaArrowDown />}
+            </UpgradeArrow>
+            <SoftBox $invert>
               <Sub>
                 {lang === "ko"
                   ? "참여/선정 시 적용 상품"
                   : "If selected: upgraded package"}
               </Sub>
-              <ul style={{ margin: "10px 0 0 18px" }}>
+              <ul style={{ margin: "10px 0 0 18px", fontSize: "0.8rem" }}>
                 <li>
                   {lang === "ko" ? (
                     <>
@@ -950,9 +931,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   {lang === "ko" ? (
                     <>
                       SNS 바이럴 <b style={{ color: PINK }}>월 4건</b> / 구글
-                      리뷰
-                      <br className="mobile-br" />
-                      다국어 <b style={{ color: PINK }}>연 4건</b>
+                      리뷰 다국어 <b style={{ color: PINK }}>연 4건</b>
                     </>
                   ) : (
                     <>
@@ -968,19 +947,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                     : "Revenue guarantee (full refund if none)"}
                 </li>
               </ul>
-
-              <div
-                style={{
-                  textAlign: "center",
-                  color: PINK,
-                  fontWeight: 900,
-                  marginTop: 10,
-                }}
-              >
-                {lang === "ko" ? "← 2배 적용" : "← 2× upgrade"}
-              </div>
             </SoftBox>
-          </TwoCol>
+          </UpgradeWrap>
         </Container>
       </Section>
     </Page>

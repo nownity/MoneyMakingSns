@@ -4,7 +4,7 @@ import styled from "styled-components";
 /* ===== 섹션 배경/포인트 컬러 ===== */
 const Section = styled.section`
   width: 100%;
-  background: #0b1e3f;
+  background: #1b1b1b;
 `;
 
 const Container = styled.div`
@@ -58,7 +58,7 @@ const CardGrid = styled.div`
 `;
 
 const Card = styled.article`
-  background: #ffffff;
+  background: #0b0b0b;
   border-radius: 16px;
   padding: 22px;
   box-shadow: 0 10px 28px rgba(10, 20, 50, 0.08);
@@ -78,10 +78,10 @@ const IconWrap = styled.div`
   width: 56px;
   height: 56px;
   border-radius: 12px;
-  background: #f4f6fb;
+  background: #bebebe;
   display: grid;
   place-items: center;
-  color: #334155;
+  color: #000000;
 
   svg {
     width: 26px;
@@ -106,13 +106,13 @@ const Title = styled.h3`
   margin: 0 0 4px;
   font-size: 1.05rem;
   font-weight: 800;
-  color: #0f172a;
+  color: #fafafa;
   letter-spacing: -0.1px;
 `;
 
 const Desc = styled.p`
   margin: 0;
-  color: #556070;
+  color: #b6b6b6;
   font-size: 0.95rem;
   line-height: 1.45;
   overflow: hidden;

@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const FooterWrapper = styled.footer`
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: #8d8d8d;
+  color: #ffffff;
   padding: 40px 20px 20px;
   font-size: 14px;
 
@@ -40,7 +40,7 @@ const FooterLogo = styled.h2`
 `;
 
 const FooterLink = styled.a`
-  color: #333;
+  color: #d3d3d3;
   text-decoration: none;
   font-size: 14px;
   transition: 0.2s;
@@ -55,7 +55,7 @@ const SocialIcons = styled.div`
   gap: 10px;
 
   a {
-    color: #333;
+    color: #dddddd;
     font-size: 18px;
     transition: 0.2s;
 
@@ -73,17 +73,26 @@ const CopyRight = styled.div`
   text-align: center;
   margin-top: 30px;
   font-size: 12px;
-  color: #777;
+  color: #ffffff;
   border-top: 1px solid #ddd;
   padding-top: 15px;
 `;
 
-const Footer = () => {
+const Footer = ({ currentSection, sectionRefs }) => {
+  const scrollToSection = (id) => {
+    sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <FooterWrapper>
       <FooterContainer>
         <FooterColumn>
-          <FooterLogo>랭귀지익스체인지코리아</FooterLogo>
+          <FooterLogo
+            onClick={() => scrollToSection("hero")}
+            $active={currentSection === "hero"}
+          >
+            랭귀지익스체인지코리아
+          </FooterLogo>
           <p>서울특별시 송파구 동남로 189, 26동 4층 406호</p>
           <p>대표: 배윤신</p>
           <p>사업자등록번호: 895-02-03035</p>
@@ -94,9 +103,24 @@ const Footer = () => {
         {/* 메뉴 링크 */}
         <FooterColumn>
           <h4>Menu</h4>
-          <FooterLink href="/about">회사소개</FooterLink>
-          <FooterLink href="/programs">프로그램 안내</FooterLink>
-          <FooterLink href="/events">서비스 검색</FooterLink>
+          <FooterLink
+            onClick={() => scrollToSection("about")}
+            $active={currentSection === "about"}
+          >
+            회사소개
+          </FooterLink>
+          <FooterLink
+            onClick={() => scrollToSection("sample")}
+            $active={currentSection === "sample"}
+          >
+            프로그램 안내
+          </FooterLink>
+          <FooterLink
+            onClick={() => scrollToSection("info")}
+            $active={currentSection === "info"}
+          >
+            서비스 검색
+          </FooterLink>
         </FooterColumn>
 
         <FooterColumn>

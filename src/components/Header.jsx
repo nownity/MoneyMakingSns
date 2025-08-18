@@ -20,6 +20,7 @@ const HeaderContainer = styled.header`
   align-items: center;
   @media (max-width: 450px) {
     justify-content: center;
+    height: 70px;
   }
 `;
 

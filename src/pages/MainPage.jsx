@@ -86,7 +86,7 @@ const MainPage = () => {
         <section id="info" ref={sectionRefs.info}>
           <InfoSection lang={lang} />
         </section>
-        <Footer />
+        <Footer currentSection={currentSection} sectionRefs={sectionRefs} />
       </MainWrapper>
     </Container>
   );

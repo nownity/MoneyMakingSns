@@ -11,7 +11,7 @@ const scroll = keyframes`
 const Section = styled.section`
   width: 100%;
   min-height: 100vh;
-  background-color: #eeeeee;
+  background-color: #0c0c0c;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@ const Heading = styled.h2`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #000;
+  color: #ffffff;
   span {
     color: #ff2d95;
   }
@@ -35,7 +35,7 @@ const Subtitle = styled.h2`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #595959;
+  color: #a9a9a9;
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -59,7 +59,7 @@ const Slider = styled.div`
 const LogoBox = styled.div`
   flex: 0 0 auto;
   width: 220px;
-  height: 150px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +94,7 @@ const SearchInput = styled.input`
   padding: 0 14px;
   font-size: 0.95rem;
   outline: none;
-  background: #fff;
+  background: #d5d5d5;
 
   &:focus {
     border-color: #ff2d95;
@@ -104,7 +104,7 @@ const SearchInput = styled.input`
 
 const ResultCount = styled.div`
   font-size: 0.95rem;
-  color: #555;
+  color: #a9a9a9;
 `;
 
 const CardsGrid = styled.div`
@@ -124,7 +124,7 @@ const CardsGrid = styled.div`
 `;
 
 const Card = styled.article`
-  background: #fff;
+  background: #1f1f1f;
   border-radius: 14px;
   padding: 18px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
@@ -137,13 +137,13 @@ const CardTitle = styled.h3`
   font-size: 1.05rem;
   font-weight: 800;
   margin: 0 0 6px;
-  color: #111;
+  color: #ffffff;
   letter-spacing: 0.2px;
 `;
 
 const CardAddress = styled.p`
   margin: 0 0 12px;
-  color: #444;
+  color: #ffffff;
   font-size: 0.92rem;
   line-height: 1.45;
   overflow: hidden;
@@ -169,7 +169,7 @@ const GoButton = styled.a`
   font-size: 0.9rem;
   text-decoration: none;
   background: #ff2d95;
-  color: #fff;
+  color: #ffffff;
 
   &:hover {
     filter: brightness(0.95);

@@ -16,13 +16,13 @@ const Section = styled.section`
 `;
 
 const Background = styled.div`
-  position: fixed;
+  position: absolute;
   top: -10px;
   left: -10px;
   width: calc(100% + 20px);
   height: calc(100vh + 20px);
   background: url(${HeroImage}) no-repeat center center/cover;
-  filter: blur(4px) grayscale(100%);
+  filter: blur(3px) grayscale(100%);
   z-index: 0;
   pointer-events: none;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
@@ -31,7 +31,7 @@ const Background = styled.div`
 const Overlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   z-index: 1;
 `;
 
@@ -56,6 +56,7 @@ const SubTitle = styled.p`
   margin-bottom: 2rem;
   z-index: 2;
   opacity: 0.9;
+  color: #ff2d95;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
