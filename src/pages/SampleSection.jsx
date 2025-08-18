@@ -1,7 +1,8 @@
-import React from "react";
 import styled from "styled-components";
 import sample1 from "../images/Sample1.jpg";
 import wechat from "../images/wechat.jpg";
+import seoulMap from "../images/seoul-outline-final.png";
+import busanMap from "../images/busan-outline-final.png";
 
 /* ===== 색상 토큰 ===== */
 const NAVY = "#0b1e3f";
@@ -742,6 +743,68 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </P>
             </SoftBox>
           </Grid3>
+        </Container>
+      </Section>
+      {/* 5.5. 커뮤니티 연결 & 할인 정보 섹션 (화이트) */}
+      <Section>
+        <Container>
+          <H1>
+            <span>다양한 정보 및 할인 혜택</span> 제공
+          </H1>
+
+          <P>
+            서울/부산 지역에서 <b>로컬 친구와의 연결</b>과{" "}
+            <b>추천 장소·할인 정보 공유</b>를 통해 실질적인 여행 계획과{" "}
+            <b>지속적인 커뮤니티 관계</b>가 가능합니다.
+          </P>
+
+          <TwoCol style={{ marginTop: 36 }}>
+            <SoftBox>
+              <ImageBox
+                $src={seoulMap}
+                style={{ minHeight: 280 }}
+                aria-label="서울 테두리 지도"
+              />
+              <Sub style={{ marginTop: 16 }}>서울 커뮤니티</Sub>
+              <P>
+                지역 친구와 정보 교류,
+                <br className="mobile-br" />
+                상권 할인 혜택 및 활동 기반 형성
+              </P>
+            </SoftBox>
+
+            <SoftBox>
+              <ImageBox
+                $src={busanMap}
+                style={{ minHeight: 280 }}
+                aria-label="부산 테두리 지도"
+              />
+              <Sub style={{ marginTop: 16 }}>부산 커뮤니티</Sub>
+              <P>
+                여행 정보 공유 및 로컬 추천 장소 활성화,
+                <br className="mobile-br" />
+                교류를 통한 관계 지속
+              </P>
+            </SoftBox>
+          </TwoCol>
+
+          <div style={{ textAlign: "center", marginTop: 20 }}>
+            <span style={{ fontSize: "2rem", lineHeight: 1 }}>⟷</span>
+            <P style={{ marginTop: 8 }}>
+              서울 ↔ 부산 간 커뮤니티 연결 및 정보 순환
+            </P>
+          </div>
+
+          <P
+            style={{
+              marginTop: 28,
+              textAlign: "center",
+              color: PINK,
+              fontWeight: 700,
+            }}
+          >
+            100개 이상 추천 장소 & 할인 정보 공유 중
+          </P>
         </Container>
       </Section>
 
