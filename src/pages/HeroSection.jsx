@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeroImage from "../images/HeroBody.jpg";
 
@@ -13,14 +12,7 @@ const Section = styled.section`
   position: relative;
   text-align: center;
   color: white;
-
-  @media (min-width: 768px) {
-    background-attachment: fixed;
-  }
-
-  @media (max-width: 767px) {
-    background-position: center ${({ $offset }) => $offset}px;
-  }
+  background-attachment: fixed;
 
   &::before {
     content: "";
@@ -87,23 +79,12 @@ const Button = styled.button`
 `;
 
 const HeroSection = ({ currentSection, sectionRefs, lang }) => {
-  const [offset, setOffset] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // 스크롤 속도를 0.5로 줄여서 고정된 듯한 느낌
-      setOffset(window.scrollY * 0.5);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const scrollToSection = (id) => {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <Section $offset={offset}>
+    <Section>
       <Title>
         <span>LanguageExchangeKorea</span>
         <span>
