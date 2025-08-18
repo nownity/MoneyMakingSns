@@ -30,8 +30,8 @@ const Section = styled.section`
     position: absolute;
     inset: 0;
     background: inherit;
-    /* filter: blur(4px) grayscale(100%); */
-    filter: blur(4px);
+    filter: blur(4px) grayscale(100%);
+    /* filter: blur(4px); */
     z-index: 0;
   }
 `;
