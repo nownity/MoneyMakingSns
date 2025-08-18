@@ -4,16 +4,27 @@ import HeroImage from "../images/HeroBody.jpg";
 const Section = styled.section`
   width: 100%;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url(${HeroImage}) no-repeat center center/cover;
-  position: relative;
   text-align: center;
   color: white;
 
-  background-attachment: fixed;
+  &::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(${HeroImage}) no-repeat center center/cover;
+    filter: blur(4px) grayscale(100%);
+    z-index: 0;
+    pointer-events: none;
+  }
 
   &::before {
     content: "";
@@ -21,16 +32,6 @@ const Section = styled.section`
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 1;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: inherit;
-    filter: blur(4px) grayscale(100%);
-    /* filter: blur(4px); */
-    z-index: 0;
   }
 `;
 
@@ -40,12 +41,15 @@ const Title = styled.h1`
   margin-bottom: 1rem;
   z-index: 2;
   line-height: 1.4;
+
   span {
     display: block;
   }
+
   col {
     color: #ff2d95;
   }
+
   @media (max-width: 768px) {
     font-size: 1.8rem;
   }
@@ -56,6 +60,7 @@ const SubTitle = styled.p`
   margin-bottom: 2rem;
   z-index: 2;
   opacity: 0.9;
+
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
