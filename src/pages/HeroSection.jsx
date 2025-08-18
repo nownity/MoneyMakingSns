@@ -14,13 +14,11 @@ const Section = styled.section`
   text-align: center;
   color: white;
 
-  /* PC에서는 고정 */
-  @media (min-width: 1025px) {
+  @media (min-width: 768px) {
     background-attachment: fixed;
   }
 
-  /* 모바일에서는 JS offset 적용 */
-  @media (max-width: 1024px) {
+  @media (max-width: 767px) {
     background-position: center ${({ $offset }) => $offset}px;
   }
 
@@ -28,8 +26,18 @@ const Section = styled.section`
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    filter: blur(4px) grayscale(100%);
+    /* filter: blur(4px); */
+    z-index: 0;
   }
 `;
 

@@ -7,12 +7,17 @@ const HeaderContainer = styled.header`
   width: 100%;
   height: 90px;
   background-color: transparent;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: ${({ $scrolled }) =>
+    $scrolled ? "saturate(120%) blur(14px)" : "none"};
+  -webkit-backdrop-filter: ${({ $scrolled }) =>
+    $scrolled ? "saturate(120%) blur(14px)" : "none"};
+  box-shadow: ${({ $scrolled }) =>
+    $scrolled ? "0 1px 8px rgba(0,0,0,0.08)" : "none"};
+  transition: background-color 220ms ease, backdrop-filter 220ms ease,
+    box-shadow 220ms ease;
   z-index: 999;
   display: flex;
   align-items: center;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
   @media (max-width: 450px) {
     justify-content: center;
   }
@@ -79,8 +84,8 @@ const NavItem = styled.button`
   border: none;
   font-size: 1rem;
   font-weight: ${({ $active }) => ($active ? "700" : "400")};
-  color: ${({ $active }) => ($active ? "#FF73B9" : "	#858585")};
-  border-bottom: ${({ $active }) => ($active ? `2px solid #FF73B9` : "none")};
+  color: ${({ $active }) => ($active ? "#ff2d95" : "	#858585")};
+  border-bottom: ${({ $active }) => ($active ? `2px solid #ff2d95` : "none")};
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
@@ -102,11 +107,11 @@ const LangButtonWrapper = styled.div`
 
 const LangText = styled.span`
   cursor: pointer;
-  color: ${({ $active }) => ($active ? "#FF73B9" : "#858585")};
+  color: ${({ $active }) => ($active ? "#ff2d95" : "#858585")};
   transition: color 0.5s ease;
 
   &:hover {
-    color: #ff73b9;
+    color: #ff2d95;
   }
 `;
 
@@ -116,6 +121,7 @@ const Divider = styled.span`
 
 const Header = ({ currentSection, sectionRefs, lang, setLang }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
+  const [scrolled, setScrolled] = useState(window.scrollY > 0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -124,13 +130,19 @@ const Header = ({ currentSection, sectionRefs, lang, setLang }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 0); // 0보다 크면 즉시 ON
+    onScroll(); // 첫 렌더에서도 반영
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const scrollToSection = (id) => {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <HeaderContainer>
+    <HeaderContainer $scrolled={scrolled}>
       <Logo onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
         <LogoImage $isMobile={isMobile} />
       </Logo>
@@ -151,7 +163,7 @@ const Header = ({ currentSection, sectionRefs, lang, setLang }) => {
           onClick={() => scrollToSection("sample")}
           $active={currentSection === "sample"}
         >
-          {lang === "ko" ? "샘플" : "Sample"}
+          {lang === "ko" ? "상품" : "Item"}
         </NavItem>
         <NavItem
           onClick={() => scrollToSection("info")}
