@@ -9,7 +9,6 @@ const Section = styled.section`
   overflow: hidden;
   text-align: center;
   color: white;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,10 +17,10 @@ const Section = styled.section`
 
 const Background = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100vh + 20px);
   background: url(${HeroImage}) no-repeat center center/cover;
   filter: blur(4px) grayscale(100%);
   z-index: 0;
