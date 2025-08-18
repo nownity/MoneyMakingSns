@@ -13,9 +13,7 @@ const Section = styled.section`
   text-align: center;
   color: white;
 
-  @media (min-width: 768px) {
-    background-attachment: fixed;
-  }
+  background-attachment: fixed;
 
   &::before {
     content: "";
