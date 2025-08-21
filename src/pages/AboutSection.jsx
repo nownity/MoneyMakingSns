@@ -52,7 +52,7 @@ const MoodImage = styled.div`
   background-image: url(${(props) => props.src});
   background-size: cover;
   background-position: center;
-  filter: grayscale(0.5) brightness(0.5) contrast(0.95);
+  filter: grayscale(0.3) brightness(0.5) contrast(0.95) blur(2px);
 
   &::before {
     content: "";

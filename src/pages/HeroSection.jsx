@@ -22,7 +22,7 @@ const Background = styled.div`
   width: calc(100% + 20px);
   height: calc(100vh + 20px);
   background: url(${HeroImage}) no-repeat center center/cover;
-  filter: blur(3px) grayscale(100%);
+  filter: blur(3px) grayscale(60%);
   z-index: 0;
   pointer-events: none;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
@@ -31,7 +31,7 @@ const Background = styled.div`
 const Overlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.65);
   z-index: 1;
 `;
 

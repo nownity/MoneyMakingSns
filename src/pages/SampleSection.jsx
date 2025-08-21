@@ -201,53 +201,173 @@ const SoftBox = styled.div`
   box-shadow: ${({ $invert }) => ($invert ? "none" : CARD_SHADOW)};
 `;
 
-/* 중략: 기존 import 및 상수 정의 생략 */
+/* ========================= */
+/* ===== 섹션 3 전용 UI ===== */
+/* ========================= */
 
-const UpgradeWrap = styled.div`
+/* 전체 래핑 (두 칼럼) */
+const TrackWrap = styled.div`
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 16px;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 28px;
+  margin-top: 10px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 980px) {
     grid-template-columns: 1fr;
-    gap: 24px;
   }
 `;
 
-const UpgradeArrow = styled.div`
-  text-align: center;
-  font-size: 1rem;
-  color: ${PINK};
-  font-weight: bold;
-
-  @media (min-width: 769px) {
-    font-size: 1.5rem;
-    grid-column: 2;
-    grid-row: 1;
-    align-self: center;
-    justify-self: center;
-    transform: translateY(-50%);
-  }
-`;
-
-const ImageBox = styled.div`
-  width: 100%;
-  min-height: 300px;
-  border-radius: 16px;
-  background: ${({ $invert, $src }) =>
-    $src
-      ? `url(${$src}) center/cover no-repeat`
-      : $invert
-      ? "rgba(255,255,255,0.06)"
-      : GRAY_BG};
+/* 좌측: 텍스트 카드 스택 */
+const Stack = styled.div`
   display: grid;
-  place-items: center;
-  font-weight: 800;
-  color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.7)" : TEXT_MUTED)};
-  box-shadow: ${({ $invert }) => ($invert ? "none" : CARD_SHADOW)};
-  overflow: hidden; /* 모서리 깔끔하게 */
+  gap: 18px;
 `;
+
+/* 공통 카드 강화: 더 촘촘한 라인, 라운드, 내부 그레인 */
+const SolidCard = styled(SoftBox)`
+  position: relative;
+  overflow: hidden;
+  padding: 22px 20px;
+
+  /* 미세한 그레인은 유지 */
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/grain.png");
+    background-repeat: repeat;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ⬇️ -webkit-mask 없이 그라디언트 보더 만들어주기 */
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background:
+    /* 내부 채움 (다크 톤 유지) */ linear-gradient(
+        ${({ $invert }) => ($invert ? "rgba(255,255,255,0.06)" : "#fff")},
+        ${({ $invert }) => ($invert ? "rgba(255,255,255,0.06)" : "#fff")}
+      )
+      padding-box,
+    /* 테두리 그라디언트 */
+      linear-gradient(
+        180deg,
+        rgba(255, 45, 149, 0.18),
+        rgba(255, 255, 255, 0.06)
+      )
+      border-box;
+
+  /* 내용물 위로 덮이지 않게 */
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+`;
+
+/* 우측: 피쳐 이미지 쇼케이스 */
+const FeatureShowcase = styled.div`
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: 360px;
+  background: url(${({ $src }) => $src}) center/cover no-repeat;
+
+  /* 전체 톤 통일용 필터 스택 */
+  filter: grayscale(0.15) brightness(0.9) contrast(0.98);
+
+  &:before {
+    /* 블러 + 그레인 + 살짝 어두운 무드 */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(12, 12, 12, 0.25) 0%,
+        rgba(12, 12, 12, 0.6) 100%
+      ),
+      radial-gradient(
+        120% 80% at 10% 0%,
+        rgba(255, 45, 149, 0.08) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        120% 80% at 90% 100%,
+        rgba(255, 45, 149, 0.06) 0%,
+        transparent 60%
+      );
+    z-index: 1;
+  }
+
+  &:after {
+    /* 매우 은은한 그레인 텍스처 */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/grain.png");
+    background-repeat: repeat;
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+    z-index: 2;
+  }
+`;
+
+/* 우측 상단 리본 배지 */
+const Ribbon = styled.div`
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 45, 149, 0.18);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+`;
+
+/* 우측 하단 캡션 박스 */
+const Caption = styled.div`
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 3;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(12, 12, 12, 0.6);
+  color: #f1f5f9;
+  font-size: 0.86rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+`;
+
+/* 하단 하이라이트 바 */
+const HighlightBar = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+`;
+
+const HighlightChip = styled.span`
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+`;
+
+/* ========================= */
 
 const HeroSplit = styled.div`
   display: grid;
@@ -297,6 +417,52 @@ const ExchangeIcon = styled(HiArrowPath)`
     justify-self: center;
     transform: translateY(-50%) rotate(90deg); /* 가로 방향 */
     margin: 0;
+  }
+`;
+
+const ImageBox = styled.div`
+  width: 100%;
+  min-height: 300px;
+  border-radius: 16px;
+  background: ${({ $invert, $src }) =>
+    $src
+      ? `url(${$src}) center/cover no-repeat`
+      : $invert
+      ? "rgba(255,255,255,0.06)"
+      : GRAY_BG};
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.7)" : TEXT_MUTED)};
+  box-shadow: ${({ $invert }) => ($invert ? "none" : CARD_SHADOW)};
+  overflow: hidden; /* 모서리 깔끔하게 */
+`;
+
+const UpgradeWrap = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+`;
+
+const UpgradeArrow = styled.div`
+  text-align: center;
+  font-size: 1rem;
+  color: ${PINK};
+  font-weight: bold;
+
+  @media (min-width: 769px) {
+    font-size: 1.5rem;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: center;
+    transform: translateY(-50%);
   }
 `;
 
@@ -510,21 +676,23 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
         </Container>
       </Section>
 
-      {/* 3. 추진 실적 (네이비) */}
+      {/* 3. 추진 실적 (네이비) — ★리디자인★ */}
       <Section $invert>
         <Container $invert>
           <H1 $invert>
             {lang === "ko" ? <span>추진 실적</span> : <span>Track Record</span>}
           </H1>
-          <Grid2>
-            <div>
-              <SoftBox $invert>
+
+          <TrackWrap>
+            {/* 좌측: 텍스트 카드 스택 */}
+            <Stack>
+              <SolidCard $invert>
                 <Sub>
                   {lang === "ko"
                     ? "We Chat Pay 한국 파트너사 등록 완료"
                     : "Registered WeChat Pay partner in Korea"}
                 </Sub>
-                <P>
+                <P $invert style={{ marginTop: 8 }}>
                   {lang === "ko" ? (
                     <>
                       부산 커뮤니티 제휴처에 위챗페이 도입
@@ -539,26 +707,49 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                     </>
                   )}
                 </P>
-              </SoftBox>
+                <HighlightBar>
+                  <HighlightChip>#결제편의</HighlightChip>
+                  <HighlightChip>#외국인친화</HighlightChip>
+                  <HighlightChip>#커뮤니티연계</HighlightChip>
+                </HighlightBar>
+              </SolidCard>
 
-              <div style={{ height: 16 }} />
-
-              <SoftBox $invert>
+              <SolidCard $invert>
                 <Sub>
                   {lang === "ko"
                     ? "행사 진행 협찬사 네트워크 확보"
                     : "Growing sponsor network for events"}
                 </Sub>
-                <P>
+                <P $invert style={{ marginTop: 8 }}>
                   {lang === "ko"
                     ? "→ 주류/행사 물품 협찬 파트너 지속 확장 중"
                     : "→ Continuously expanding beverage and event-goods sponsors"}
                 </P>
-              </SoftBox>
-            </div>
+                <HighlightBar>
+                  <HighlightChip>#브랜딩</HighlightChip>
+                  <HighlightChip>#온오프라인행사</HighlightChip>
+                  <HighlightChip>#상생</HighlightChip>
+                </HighlightBar>
+              </SolidCard>
+            </Stack>
 
-            <ImageBox $invert $src={wechat} />
-          </Grid2>
+            {/* 우측: 피쳐 이미지 쇼케이스 */}
+            <div>
+              <FeatureShowcase
+                $src={wechat}
+                aria-label="WeChat Pay 파트너 쇼케이스"
+              >
+                <Ribbon>
+                  {lang === "ko" ? "WeChat Pay Partner" : "WeChat Pay Partner"}
+                </Ribbon>
+                <Caption>
+                  {lang === "ko"
+                    ? "커뮤니티 제휴처 내 결제 경험 고도화"
+                    : "Elevated payment experience at partner venues"}
+                </Caption>
+              </FeatureShowcase>
+            </div>
+          </TrackWrap>
         </Container>
       </Section>
 
@@ -728,6 +919,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
           </Grid3>
         </Container>
       </Section>
+
       {/* 5.5. 커뮤니티 연결 & 할인 정보 섹션 (화이트) */}
       <Section $invert>
         <Container $invert>
@@ -883,8 +1075,13 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
 
             <UpgradeArrow>
               {/* 반응형 화살표 아이콘 */}
-              {window.innerWidth > 768 ? <FaArrowRight /> : <FaArrowDown />}
+              {typeof window !== "undefined" && window.innerWidth > 768 ? (
+                <FaArrowRight />
+              ) : (
+                <FaArrowDown />
+              )}
             </UpgradeArrow>
+
             <SoftBox $invert>
               <Sub>
                 {lang === "ko"
