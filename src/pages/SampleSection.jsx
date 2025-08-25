@@ -34,7 +34,7 @@ const Container = styled.div`
   min-height: ${({ $invert }) => ($invert ? "75vh" : "92vh")};
   display: grid;
   align-content: ${({ $top }) => ($top ? "start" : "center")};
-  gap: 28px;
+  gap: 20px;
   padding: 96px 20px;
 
   @media (max-width: 768px) {
@@ -59,7 +59,7 @@ const H1 = styled.h2`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
 `;
 
@@ -89,17 +89,6 @@ const P = styled.p`
   }
 `;
 
-const ColLeft = styled.div`
-  display: grid;
-  grid-template-rows: auto 1fr auto 1fr;
-  height: 100%;
-  align-items: start;
-  @media (max-width: 980px) {
-    grid-template-rows: auto auto auto;
-    height: auto;
-  }
-`;
-
 const ButtonCenter = styled.div`
   display: flex;
   justify-content: center;
@@ -123,18 +112,8 @@ const Button = styled.button`
   }
 
   @media (max-width: 980px) {
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: 0.9rem;
-  }
-`;
-
-const Grid2 = styled.div`
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 40px;
-
-  @media (max-width: 980px) {
-    grid-template-columns: 1fr;
   }
 `;
 
@@ -223,13 +202,12 @@ const Stack = styled.div`
   gap: 18px;
 `;
 
-/* 공통 카드 강화: 더 촘촘한 라인, 라운드, 내부 그레인 */
+/* 공통 카드 강화 */
 const SolidCard = styled(SoftBox)`
   position: relative;
   overflow: hidden;
   padding: 22px 20px;
 
-  /* 미세한 그레인은 유지 */
   &:before {
     content: "";
     position: absolute;
@@ -241,24 +219,20 @@ const SolidCard = styled(SoftBox)`
     z-index: 0;
   }
 
-  /* ⬇️ -webkit-mask 없이 그라디언트 보더 만들어주기 */
   border: 1px solid transparent;
   border-radius: 18px;
-  background:
-    /* 내부 채움 (다크 톤 유지) */ linear-gradient(
+  background: linear-gradient(
         ${({ $invert }) => ($invert ? "rgba(255,255,255,0.06)" : "#fff")},
         ${({ $invert }) => ($invert ? "rgba(255,255,255,0.06)" : "#fff")}
       )
       padding-box,
-    /* 테두리 그라디언트 */
-      linear-gradient(
+    linear-gradient(
         180deg,
-        rgba(255, 45, 149, 0.18),
+        rgba(223, 197, 210, 0.18),
         rgba(255, 255, 255, 0.06)
       )
       border-box;
 
-  /* 내용물 위로 덮이지 않게 */
   > * {
     position: relative;
     z-index: 1;
@@ -272,12 +246,9 @@ const FeatureShowcase = styled.div`
   overflow: hidden;
   min-height: 360px;
   background: url(${({ $src }) => $src}) center/cover no-repeat;
-
-  /* 전체 톤 통일용 필터 스택 */
   filter: grayscale(0.15) brightness(0.9) contrast(0.98);
 
   &:before {
-    /* 블러 + 그레인 + 살짝 어두운 무드 */
     content: "";
     position: absolute;
     inset: 0;
@@ -300,7 +271,6 @@ const FeatureShowcase = styled.div`
   }
 
   &:after {
-    /* 매우 은은한 그레인 텍스처 */
     content: "";
     position: absolute;
     inset: 0;
@@ -309,6 +279,12 @@ const FeatureShowcase = styled.div`
     opacity: 0.08;
     mix-blend-mode: overlay;
     z-index: 2;
+  }
+  @media (max-width: 768px) {
+    min-height: 300px;
+  }
+  @media (max-width: 450px) {
+    min-height: 280px;
   }
 `;
 
@@ -368,14 +344,59 @@ const HighlightChip = styled.span`
 `;
 
 /* ========================= */
+/* ===== 섹션 4 전용 UI ==== */
+/* ========================= */
+
+const MOUWrap = styled.div`
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 28px;
+  margin-top: 12px;
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const MOUStack = styled(Stack)`
+  gap: 16px;
+`;
+
+const MOUCard = styled(SolidCard)`
+  padding: 20px 18px;
+  border-radius: 16px;
+`;
+
+const StatRow = styled.div`
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+`;
+
+const StatPill = styled.span`
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+`;
+
+const MOUSubtle = styled.p`
+  margin: 6px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+`;
 
 const HeroSplit = styled.div`
   display: grid;
-  grid-template-columns: 1fr; /* 좌 텍스트/이미지 | 우 인사이트 */
+  grid-template-columns: 1fr;
   gap: 36px;
   align-items: center;
   @media (max-width: 980px) {
-    grid-template-columns: 1fr; /* 모바일 1열 */
+    grid-template-columns: 1fr;
     gap: 24px;
   }
 `;
@@ -415,7 +436,7 @@ const ExchangeIcon = styled(HiArrowPath)`
     grid-row: 1;
     align-self: center;
     justify-self: center;
-    transform: translateY(-50%) rotate(90deg); /* 가로 방향 */
+    transform: translateY(-50%) rotate(90deg);
     margin: 0;
   }
 `;
@@ -435,7 +456,7 @@ const ImageBox = styled.div`
   font-weight: 800;
   color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.7)" : TEXT_MUTED)};
   box-shadow: ${({ $invert }) => ($invert ? "none" : CARD_SHADOW)};
-  overflow: hidden; /* 모서리 깔끔하게 */
+  overflow: hidden;
 `;
 
 const UpgradeWrap = styled.div`
@@ -473,7 +494,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
 
   return (
     <Page>
-      {/* 1. 왜 필요한가요 (가독성 강화된 디자인) */}
+      {/* 1. 왜 필요한가요 */}
       <Section $invert>
         <Container $invert $top>
           <H1 style={{ textAlign: "center" }}>
@@ -576,6 +597,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
         </Container>
       </Section>
 
+      {/* 2. 해결 방법 */}
       <Section $invert>
         <Container $invert>
           <H1>
@@ -598,7 +620,6 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               marginTop: "40px",
             }}
           >
-            {/* 항목 01 */}
             <div>
               <NumberDot style={{ margin: "0 auto" }}>01</NumberDot>
               <div style={{ height: 12 }} />
@@ -623,7 +644,6 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </P>
             </div>
 
-            {/* 항목 02 */}
             <div>
               <NumberDot style={{ margin: "0 auto" }}>02</NumberDot>
               <div style={{ height: 12 }} />
@@ -648,7 +668,6 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </P>
             </div>
 
-            {/* 항목 03 */}
             <div>
               <NumberDot style={{ margin: "0 auto" }}>03</NumberDot>
               <div style={{ height: 12 }} />
@@ -676,7 +695,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
         </Container>
       </Section>
 
-      {/* 3. 추진 실적 (네이비) — ★리디자인★ */}
+      {/* 3. 추진 실적 */}
       <Section $invert>
         <Container $invert>
           <H1 $invert>
@@ -684,7 +703,6 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
           </H1>
 
           <TrackWrap>
-            {/* 좌측: 텍스트 카드 스택 */}
             <Stack>
               <SolidCard $invert>
                 <Sub>
@@ -733,7 +751,6 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </SolidCard>
             </Stack>
 
-            {/* 우측: 피쳐 이미지 쇼케이스 */}
             <div>
               <FeatureShowcase
                 $src={wechat}
@@ -753,7 +770,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
         </Container>
       </Section>
 
-      {/* 4. 대학/어학당 MOU & 상권 (화이트) */}
+      {/* 4. 대학/어학당 MOU & 상권 — ★리디자인★ */}
       <Section $invert>
         <Container $invert>
           <H1 $invert>
@@ -767,75 +784,85 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               </>
             )}
           </H1>
-          <P $invert>
-            {lang === "ko" ? (
-              <>
-                건국대학교 한국어학당 협약 완료
-                <br className="mobile-br" />외 서울, 부산 각 대학 어학당 30개
-                협약 진행중
-              </>
-            ) : (
-              <>
-                MOU completed with Konkuk University Korean Language Institute,
-                plus 30 other university language institutes in Seoul and Busan
-                in progress.
-              </>
-            )}
-          </P>
-          <Grid2 style={{ marginTop: 24 }}>
-            <ColLeft>
-              <div>
-                <Sub $invert>
-                  {lang === "ko"
-                    ? "부산 내 한국어 교육센터 및 소상공인 협약 진행"
-                    : "MOUs with Busan K-language centers & SMBs"}
-                </Sub>
-                <P $invert>
-                  {lang === "ko" ? (
-                    <>
-                      광안리 상권 중심 업종(음식점·펜션·바 등) 미팅 완료
-                      <br className="mobile-br" />
-                      <b>→ 커뮤니티 티켓 구매 시 10% 할인</b> 협의 완료
-                    </>
-                  ) : (
-                    <>
-                      Meetings done across Gwangalli district (F&B, pensions,
-                      bars). <b>10% discount</b> on community ticket purchase
-                      agreed.
-                    </>
-                  )}
-                </P>
-              </div>
 
-              <div />
+          <MOUWrap>
+            {/* 좌측 카드 스택: 정보 밀도↑, 가독성↑ */}
+            <MOUStack>
+              <MOUCard $invert>
+                <Sub>
+                  {lang === "ko"
+                    ? "건국대학교 한국어학당 MOU 완료"
+                    : "MOU with Konkuk University KLI"}
+                </Sub>
+                <MOUSubtle>
+                  {lang === "ko"
+                    ? "정식 협약 체결 및 교류 프로그램 설계"
+                    : "Formal agreement and exchange program design"}
+                </MOUSubtle>
+                <StatRow>
+                  <StatPill>Language Institute</StatPill>
+                  <StatPill>Program Drafted</StatPill>
+                </StatRow>
+              </MOUCard>
+
+              <MOUCard $invert>
+                <Sub>
+                  {lang === "ko"
+                    ? "서울·부산 30개 어학당 협약 진행 중"
+                    : "30 language institutes in progress"}
+                </Sub>
+                <MOUSubtle>
+                  {lang === "ko"
+                    ? "도시별 파트너 확대 및 커뮤니티 연계"
+                    : "City-wide partner expansion & community linkage"}
+                </MOUSubtle>
+                <StatRow>
+                  <StatPill>Seoul</StatPill>
+                  <StatPill>Busan</StatPill>
+                  <StatPill>+30 Institutes</StatPill>
+                </StatRow>
+              </MOUCard>
+
+              <MOUCard $invert>
+                <Sub>
+                  {lang === "ko"
+                    ? "광안리 상권 제휴·할인 연동"
+                    : "Gwangalli district partner discounts"}
+                </Sub>
+                <MOUSubtle>
+                  {lang === "ko"
+                    ? "커뮤니티 티켓 연동 <b>10% 할인</b> 합의"
+                    : "Community ticket linked <b>10% off</b> agreed"}
+                </MOUSubtle>
+                <HighlightBar>
+                  <HighlightChip>#상권활성화</HighlightChip>
+                  <HighlightChip>#로컬브랜딩</HighlightChip>
+                </HighlightBar>
+              </MOUCard>
 
               <ButtonCenter>
-                <Button
-                  onClick={() => scrollToSection("info")}
-                  $active={currentSection === "info"}
-                >
-                  {lang === "ko" ? "매장 찾아보기" : "Learn More"}
+                <Button onClick={() => scrollToSection("info")}>
+                  {lang === "ko" ? "매장 찾아보기" : "Explore Partners"}
                 </Button>
               </ButtonCenter>
+            </MOUStack>
 
-              <div />
-            </ColLeft>
-            <SoftBox $invert>
-              <ImageBox
-                $src={sample1}
-                style={{ minHeight: 280, boxShadow: "none" }}
-                aria-label={
-                  lang === "ko"
-                    ? "구글 지도/상권 맵 캡처"
-                    : "Google Maps / district map capture"
-                }
-              />
-            </SoftBox>
-          </Grid2>
+            {/* 우측 쇼케이스: sample1 한 장만 사용, 톤 일치 */}
+            <FeatureShowcase $src={sample1} aria-label="MOU & 상권 쇼케이스">
+              <Ribbon>
+                {lang === "ko" ? "Seoul · Busan MOU" : "Seoul · Busan MOUs"}
+              </Ribbon>
+              <Caption>
+                {lang === "ko"
+                  ? "어학당 네트워크 × 로컬 상권 연동"
+                  : "Institute network × local commerce"}
+              </Caption>
+            </FeatureShowcase>
+          </MOUWrap>
         </Container>
       </Section>
 
-      {/* 5. 협업 시 기대효과 (네이비) */}
+      {/* 5. 협업 시 기대효과 */}
       <Section $invert>
         <Container $invert>
           <H1 $invert>
@@ -920,7 +947,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
         </Container>
       </Section>
 
-      {/* 5.5. 커뮤니티 연결 & 할인 정보 섹션 (화이트) */}
+      {/* 5.5. 커뮤니티 연결 & 할인 정보 섹션 */}
       <Section $invert>
         <Container $invert>
           <H1 $invert>
@@ -978,7 +1005,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
         </Container>
       </Section>
 
-      {/* 6. 수요기업 한정 혜택 (화이트) */}
+      {/* 6. 수요기업 한정 혜택 */}
       <Section $invert>
         <Container $invert>
           <H1 $invert>
@@ -1074,7 +1101,6 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
             </SoftBox>
 
             <UpgradeArrow>
-              {/* 반응형 화살표 아이콘 */}
               {typeof window !== "undefined" && window.innerWidth > 768 ? (
                 <FaArrowRight />
               ) : (
