@@ -74,7 +74,7 @@ const LogoBox = styled.div`
 const PartnersSection = styled.div`
   width: 100%;
   max-width: 1200px;
-  padding: 40px 20px 80px;
+  padding: 40px 30px 80px;
 `;
 
 const ControlsRow = styled.div`

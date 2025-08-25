@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import HeroImage from "../images/HeroBody.jpg";
+import useScrollFadeIn from "../hooks/useScrollFadIn";
 
 const Section = styled.section`
   width: 100%;
@@ -82,6 +83,9 @@ const Button = styled.button`
 `;
 
 const HeroSection = ({ currentSection, sectionRefs, lang }) => {
+  const fadeIn1 = useScrollFadeIn("up", 0.8, 0);
+  const fadeIn2 = useScrollFadeIn("up", 0.8, 0.5);
+  const fadeIn3 = useScrollFadeIn("up", 0.8, 0.5);
   const [visible, setVisible] = useState(true);
   const sectionRef = useRef(null);
 
@@ -105,7 +109,7 @@ const HeroSection = ({ currentSection, sectionRefs, lang }) => {
     <Section ref={sectionRef}>
       <Background $visible={visible} />
       <Overlay />
-      <Title>
+      <Title {...fadeIn1}>
         <span>LanguageExchangeKorea</span>
         <span>
           {lang === "ko"
@@ -113,10 +117,13 @@ const HeroSection = ({ currentSection, sectionRefs, lang }) => {
             : "Global Korean Local Life"}
         </span>
       </Title>
-      <SubTitle>"Enjoy Korea Like a Local, Connect Like a Pro"</SubTitle>
+      <SubTitle {...fadeIn2}>
+        "Enjoy Korea Like a Local, Connect Like a Pro"
+      </SubTitle>
       <Button
         onClick={() => scrollToSection("about")}
         $active={currentSection === "about"}
+        {...fadeIn3}
       >
         {lang === "ko" ? "알아보기" : "Learn More"}
       </Button>

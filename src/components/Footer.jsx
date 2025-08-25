@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const FooterWrapper = styled.footer`
-  background-color: #8d8d8d;
+  background-color: #0c0c0c;
   color: #ffffff;
   padding: 40px 20px 20px;
   font-size: 14px;

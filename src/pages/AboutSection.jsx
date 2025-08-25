@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image1 from "../images/mms1.jpg";
 import Image2 from "../images/mms2.jpg";
 import Image3 from "../images/mms3.jpg";
+import useScrollFadeIn from "../hooks/useScrollFadIn";
 
 const Section = styled.section`
   width: 100%;
@@ -124,6 +125,14 @@ const SubText = styled.p`
 `;
 
 const AboutConcept = ({ lang = "ko" }) => {
+  const fadeIn1 = useScrollFadeIn("up", 0.8, 0);
+  const fadeIn2 = useScrollFadeIn("up", 0.8, 0.5);
+  const fadeIn3 = useScrollFadeIn("up", 0.8, 0.5);
+  const fadeIn4 = useScrollFadeIn("up", 0.8, 0.5);
+  const fadeIn5 = useScrollFadeIn("up", 0.8, 0.5);
+  const fadeIn6 = useScrollFadeIn("up", 0.8, 0.5);
+  const fadeIn7 = useScrollFadeIn("up", 0.8, 0.5);
+
   const t =
     lang === "ko"
       ? {
@@ -149,11 +158,11 @@ const AboutConcept = ({ lang = "ko" }) => {
 
   return (
     <Section>
-      <PageTitle>{t.title}</PageTitle>
+      <PageTitle {...fadeIn1}>{t.title}</PageTitle>
       <GridWrapper>
         <Block>
-          <MoodImage src={Image1} />
-          <TextOverlay>
+          <MoodImage src={Image1} {...fadeIn2} />
+          <TextOverlay {...fadeIn3}>
             <StepTitle>First.</StepTitle>
             <MainText>Language · Culture · Local</MainText>
             <SubText>{t.s1}</SubText>
@@ -161,8 +170,8 @@ const AboutConcept = ({ lang = "ko" }) => {
         </Block>
 
         <Block>
-          <MoodImage src={Image2} />
-          <TextOverlay>
+          <MoodImage src={Image2} {...fadeIn4} />
+          <TextOverlay {...fadeIn5}>
             <StepTitle>Second.</StepTitle>
             <MainText>Platform Based Innovation</MainText>
             <SubText>{t.s2}</SubText>
@@ -170,8 +179,8 @@ const AboutConcept = ({ lang = "ko" }) => {
         </Block>
 
         <Block>
-          <MoodImage src={Image3} />
-          <TextOverlay>
+          <MoodImage src={Image3} {...fadeIn6} />
+          <TextOverlay {...fadeIn7}>
             <StepTitle>Third.</StepTitle>
             <MainText>Three Values Realized</MainText>
             <SubText>{t.s3}</SubText>
