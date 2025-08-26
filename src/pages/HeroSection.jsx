@@ -23,7 +23,7 @@ const Background = styled.div`
   width: calc(100% + 20px);
   height: calc(100vh + 20px);
   background: url(${HeroImage}) no-repeat center center/cover;
-  filter: blur(3px) grayscale(60%);
+  filter: blur(2px) grayscale(50%);
   z-index: 0;
   pointer-events: none;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
@@ -48,7 +48,7 @@ const Title = styled.h1`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
   }
 `;
 
@@ -62,6 +62,10 @@ const SubTitle = styled.p`
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
+`;
+
+const SubTitle2 = styled.p`
+  display: none;
 `;
 
 const Button = styled.button`
@@ -110,7 +114,7 @@ const HeroSection = ({ currentSection, sectionRefs, lang }) => {
       <Background $visible={visible} />
       <Overlay />
       <Title {...fadeIn1}>
-        <span>LanguageExchangeKorea</span>
+        <span>Language Exchange Korea</span>
         <span>
           {lang === "ko"
             ? "글로벌 한국 로컬 라이프"
@@ -120,6 +124,7 @@ const HeroSection = ({ currentSection, sectionRefs, lang }) => {
       <SubTitle {...fadeIn2}>
         "Enjoy Korea Like a Local, Connect Like a Pro"
       </SubTitle>
+      <SubTitle2>Language Exchange Korea</SubTitle2>
       <Button
         onClick={() => scrollToSection("about")}
         $active={currentSection === "about"}

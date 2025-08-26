@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { BsFillThreadsFill } from "react-icons/bs";
 
 const FooterWrapper = styled.footer`
   background-color: #0c0c0c;
@@ -126,14 +127,19 @@ const Footer = ({ currentSection, sectionRefs }) => {
         <FooterColumn>
           <h4>Follow Us</h4>
           <SocialIcons>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer">
-              <FaFacebookF />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.instagram.com/languageexchangekorea/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaInstagram />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer">
-              <FaYoutube />
+            <a
+              href="https://www.threads.com/@languageexchangekorea"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <BsFillThreadsFill />
             </a>
           </SocialIcons>
         </FooterColumn>

@@ -100,24 +100,34 @@
         "@graph": [
           {
             "@type": "Organization",
+            "@id": "https://languageexchangekorea.com/#org",
             "name": "Language Exchange Korea",
+            "alternateName": "랭귀지익스체인지코리아",
             "url": "https://languageexchangekorea.com/",
-            "logo": "https://languageexchangekorea.com/og-image.png",
-            "sameAs": [
-              "https://www.instagram.com/REPLACE",
-              "https://www.youtube.com/@REPLACE"
-            ]
+            "description": "외국인과 한국인이 한국어·영어를 교환하며 함께 성장하는 언어 교환 커뮤니티.",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://languageexchangekorea.com/og-image.png",
+              "width": 1200,
+              "height": 630
+            },
+            "sameAs": ["https://www.instagram.com/languageexchangekorea/"]
           },
           {
             "@type": "WebSite",
-            "name": "Language Exchange Korea",
+            "@id": "https://languageexchangekorea.com/#website",
             "url": "https://languageexchangekorea.com/",
+            "name": "Language Exchange Korea",
             "inLanguage": "ko-KR",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://languageexchangekorea.com/search?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
+            "publisher": { "@id": "https://languageexchangekorea.com/#org" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://languageexchangekorea.com/#webpage",
+            "url": "https://languageexchangekorea.com/",
+            "name": "Language Exchange Korea (랭귀지익스체인지코리아)",
+            "inLanguage": "ko-KR",
+            "description": "서울·부산 오프라인 및 온라인 언어 교환 프로그램을 운영하는 커뮤니티."
           }
         ]
       }

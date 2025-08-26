@@ -53,7 +53,7 @@ const MoodImage = styled.div`
   background-image: url(${(props) => props.src});
   background-size: cover;
   background-position: center;
-  filter: grayscale(0.3) brightness(0.5) contrast(0.95) blur(2px);
+  filter: grayscale(0.3) brightness(0.5) contrast(0.95) blur(1.5px);
 
   &::before {
     content: "";
@@ -94,7 +94,7 @@ const TextOverlay = styled.div`
 `;
 
 const StepTitle = styled.p`
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   color: #ff2d95;
   mix-blend-mode: normal;
@@ -106,10 +106,6 @@ const MainText = styled.h3`
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 8px;
-
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-  }
 `;
 
 const SubText = styled.p`
@@ -118,10 +114,6 @@ const SubText = styled.p`
   line-height: 1.5;
   margin: 0;
   white-space: pre-line;
-
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-  }
 `;
 
 const AboutConcept = ({ lang = "ko" }) => {

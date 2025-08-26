@@ -60,7 +60,7 @@ const H1 = styled.h2`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -75,7 +75,7 @@ const Sub = styled.h3`
   }
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 `;
 
@@ -86,7 +86,7 @@ const P = styled.p`
   white-space: pre-line;
 
   @media (max-width: 768px) {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -622,9 +622,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                 <P $invert>
                   {lang === "ko" ? (
                     <>
-                      외국인은 친구 만들기와 정착이 어렵고, 기존 영어
+                      외국인은 친구 만들기와 정착이 어렵고,
                       <br className="mobile-br" />
-                      교육은 실용성이 낮습니다.
+                      기존 영어 교육은 실용성이 낮습니다.
                     </>
                   ) : (
                     <>
@@ -660,9 +660,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                 <P $invert>
                   {lang === "ko" ? (
                     <>
-                      외국인 수요가 상권에 닿지 않아, 로컬 브랜딩이
+                      외국인 수요가 상권에 닿지 않아,
                       <br className="mobile-br" />
-                      필요합니다.
+                      로컬 브랜딩이 필요합니다.
                     </>
                   ) : (
                     <>
@@ -791,8 +791,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <SolidCard $invert {...fadeIn14}>
                 <Sub>
                   {lang === "ko"
-                    ? "We Chat Pay 한국 파트너사 등록 완료"
-                    : "Registered WeChat Pay partner in Korea"}
+                    ? "We Chat Pay 파트너사 등록 완료"
+                    : "Registered WeChat Pay partner"}
                 </Sub>
                 <P $invert style={{ marginTop: 8 }}>
                   {lang === "ko" ? (
@@ -877,7 +877,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
           <H1 $invert {...fadeIn17}>
             {lang === "ko" ? (
               <>
-                서울·부산 내 대학 및 어학당 <span>MOU</span>
+                서울·부산 대학 및 어학당 <span>MOU</span>
               </>
             ) : (
               <>
@@ -1082,8 +1082,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
             <LeadP $invert {...fadeIn28}>
               {lang === "ko" ? (
                 <>
-                  서울·부산에서 <b>로컬 친구 연결</b>과 <b>추천 장소·할인</b>을
-                  한곳에서
+                  서울·부산에서 <b>로컬 친구 연결</b>과
+                  <br className="mobile-br" />
+                  <b>추천 장소·할인</b>을 한곳에서
                   <br className="mobile-br" />
                   여행 계획은 더 간단하게, 커뮤니티 관계는 더 오래
                 </>
