@@ -47,6 +47,10 @@ const Title = styled.h1`
     display: block;
   }
 
+  @media (min-width: 1500px) {
+    font-size: 3rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 1.75rem;
   }
@@ -59,6 +63,9 @@ const SubTitle = styled.p`
   opacity: 0.9;
   color: #ff2d95;
 
+  @media (min-width: 1500px) {
+    font-size: 1.5rem;
+  }
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
@@ -83,6 +90,9 @@ const Button = styled.button`
   &:hover {
     color: #ff2d95;
     border-color: #ff2d95;
+  }
+  @media (min-width: 1500px) {
+    font-size: 1.2rem;
   }
 `;
 

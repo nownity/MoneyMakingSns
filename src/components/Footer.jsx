@@ -77,6 +77,9 @@ const CopyRight = styled.div`
   color: #ffffff;
   border-top: 1px solid #ddd;
   padding-top: 15px;
+  @media (min-width: 1500px) {
+    margin-top: 60px;
+  }
 `;
 
 const Footer = ({ currentSection, sectionRefs }) => {
@@ -94,16 +97,14 @@ const Footer = ({ currentSection, sectionRefs }) => {
           >
             랭귀지익스체인지코리아
           </FooterLogo>
-          <p>서울특별시 송파구 동남로 189, 26동 4층 406호</p>
+          <p>서울특별시 송파구 동남로 189, 4층 406호</p>
           <p>대표: 배윤신</p>
           <p>사업자등록번호: 895-02-03035</p>
           <p>Tel: 1668-3729</p>
-          {/* <p>Email: info@lekorea.com</p> */}
         </FooterColumn>
 
-        {/* 메뉴 링크 */}
         <FooterColumn>
-          <h4>Menu</h4>
+          <h3>Menu</h3>
           <FooterLink
             onClick={() => scrollToSection("about")}
             $active={currentSection === "about"}
@@ -125,7 +126,7 @@ const Footer = ({ currentSection, sectionRefs }) => {
         </FooterColumn>
 
         <FooterColumn>
-          <h4>Follow Us</h4>
+          <h3>Follow Us</h3>
           <SocialIcons>
             <a
               href="https://www.instagram.com/languageexchangekorea/"

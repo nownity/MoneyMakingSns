@@ -70,6 +70,9 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: space-around;
   gap: 20px;
+  @media (min-width: 1500px) {
+    width: 300px;
+  }
   @media (max-width: 900px) {
     position: static;
     left: auto;
@@ -94,6 +97,9 @@ const NavItem = styled.button`
     scale: 1.1;
     transition: all 0.1s ease-in-out;
   }
+  @media (min-width: 1500px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const LangButtonWrapper = styled.div`
@@ -113,6 +119,9 @@ const LangText = styled.span`
 
   &:hover {
     color: #ff2d95;
+  }
+  @media (min-width: 1500px) {
+    font-size: 1.1rem;
   }
 `;
 

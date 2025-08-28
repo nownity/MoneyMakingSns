@@ -29,6 +29,12 @@ const GlobalStyle = createGlobalStyle`
       display: inline;
     }
   }
+  .pc-br {
+    display: none;
+    @media (min-width: 1500px) {
+      display: inline;
+    }
+  }
 `;
 
 export default GlobalStyle;

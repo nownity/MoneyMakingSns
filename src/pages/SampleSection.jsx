@@ -38,6 +38,9 @@ const Container = styled.div`
   gap: 20px;
   padding: 96px 20px;
 
+  @media (min-width: 1500px) {
+    max-width: 1300px;
+  }
   @media (max-width: 768px) {
     min-height: 92vh;
     padding: 72px 34px;
@@ -59,6 +62,9 @@ const H1 = styled.h2`
     color: ${TEXT_DARK};
   }
 
+  @media (min-width: 1500px) {
+    font-size: 3rem;
+  }
   @media (max-width: 768px) {
     font-size: 1.6rem;
   }
@@ -117,6 +123,10 @@ const Sub = styled.h3`
     color: ${PINK};
   }
 
+  @media (min-width: 1500px) {
+    font-size: 2rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 1.1rem;
   }
@@ -130,6 +140,10 @@ const Sub2 = styled.h3`
 
   span {
     color: ${PINK};
+  }
+
+  @media (min-width: 1500px) {
+    font-size: 2rem;
   }
 
   @media (max-width: 768px) {
@@ -148,6 +162,9 @@ const Subchu = styled.h3`
     color: ${PINK};
   }
 
+  @media (min-width: 1500px) {
+    font-size: 1.6rem;
+  }
   @media (max-width: 768px) {
     font-size: 1.2rem;
     margin-bottom: 5px;
@@ -163,6 +180,9 @@ const P = styled.p`
   line-height: 1.75;
   white-space: pre-line;
 
+  @media (min-width: 1500px) {
+    font-size: 1.25rem;
+  }
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -180,11 +200,34 @@ const P2 = styled.p`
   line-height: 1.75;
   white-space: pre-line;
 
+  @media (min-width: 1500px) {
+    font-size: 1.2rem;
+  }
   @media (max-width: 768px) {
     font-size: 1.03rem;
   }
   @media (max-width: 400px) {
     font-size: 1rem;
+  }
+`;
+
+const P3 = styled.p`
+  font-size: 1.06rem;
+  color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.85)" : TEXT_MUTED)};
+  line-height: 1.75;
+  white-space: pre-line;
+
+  @media (min-width: 1500px) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 389px) {
+    font-size: 0.95rem;
+  }
+  @media (max-width: 375px) {
+    font-size: 0.9rem;
   }
 `;
 
@@ -194,6 +237,10 @@ const Paragraph = styled.p`
   line-height: 1.75;
   white-space: pre-line;
 
+  @media (min-width: 1500px) {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
   @media (max-width: 768px) {
     font-size: 1.03rem;
   }
@@ -277,6 +324,9 @@ const CenterDot = styled(NumberDot)`
   align-items: center;
   margin-left: auto; /* 자기 자신을 중앙 배치 */
   margin-right: auto;
+  @media (min-width: 1500px) {
+    font-size: 1.5rem;
+  }
 `;
 
 /* ===== 카드/박스 ===== */
@@ -493,6 +543,9 @@ const MOUSubtle = styled.p`
   font-size: 0.95rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
+  @media (min-width: 1500px) {
+    font-size: 1.3rem;
+  }
 `;
 
 /* ========================= */
@@ -569,6 +622,10 @@ const UpgradeWrap = styled.div`
   align-items: center;
   gap: 16px;
 
+  @media (min-width: 1500px) {
+    margin-top: 50px;
+    gap: 50px;
+  }
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -577,7 +634,7 @@ const UpgradeWrap = styled.div`
 
 const UpgradeArrow = styled.div`
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: ${PINK};
   font-weight: bold;
 
@@ -599,11 +656,8 @@ const CenterWrap = styled.div`
 
 const LeadP = styled(P)`
   text-align: center;
-  max-width: 860px;
+  max-width: 900px;
   margin: 0 auto;
-  line-height: 1.9;
-  letter-spacing: -0.01em;
-  opacity: 0.95;
   margin-top: 10px;
 
   /* 긴 문장 줄바꿈 보정 */
@@ -620,44 +674,54 @@ const LeadP = styled(P)`
   }
 `;
 
+const List = styled.ul`
+  margin: 10px 0 0 18px;
+  font-size: 1rem;
+  line-height: 1.6;
+
+  @media (min-width: 1500px) {
+    font-size: 1.2rem;
+  }
+`;
+
 const SampleSection = ({ currentSection, sectionRefs, lang }) => {
-  const fadeIn1 = useScrollFadeIn("up", 0.8, 0);
-  const fadeIn2 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn3 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn4 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn5 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn6 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn7 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn8 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn9 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn10 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn11 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn12 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn13 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn14 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn15 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn16 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn17 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn18 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn19 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn20 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn21 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn22 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn23 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn24 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn25 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn26 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn27 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn28 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn29 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn30 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn31 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn32 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn33 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn34 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn35 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn36 = useScrollFadeIn("up", 0.8, 0.5);
-  const fadeIn37 = useScrollFadeIn("up", 0.8, 0.5);
+  const fadeIn1 = useScrollFadeIn("down", 0.8, 0);
+  const fadeIn2 = useScrollFadeIn("down", 0.8, 0.5);
+  const fadeIn3 = useScrollFadeIn("down", 0.8, 0.5);
+  const fadeIn4 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn5 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn6 = useScrollFadeIn("down", 0.5, 0.5);
+  const fadeIn7 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn8 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn9 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn10 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn11 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn12 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn13 = useScrollFadeIn("down", 0.5, 0.5);
+  const fadeIn14 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn15 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn16 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn17 = useScrollFadeIn("down", 0.5, 0.5);
+  const fadeIn18 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn19 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn20 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn21 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn22 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn23 = useScrollFadeIn("down", 0.5, 0.5);
+  const fadeIn24 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn25 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn26 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn27 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn28 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn29 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn30 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn31 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn32 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn33 = useScrollFadeIn("down", 0.5, 0.5);
+  const fadeIn34 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn35 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn36 = useScrollFadeIn("up", 0.5, 0.5);
+  const fadeIn37 = useScrollFadeIn("up", 0.5, 0.5);
 
   const scrollToSection = (id) => {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
@@ -689,7 +753,6 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               maxWidth: 820,
               margin: "0 auto",
               display: "grid",
-              gap: 12,
             }}
           >
             <P $invert {...fadeIn2}>
@@ -754,7 +817,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                     ? "성인 영어교육과 외국인의 정착 어려움"
                     : "Adult English education & adaptation challenges"}
                 </Sub>
-                <P $invert>
+                <P3 $invert>
                   {lang === "ko" ? (
                     <>
                       외국인은 친구 만들기와 정착이 어렵고,
@@ -767,7 +830,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                       education lacks practicality.
                     </>
                   )}
-                </P>
+                </P3>
               </SoftBox>
 
               <SoftBox $invert {...fadeIn5}>
@@ -792,7 +855,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                     ? "외국인 수요와 지역 상권 단절"
                     : "Disconnected foreign demand & local markets"}
                 </Sub>
-                <P $invert>
+                <P3 $invert>
                   {lang === "ko" ? (
                     <>
                       외국인 수요가 상권에 닿지 않아,
@@ -805,7 +868,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                       needed.
                     </>
                   )}
-                </P>
+                </P3>
               </SoftBox>
             </div>
           </div>
@@ -832,7 +895,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               display: "grid",
               gap: "75px",
               textAlign: "center",
-              marginTop: "40px",
+              marginTop: "50px",
             }}
           >
             <div style={{ textAlign: "center" }}>
@@ -937,8 +1000,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   {lang === "ko" ? (
                     <>
                       부산 커뮤니티 제휴처에 위챗페이 도입
-                      <br className="mobile-br" /> → 외국인에게{" "}
-                      <b>편리한 결제 환경</b> 제공
+                      <br /> → 외국인에게 <b>편리한 결제 환경</b> 제공
                     </>
                   ) : (
                     <>
@@ -1141,9 +1203,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <P2>
                 {lang === "ko" ? (
                   <>
-                    체험 기반으로 제품을 직접 노출,
-                    <br className="mobile-br" />
-                    해외 진출 없이도
+                    체험 기반으로 제품을 직접 노출, <br className="mobile-br" />
+                    해외 진출 없이도 <br className="pc-br" />
                     <b>글로벌 반응</b> 확보
                   </>
                 ) : (
@@ -1221,10 +1282,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
             <LeadP $invert {...fadeIn28}>
               {lang === "ko" ? (
                 <>
-                  서울·부산에서 <b>로컬 친구 연결</b>과
+                  서울·부산에서 <b>로컬 친구 연결</b>과{" "}
                   <br className="mobile-br" />
-                  <b>추천 장소·할인</b>을 한곳에서
-                  <br className="mobile-br" />
+                  <b>추천 장소·할인</b>을 한곳에서! <br />
                   여행 계획은 더 간단하게, 커뮤니티
                   <br className="mobile-br" />
                   관계는 더 오래!
@@ -1328,10 +1388,9 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
 
       {/* 6. 수요기업 한정 혜택 */}
       <Section $invert>
-        <Container $invert>
+        <Container $invert {...fadeIn33}>
           <H1
             $invert
-            {...fadeIn33}
             style={{
               textAlign: "center",
             }}
@@ -1372,7 +1431,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <Sub2>
                 {lang === "ko" ? "기존 마케팅 상품" : "Standard package"}
               </Sub2>
-              <ul style={{ margin: "10px 0 0 18px", fontSize: "0.8rem" }}>
+              <List>
                 <li>
                   {lang === "ko" ? (
                     <>
@@ -1431,12 +1490,12 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                     ? "매출 발생 보장(미발생 시 전액 환불)"
                     : "Revenue guarantee (full refund if none)"}
                 </li>
-              </ul>
+              </List>
             </SoftBox>
 
             <UpgradeArrow {...fadeIn36}>
               {typeof window !== "undefined" && window.innerWidth > 768 ? (
-                <FaArrowRight />
+                <FaArrowRight style={{ fontSize: "2rem" }} />
               ) : (
                 <FaArrowDown />
               )}
@@ -1448,7 +1507,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   ? "참여/선정 시 적용 상품"
                   : "If selected: upgraded package"}
               </Sub2>
-              <ul style={{ margin: "10px 0 0 18px", fontSize: "0.8rem" }}>
+              <List>
                 <li>
                   {lang === "ko" ? (
                     <>
@@ -1503,7 +1562,7 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                     ? "매출 발생 보장(미발생 시 전액 환불)"
                     : "Revenue guarantee (full refund if none)"}
                 </li>
-              </ul>
+              </List>
             </SoftBox>
           </UpgradeWrap>
         </Container>

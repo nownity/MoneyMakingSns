@@ -12,6 +12,9 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 150px 20px 160px;
 
+  @media (min-width: 1500px) {
+    max-width: 1300px;
+  }
   @media (max-width: 768px) {
     padding: 64px 30px 72px;
   }
@@ -19,7 +22,7 @@ const Container = styled.div`
 
 const Heading = styled.h2`
   margin: 0 0 14px;
-  font-size: 2.4rem;
+  font-size: 3rem;
   font-weight: 900;
   letter-spacing: -0.4px;
   color: #ffffff;
@@ -43,6 +46,9 @@ const Subtitle = styled.p`
   font-size: 1.02rem;
   line-height: 1.6;
   text-align: center;
+  @media (min-width: 1500px) {
+    font-size: 1.3rem;
+  }
   @media (max-width: 550px) {
     font-size: 0.8rem;
   }
@@ -53,6 +59,9 @@ const CardGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 
+  @media (min-width: 1500px) {
+    gap: 40px;
+  }
   @media (max-width: 760px) {
     grid-template-columns: 1fr;
     gap: 25px;
@@ -110,6 +119,9 @@ const Title = styled.h3`
   font-weight: 800;
   color: #fafafa;
   letter-spacing: -0.1px;
+  @media (min-width: 1500px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const Desc = styled.p`
@@ -121,6 +133,9 @@ const Desc = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
 
+  @media (min-width: 1500px) {
+    font-size: 1.2rem;
+  }
   @media (max-width: 560px) {
     white-space: normal;
   }

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 /* ========= 롤링 애니메이션 ========= */
@@ -28,6 +28,9 @@ const Heading = styled.h2`
   span {
     color: #ff2d95;
   }
+  @media (min-width: 1500px) {
+    font-size: 3rem;
+  }
 `;
 
 const Subtitle = styled.h2`
@@ -36,6 +39,9 @@ const Subtitle = styled.h2`
   align-items: center;
   justify-content: center;
   color: #a9a9a9;
+  @media (min-width: 1500px) {
+    font-size: 1.5rem;
+  }
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -76,6 +82,9 @@ const PartnersSection = styled.div`
   width: 100%;
   max-width: 1200px;
   padding: 40px 30px 80px;
+  @media (min-width: 1500px) {
+    max-width: 1300px;
+  }
 `;
 
 const ControlsRow = styled.div`
@@ -140,6 +149,9 @@ const CardTitle = styled.h3`
   margin: 0 0 6px;
   color: #ffffff;
   letter-spacing: 0.2px;
+  @media (min-width: 1500px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const CardAddress = styled.p`
@@ -151,6 +163,9 @@ const CardAddress = styled.p`
   display: -webkit-box;
   -webkit-line-clamp: 2; /* 최대 2줄 */
   -webkit-box-orient: vertical;
+  @media (min-width: 1500px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const Actions = styled.div`
@@ -237,13 +252,34 @@ const InfoSection = ({ lang }) => {
         url: "https://naver.me/GDLTxbzE",
         googleUrl: "https://maps.app.goo.gl/tiRS6ewEmN4oX9pZ8",
       },
+      {
+        name: "맡기고 광안점",
+        address: "부산 수영구 광안로 21 2층",
+        url: "https://naver.me/GbAfemCh",
+        googleUrl: "https://maps.app.goo.gl/2Ks7uVUvKv1t328AA",
+      },
     ],
     []
   );
 
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
-  const pageSize = 8;
+  const [pageSize, setPageSize] = useState(8);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setPageSize(4);
+      } else {
+        setPageSize(8);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -365,6 +401,7 @@ const InfoSection = ({ lang }) => {
             "선릉마실길",
             "유아뷰티풀",
             "MoneyMakingSns",
+            "맡기고",
           ]
             .concat([
               "NOWMAKES",
@@ -373,6 +410,7 @@ const InfoSection = ({ lang }) => {
               "선릉마실길",
               "유아뷰티풀",
               "MoneyMakingSns",
+              "맡기고",
             ])
             .map((logo, idx) => (
               <LogoBox key={idx}>{logo}</LogoBox>

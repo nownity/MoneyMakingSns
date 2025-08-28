@@ -23,6 +23,10 @@ const PageTitle = styled.h2`
     color: #ff2d95;
   }
 
+  @media (min-width: 1500px) {
+    font-size: 3rem;
+  }
+
   @media (max-width: 768px) {
     font-size: 2rem;
     margin-top: 70px;
@@ -42,6 +46,9 @@ const Block = styled.div`
   flex-direction: column;
   align-items: center;
   width: 400px;
+  @media (min-width: 1500px) {
+    width: 470px;
+  }
 `;
 
 const MoodImage = styled.div`
@@ -99,6 +106,9 @@ const StepTitle = styled.p`
   color: #ff2d95;
   mix-blend-mode: normal;
   margin-bottom: 4px;
+  @media (min-width: 1500px) {
+    font-size: 1.6rem;
+  }
 `;
 
 const MainText = styled.h3`
@@ -106,6 +116,9 @@ const MainText = styled.h3`
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 8px;
+  @media (min-width: 1500px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const SubText = styled.p`
@@ -117,10 +130,11 @@ const SubText = styled.p`
     display: none;
   }
 
-  @media (max-width: 450px) {
+  @media (min-width: 1500px) {
     br.mobile-br {
       display: inline;
     }
+    font-size: 1.3rem;
   }
 `;
 
