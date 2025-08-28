@@ -23,6 +23,7 @@ const Heading = styled.h2`
   font-weight: 900;
   letter-spacing: -0.4px;
   color: #ffffff;
+  text-align: center;
 
   span {
     color: ${({ $accent }) => $accent || "#ff2d95"};
@@ -41,8 +42,9 @@ const Subtitle = styled.p`
   color: #d4af37;
   font-size: 1.02rem;
   line-height: 1.6;
+  text-align: center;
   @media (max-width: 550px) {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -172,9 +174,19 @@ const ContentsSection = ({ bg, accent, lang }) => {
           )}
         </Heading>
         <Subtitle>
-          {lang === "ko"
-            ? "외국인·한국인 언어교환 소셜파티 참가 신청. 아래 신청서를 선택하세요."
-            : "Apply to join our Language Exchange Social Party. Choose a form below."}
+          {lang === "ko" ? (
+            <>
+              외국인·한국인 언어교환 소셜파티 참가 신청, 아래 신청서를
+              <br className="mobile-br" />
+              선택하세요.
+            </>
+          ) : (
+            <>
+              Apply to join our Language Exchange Social Party,
+              <br className="mobile-br" />
+              Choose a form below.
+            </>
+          )}
         </Subtitle>
 
         <CardGrid>
