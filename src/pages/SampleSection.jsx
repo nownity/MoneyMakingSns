@@ -444,7 +444,7 @@ const HighlightChip = styled.span`
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.86);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   letter-spacing: 0.01em;
 `;
 
@@ -484,13 +484,13 @@ const StatPill = styled.span`
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.06);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.9);
 `;
 
 const MOUSubtle = styled.p`
   margin: 6px 0 0;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
 `;

@@ -138,7 +138,7 @@ const AboutConcept = ({ lang = "ko" }) => {
       ? {
           title: (
             <>
-              About <span>us</span>
+              ABOUT <span>US</span>
             </>
           ),
           s1: (
