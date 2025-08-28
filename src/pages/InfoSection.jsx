@@ -59,15 +59,16 @@ const Slider = styled.div`
 const LogoBox = styled.div`
   flex: 0 0 auto;
   width: 220px;
-  height: 120px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 30px;
-  background: #fff;
-  border-radius: 12px;
+  background: #b4b4b4;
+  border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  font-weight: 700;
+  font-weight: 900;
+  font-size: 1.2rem;
 `;
 
 /* ====== 파트너 리스트 영역 ====== */
@@ -216,21 +217,25 @@ const InfoSection = ({ lang }) => {
         name: "양산도 광안점",
         address: "부산 수영구 광안로 21 1층",
         url: "https://naver.me/FN7Zl5fo",
+        googleUrl: "https://maps.app.goo.gl/Z9wXzidm3F5262zo9",
       },
       {
         name: "광안리해담",
         address: "부산 수영구 광안해변로344번길 17-5 9층 901호",
         url: "https://naver.me/GMPEcbgg",
+        googleUrl: "https://maps.app.goo.gl/bmsCYTyX1zCn4ZwE8",
       },
       {
         name: "선릉마실길",
         address: "서울 강남구 선릉로 530 삼정빌딩 1층",
         url: "https://naver.me/xzxUzCPj",
+        googleUrl: "https://maps.app.goo.gl/55Azg72D4ujYKNUz7",
       },
       {
         name: "유아뷰티풀네일",
         address: "서울 송파구 동남로 189 쌍용프라자 4층",
         url: "https://naver.me/GDLTxbzE",
+        googleUrl: "https://maps.app.goo.gl/tiRS6ewEmN4oX9pZ8",
       },
     ],
     []
@@ -294,11 +299,18 @@ const InfoSection = ({ lang }) => {
               <CardAddress>{p.address}</CardAddress>
               <Actions>
                 <GoButton
+                  href={p.googleUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {lang === "ko" ? "구글 맵" : "to Google"}
+                </GoButton>
+                <GoButton
                   href={p.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {lang === "ko" ? "이동" : "GO"}
+                  {lang === "ko" ? "네이버 지도" : "to Naver"}
                 </GoButton>
               </Actions>
             </Card>
