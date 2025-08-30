@@ -3,6 +3,7 @@ import sample1 from "../images/Sample1.jpg";
 import wechat from "../images/wechat.jpg";
 import seoulMap from "../images/seoul.png";
 import busanMap from "../images/busan.png";
+import logoImage from "../images/LogoLEKw.png";
 import { FaArrowDown, FaArrowRight } from "react-icons/fa";
 import { HiArrowPath } from "react-icons/hi2";
 import useScrollFadeIn from "../hooks/useScrollFadIn";
@@ -45,6 +46,12 @@ const Container = styled.div`
     min-height: 92vh;
     padding: 72px 34px;
   }
+`;
+
+const Logo = styled.img`
+  height: 120px;
+  object-fit: contain;
+  z-index: 3;
 `;
 
 const H1 = styled.h2`
@@ -177,8 +184,12 @@ const Subchu = styled.h3`
 const P = styled.p`
   font-size: 1.06rem;
   color: ${({ $invert }) => ($invert ? "rgba(255,255,255,0.85)" : TEXT_MUTED)};
-  line-height: 1.75;
+  line-height: 1.5;
   white-space: pre-line;
+  span {
+    color: ${PINK};
+    font-weight: 600;
+  }
 
   @media (min-width: 1500px) {
     font-size: 1.25rem;
@@ -736,12 +747,14 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
             <H1 {...fadeIn1}>
               {lang === "ko" ? (
                 <>
-                  Language Exchange Korea
+                  <Logo src={logoImage} alt="LEK Logo" />
                   <br /> <span>왜 필요한가요?</span>
                 </>
               ) : (
                 <>
-                  Why do we need <span>Language Exchange Korea?</span>
+                  <Logo src={logoImage} alt="LEK Logo" />
+                  <br />
+                  <span>Why do we need?</span>
                 </>
               )}
             </H1>
@@ -759,28 +772,38 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               {lang === "ko" ? (
                 <>
                   기존 커뮤니티나 언어교환 플랫폼은 많지만,
-                  <br className="mobile-br" /> 실생활 언어 능력과 꾸준한
-                  소통에는
-                  <br className="mobile-br" /> 한계가 있습니다.
+                  <br className="mobile-br" />{" "}
+                  <span>
+                    실생활 언어 능력과 꾸준한 소통에는
+                    <br className="mobile-br" /> 한계가 있습니다.
+                  </span>
                 </>
               ) : (
                 <>
                   There are many communities and exchange platforms,
-                  <br className="mobile-br" /> but they fall short in real-life
-                  language use and lasting interaction.
+                  <br className="mobile-br" />
+                  <span>
+                    but they fall short in real-life language use and lasting
+                    interaction.
+                  </span>
                 </>
               )}
             </P>
             <P $invert {...fadeIn3}>
               {lang === "ko" ? (
                 <>
-                  외국인은 늘고 있지만, 소상공인은 내수 부진으로
-                  <br className="mobile-br" /> 매출에 어려움을 겪고 있습니다.
+                  한국을 찾는 외국인은 늘고 있지만, <br className="mobile-br" />
+                  <span>
+                    소상공인은 내수 부진으로
+                    <br className="mobile-br" /> 매출에 어려움을 겪고 있습니다.
+                  </span>
                 </>
               ) : (
                 <>
-                  Foreigners are increasing, but local businesses struggle due
-                  to weak domestic demand.
+                  Foreigners are increasing,{" "}
+                  <span>
+                    but local businesses struggle due to weak domestic demand.
+                  </span>
                 </>
               )}
             </P>

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const useScrollFadeIn = (direction = "up", duration = 0.7, delay = 0) => {
   const [visible, setVisible] = useState(false);
+  const [snapped, setSnapped] = useState(false); // transform 초기화 여부
   const dom = useRef();
 
   useEffect(() => {
@@ -19,6 +20,23 @@ const useScrollFadeIn = (direction = "up", duration = 0.7, delay = 0) => {
 
     return () => observer.disconnect();
   }, []);
+
+  // transition 끝난 후 transform 완전히 제거
+  useEffect(() => {
+    const node = dom.current;
+    if (!node) return;
+
+    const handleEnd = () => {
+      if (visible && !snapped) {
+        node.style.transform = "none";
+        node.style.willChange = "auto";
+        setSnapped(true);
+      }
+    };
+
+    node.addEventListener("transitionend", handleEnd);
+    return () => node.removeEventListener("transitionend", handleEnd);
+  }, [visible, snapped]);
 
   const getTransform = () => {
     switch (direction) {
@@ -39,8 +57,9 @@ const useScrollFadeIn = (direction = "up", duration = 0.7, delay = 0) => {
     ref: dom,
     style: {
       opacity: visible ? 1 : 0,
-      transform: visible ? "translate3d(0, 0, 0)" : getTransform(),
+      transform: visible ? "translate3d(0,0,0)" : getTransform(),
       transition: `opacity ${duration}s ease-out ${delay}s, transform ${duration}s ease-out ${delay}s`,
+      willChange: "opacity, transform",
     },
   };
 };

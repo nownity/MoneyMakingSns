@@ -1,6 +1,17 @@
 import styled from "styled-components";
 import { FaInstagram } from "react-icons/fa";
 import { BsFillThreadsFill } from "react-icons/bs";
+import logoImage from "../images/LogoLEKw.png";
+
+const Logo = styled.img`
+  height: 50px;
+  object-fit: contain;
+  z-index: 3;
+
+  @media (max-width: 768px) {
+    height: 60px;
+  }
+`;
 
 const FooterWrapper = styled.footer`
   background-color: #0c0c0c;
@@ -95,7 +106,7 @@ const Footer = ({ currentSection, sectionRefs }) => {
             onClick={() => scrollToSection("hero")}
             $active={currentSection === "hero"}
           >
-            랭귀지익스체인지코리아
+            <Logo src={logoImage} alt="LEK Logo" />
           </FooterLogo>
           <p>서울특별시 송파구 동남로 189, 4층 406호</p>
           <p>대표: 배윤신</p>

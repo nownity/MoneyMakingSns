@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import HeroImage from "../images/HeroBody.jpg";
+import heroImage from "../images/HeroBody.jpg";
+import logoImage from "../images/LogoLEKw.png";
 import useScrollFadeIn from "../hooks/useScrollFadIn";
 
 const Section = styled.section`
@@ -22,7 +23,7 @@ const Background = styled.div`
   left: -10px;
   width: calc(100% + 20px);
   height: calc(100vh + 20px);
-  background: url(${HeroImage}) no-repeat center center/cover;
+  background: url(${heroImage}) no-repeat center center/cover;
   filter: blur(2px) grayscale(50%);
   z-index: 0;
   pointer-events: none;
@@ -39,7 +40,6 @@ const Overlay = styled.div`
 const Title = styled.h1`
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 1rem;
   z-index: 2;
   line-height: 1.4;
 
@@ -56,9 +56,20 @@ const Title = styled.h1`
   }
 `;
 
+const Logo = styled.img`
+  height: 100px;
+  object-fit: contain;
+  z-index: 3;
+
+  @media (max-width: 768px) {
+    height: 120px;
+  }
+`;
+
 const SubTitle = styled.p`
   font-size: 1rem;
   margin-bottom: 2rem;
+  font-weight: bold;
   z-index: 2;
   opacity: 0.9;
   color: #ff2d95;
@@ -103,7 +114,6 @@ const HeroSection = ({ currentSection, sectionRefs, lang }) => {
   const [visible, setVisible] = useState(true);
   const sectionRef = useRef(null);
 
-  // 스크롤 시 Hero 영역 보일 때만 배경 보이게
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -123,8 +133,8 @@ const HeroSection = ({ currentSection, sectionRefs, lang }) => {
     <Section ref={sectionRef}>
       <Background $visible={visible} />
       <Overlay />
+      <Logo src={logoImage} alt="LEK Logo" {...fadeIn1} />
       <Title {...fadeIn1}>
-        <span>Language Exchange Korea</span>
         <span>
           {lang === "ko"
             ? "글로벌 한국 로컬 라이프"
