@@ -126,14 +126,8 @@ const SubText = styled.p`
   color: #d1d5db;
   line-height: 1.5;
   margin: 0;
-  br.mobile-br {
-    display: none;
-  }
 
   @media (min-width: 1500px) {
-    br.mobile-br {
-      display: inline;
-    }
     font-size: 1.3rem;
   }
 `;
@@ -158,15 +152,15 @@ const AboutConcept = ({ lang = "ko" }) => {
           s1: (
             <>
               외국인, 한국인, 소상공인이 서로를 응원하며
-              <br className="mobile-br" />
-              함께 성장합니다.
+              <br className="mobile-br" /> 함께 성장합니다.
             </>
           ),
           s2: "언어, 문화, 지역을 잇는사회혁신 플랫폼입니다.",
           s3: (
             <>
               실용 언어학습, 문화 교류, 로컬 브랜딩까지
-              <br className="mobile-br" />한 번에!
+              <br className="mobile-br" />
+              한번에!
             </>
           ),
         }

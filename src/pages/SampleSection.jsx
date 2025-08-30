@@ -562,8 +562,6 @@ const MOUSubtle = styled.p`
 /* ========================= */
 /* ===== 섹션 5.5 전용 UI === */
 /* ========================= */
-
-/* PC: [지도 | 아이콘 | 지도]  /  Mobile: 세로 스택 */
 const CommunityRow = styled.div`
   display: grid;
   grid-template-columns: 1fr 72px 1fr;
@@ -575,7 +573,6 @@ const CommunityRow = styled.div`
   }
 `;
 
-/* 맵 카드 박스(높이 안정화) */
 const MapCard = styled(SoftBox)`
   display: flex;
   flex-direction: column;
@@ -587,7 +584,6 @@ const MapCard = styled(SoftBox)`
   }
 `;
 
-/* 맵 이미지 비율 고정 */
 const MapImage = styled.div`
   width: 100%;
   aspect-ratio: 16/10;
@@ -606,7 +602,6 @@ const MapImage = styled.div`
   }
 `;
 
-/* 가운데 아이콘 셀 */
 const IconCell = styled.div`
   display: grid;
   place-items: center;
@@ -616,7 +611,6 @@ const IconCell = styled.div`
   }
 `;
 
-/* 5.5 전용 아이콘(이름 충돌 방지) */
 const ExchangeIcon5 = styled(HiArrowPath)`
   font-size: 40px;
   color: ${PINK};
