@@ -734,6 +734,14 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
 
   return (
     <Page>
+      <div style={{ display: "none" }} aria-hidden="true">
+        <h1>Language Exchange Korea Sample Programs</h1>
+        <p>
+          Language Exchange Korea (랭귀지익스체인지코리아)는 서울, 부산,
+          온라인에서 다양한 언어 교환 프로그램을 운영합니다. 외국인과 한국인이
+          함께 참여하는 커뮤니티로, 언어와 문화를 교류하며 성장합니다.
+        </p>
+      </div>
       {/* 1. 왜 필요한가요 */}
       <Section $invert>
         <Container $invert $top>

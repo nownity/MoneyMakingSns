@@ -299,6 +299,14 @@ const InfoSection = ({ lang }) => {
 
   return (
     <Section>
+      <div style={{ display: "none" }} aria-hidden="true">
+        <h1>Language Exchange Korea Information</h1>
+        <p>
+          Language Exchange Korea (랭귀지익스체인지코리아) 서비스 연결
+          페이지입니다. 서울·부산 언어 교환 일정, 참여 방법, 프로그램 정보를
+          확인할 수 있습니다.
+        </p>
+      </div>
       <Heading>
         SER<span>VICE</span>
       </Heading>

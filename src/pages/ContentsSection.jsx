@@ -174,6 +174,14 @@ const CTA = styled.a`
 const ContentsSection = ({ bg, accent, lang }) => {
   return (
     <Section $bg={bg}>
+      <div style={{ display: "none" }} aria-hidden="true">
+        <h1>Language Exchange Korea Contents</h1>
+        <p>
+          Language Exchange Korea (랭귀지익스체인지코리아)는 다양한 언어 교환
+          콘텐츠를 제공합니다. 한국어·영어 학습, 문화 교류 활동, 지역 기반
+          프로그램을 통해 외국인과 한국인이 함께 성장합니다.
+        </p>
+      </div>
       <Container>
         <Heading $accent={accent}>
           {lang === "ko" ? (

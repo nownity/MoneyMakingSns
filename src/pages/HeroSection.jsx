@@ -131,6 +131,14 @@ const HeroSection = ({ currentSection, sectionRefs, lang }) => {
 
   return (
     <Section ref={sectionRef}>
+      <div style={{ display: "none" }} aria-hidden="true">
+        <h1>Language Exchange Korea (랭귀지익스체인지코리아)</h1>
+        <p>
+          Language Exchange Korea는 외국인과 한국인이 함께 참여하는 언어 교환
+          커뮤니티입니다. 서울과 부산에서 오프라인과 온라인 프로그램을 운영하며,
+          언어와 문화를 교류하는 혁신적인 플랫폼입니다.
+        </p>
+      </div>
       <Background $visible={visible} />
       <Overlay />
       <Logo src={logoImage} alt="LEK Logo" {...fadeIn1} />

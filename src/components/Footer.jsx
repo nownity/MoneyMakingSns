@@ -101,6 +101,14 @@ const Footer = ({ currentSection, sectionRefs, lang, setLang }) => {
 
   return (
     <FooterWrapper>
+      <div style={{ display: "none" }} aria-hidden="true">
+        <h1>Language Exchange Korea (랭귀지익스체인지코리아)</h1>
+        <p>
+          Language Exchange Korea는 외국인과 한국인이 함께하는 언어 교환
+          커뮤니티입니다. 서울과 부산에서 열리는 오프라인 모임과 온라인
+          프로그램을 통해 실용 언어 학습과 문화 교류를 지원합니다.
+        </p>
+      </div>
       <FooterContainer>
         <FooterColumn>
           <FooterLogo
