@@ -127,7 +127,7 @@ const MainPage = () => {
 
       <FixedButton
         $visible={showRecruitBtn}
-        href="/"
+        href="https://naver.me/FXkkC9pL"
         target="_blank"
         rel="noopener noreferrer"
       >
