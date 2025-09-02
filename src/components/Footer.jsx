@@ -56,6 +56,7 @@ const FooterLink = styled.a`
   text-decoration: none;
   font-size: 14px;
   transition: 0.2s;
+  cursor: pointer;
 
   &:hover {
     color: #ff2d95;
