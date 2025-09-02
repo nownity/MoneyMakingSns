@@ -2,18 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://languageexchangekorea.com/</loc>
-    <lastmod>2025-08-14</lastmod>
+    <lastmod>2025-09-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- 하위 페이지 생기면 아래처럼 추가 -->
-  <!--
-  <url>
-    <loc>https://languageexchangekorea.com/about</loc>
-    <lastmod>2025-08-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  -->
 </urlset>
