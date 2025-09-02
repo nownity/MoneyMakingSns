@@ -117,7 +117,12 @@ const MainPage = () => {
         <section id="info" ref={sectionRefs.info}>
           <InfoSection lang={lang} />
         </section>
-        <Footer currentSection={currentSection} sectionRefs={sectionRefs} />
+        <Footer
+          currentSection={currentSection}
+          sectionRefs={sectionRefs}
+          lang={lang}
+          setLang={setLang}
+        />
       </MainWrapper>
 
       <FixedButton
@@ -126,7 +131,7 @@ const MainPage = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        소모임 모집하기
+        {lang === "ko" ? "소모임 모집하기" : "Start a Group"}
       </FixedButton>
     </Container>
   );

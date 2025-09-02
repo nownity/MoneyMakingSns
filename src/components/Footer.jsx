@@ -94,7 +94,7 @@ const CopyRight = styled.div`
   }
 `;
 
-const Footer = ({ currentSection, sectionRefs }) => {
+const Footer = ({ currentSection, sectionRefs, lang, setLang }) => {
   const scrollToSection = (id) => {
     sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -109,10 +109,18 @@ const Footer = ({ currentSection, sectionRefs }) => {
           >
             <Logo src={logoImage} alt="LEK Logo" />
           </FooterLogo>
-          <p>서울특별시 송파구 동남로 189, 4층 406호</p>
-          <p>대표: 배윤신</p>
-          <p>사업자등록번호: 895-02-03035</p>
-          <p>Tel: 1668-3729</p>
+          <p>
+            {lang === "ko"
+              ? "서울특별시 송파구 동남로 189, 4층 406호"
+              : "4F-406, 189 Dongnam-ro, Songpa-gu, Seoul, Korea"}
+          </p>
+          <p>{lang === "ko" ? "대표: 배윤신" : "CEO: Yoonsin Bae"}</p>
+          <p>
+            {lang === "ko"
+              ? "사업자등록번호: 895-02-03035"
+              : "Business Reg. No.: 895-02-03035"}
+          </p>
+          <p>{lang === "ko" ? "Tel: 1668-3729" : "Tel: +82-1668-3729"}</p>
         </FooterColumn>
 
         <FooterColumn>
@@ -121,19 +129,19 @@ const Footer = ({ currentSection, sectionRefs }) => {
             onClick={() => scrollToSection("about")}
             $active={currentSection === "about"}
           >
-            회사소개
+            {lang === "ko" ? "회사소개" : "About Us"}
           </FooterLink>
           <FooterLink
             onClick={() => scrollToSection("sample")}
             $active={currentSection === "sample"}
           >
-            프로그램 안내
+            {lang === "ko" ? "프로그램 안내" : "Programs"}
           </FooterLink>
           <FooterLink
             onClick={() => scrollToSection("info")}
             $active={currentSection === "info"}
           >
-            서비스 검색
+            {lang === "ko" ? "서비스 검색" : "Services"}
           </FooterLink>
         </FooterColumn>
 
