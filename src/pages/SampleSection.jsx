@@ -1310,16 +1310,11 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
                   서울·부산에서 <b>로컬 친구 연결</b>과{" "}
                   <br className="mobile-br" />
                   <b>추천 장소·할인</b>을 한곳에서! <br />
-                  여행 계획은 더 간단하게, 커뮤니티
-                  <br className="mobile-br" />
-                  관계는 더 오래!
                 </>
               ) : (
                 <>
                   In Seoul and Busan, find <b>local friends</b> plus curated{" "}
                   <b>spots & discounts</b>—all in one place.
-                  <br className="mobile-br" />
-                  Plan smarter and build longer‑lasting community ties.
                 </>
               )}
             </LeadP>
