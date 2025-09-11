@@ -212,17 +212,9 @@ const ContentsSection = ({ bg, accent, lang }) => {
         </Heading>
         <Subtitle>
           {lang === "ko" ? (
-            <>
-              외국인·한국인 언어교환 소셜파티 참가 신청, 아래 신청서를
-              <br className="mobile-br" />
-              선택하세요.
-            </>
+            <>외국인·한국인 언어교환 소셜파티 참가 신청</>
           ) : (
-            <>
-              Apply to join our Language Exchange Social Party,
-              <br className="mobile-br" />
-              Choose a form below.
-            </>
+            <>Apply to join our Language Exchange Social Party</>
           )}
         </Subtitle>
 
@@ -247,8 +239,8 @@ const ContentsSection = ({ bg, accent, lang }) => {
               </Title>
               <Desc>
                 {lang === "ko"
-                  ? "Language Exchange Korea 한국인 파티 일반 신청"
-                  : "General registration for Language Exchange Korea Korean Party"}
+                  ? "Language Exchange Korea"
+                  : "Language Exchange Korea"}
               </Desc>
             </CardText>
 
@@ -286,8 +278,8 @@ const ContentsSection = ({ bg, accent, lang }) => {
               </Title>
               <Desc>
                 {lang === "ko"
-                  ? "General registration for Language Exchange Korea Foreigner Party"
-                  : "General registration for Language Exchange Korea Foreigner Party"}
+                  ? "Language Exchange Korea"
+                  : "Language Exchange Korea"}
               </Desc>
             </CardText>
 
