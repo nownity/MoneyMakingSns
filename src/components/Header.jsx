@@ -173,13 +173,13 @@ const Header = ({ currentSection, sectionRefs, lang, setLang }) => {
           onClick={() => scrollToSection("sample")}
           $active={currentSection === "sample"}
         >
-          {lang === "ko" ? "상품" : "Item"}
+          {lang === "ko" ? "결제" : "Payment"}
         </NavItem>
         <NavItem
           onClick={() => scrollToSection("info")}
           $active={currentSection === "info"}
         >
-          {lang === "ko" ? "서비스" : "Service"}
+          {lang === "ko" ? "파트너스" : "Partners"}
         </NavItem>
       </Nav>
       <LangButtonWrapper>

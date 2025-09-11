@@ -258,6 +258,30 @@ const InfoSection = ({ lang }) => {
         url: "https://naver.me/GbAfemCh",
         googleUrl: "https://maps.app.goo.gl/2Ks7uVUvKv1t328AA",
       },
+      {
+        name: "테하노텍스멕스바베큐 광안점",
+        address: "부산 수영구 광안해변로 177 2층",
+        url: "https://naver.me/xafFR6pD",
+        googleUrl: "https://maps.app.goo.gl/PNrkmhpkDSq6Uahr6",
+      },
+      {
+        name: "샤브원 기장동부산점",
+        address: "부산 기장군 기장읍 기장해안로 160 2층",
+        url: "https://naver.me/5Bkkqqff",
+        googleUrl: "https://maps.app.goo.gl/4x4Yz43tjHxxwYh27",
+      },
+      {
+        name: "이호웨이브",
+        address: "제주 제주시 현사길 17-1 1층, 2층",
+        url: "https://naver.me/xDYT8YE8",
+        googleUrl: "https://maps.app.goo.gl/mhNybUMViShSRpJr8",
+      },
+      {
+        name: "송파 꽃집",
+        address: "제주 제주시 현사길 17-1 1층, 2층",
+        url: "https://naver.me/FhfDSrXx",
+        googleUrl: "https://maps.app.goo.gl/dCbND1h18xruynoLA",
+      },
     ],
     []
   );
@@ -308,7 +332,7 @@ const InfoSection = ({ lang }) => {
         </p>
       </div>
       <Heading>
-        SER<span>VICE</span>
+        PART<span>NERS</span>
       </Heading>
       <Subtitle>
         {lang === "ko"

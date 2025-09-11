@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import logoImage from "../images/LogoLEKw.png";
 
 /* ===== 섹션 배경/포인트 컬러 ===== */
 const Section = styled.section`
@@ -10,13 +11,23 @@ const Section = styled.section`
 const Container = styled.div`
   max-width: 1100px;
   margin: 0 auto;
-  padding: 150px 20px 160px;
+  padding: 150px 20px 150px;
 
   @media (min-width: 1500px) {
     max-width: 1300px;
   }
   @media (max-width: 768px) {
     padding: 64px 30px 72px;
+  }
+`;
+
+const Logo = styled.img`
+  height: 180px;
+  object-fit: contain;
+  z-index: 3;
+
+  @media (max-width: 768px) {
+    height: 110px;
   }
 `;
 
@@ -27,6 +38,10 @@ const Heading = styled.h2`
   letter-spacing: -0.4px;
   color: #ffffff;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 
   span {
     color: ${({ $accent }) => $accent || "#ff2d95"};
@@ -184,15 +199,14 @@ const ContentsSection = ({ bg, accent, lang }) => {
       </div>
       <Container>
         <Heading $accent={accent}>
+          <Logo src={logoImage} alt="LEK Logo" />
           {lang === "ko" ? (
             <>
-              Language Exchange
-              <br className="mobile-br" />
-              <span>Social Party</span>
+              <span>Join the Social Party Now</span>
             </>
           ) : (
             <>
-              Language Exchange <span>Social Party</span>
+              <span>Join the Social Party Now</span>
             </>
           )}
         </Heading>
@@ -227,12 +241,14 @@ const ContentsSection = ({ bg, accent, lang }) => {
 
             <CardText>
               <Title>
-                {lang === "ko" ? "참가 신청" : "General Application"}
+                {lang === "ko"
+                  ? "한국인 참가 신청"
+                  : "Korean Participant Application"}
               </Title>
               <Desc>
                 {lang === "ko"
-                  ? "Language Exchange Korea 소셜 파티 일반 신청"
-                  : "General registration for Language Exchange Korea Social Party"}
+                  ? "Language Exchange Korea 한국인 파티 일반 신청"
+                  : "General registration for Language Exchange Korea Korean Party"}
               </Desc>
             </CardText>
 
@@ -264,12 +280,14 @@ const ContentsSection = ({ bg, accent, lang }) => {
 
             <CardText>
               <Title>
-                {lang === "ko" ? "프로모션 신청" : "Promotion Application"}
+                {lang === "ko"
+                  ? "Foreigner Participant Application"
+                  : "Foreigner Participant Application"}
               </Title>
               <Desc>
                 {lang === "ko"
-                  ? "브랜드 프로모션용 파티 신청"
-                  : "Application for brand promotion party"}
+                  ? "General registration for Language Exchange Korea Foreigner Party"
+                  : "General registration for Language Exchange Korea Foreigner Party"}
               </Desc>
             </CardText>
 

@@ -1118,8 +1118,8 @@ const SampleSection = ({ currentSection, sectionRefs, lang }) => {
               <MOUCard $invert {...fadeIn18}>
                 <Sub>
                   {lang === "ko"
-                    ? "건국대학교 한국어학당 MOU 완료"
-                    : "MOU with Konkuk University KLI"}
+                    ? "대학교 한국어학당 MOU 완료"
+                    : "MOU with University KLI"}
                 </Sub>
                 <MOUSubtle>
                   {lang === "ko"
